@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cac02743-5f64-4ea4-b11e-ab91ce015397" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/game_classes/Piece.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game_classes/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game_classes/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game_classes/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game_classes/Player.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -108,7 +110,7 @@
       <workItem from="1573405632789" duration="6000" />
       <workItem from="1573405652547" duration="20000" />
       <workItem from="1573405691835" duration="6000" />
-      <workItem from="1573405709312" duration="2089000" />
+      <workItem from="1573405709312" duration="7750000" />
     </task>
     <servers />
   </component>

@@ -5,16 +5,33 @@ package game_classes;
 public class Player {
     
     private String name;
-    private Account account;
     private int age;
-    private Die die;
     
-    public Player(String name, int points, int age){
+    private Account account;
+    private Die die;
+    private Board board;
+    private Piece piece;
+    
+    public Player(String name, int age, int points, String pieceType, Board board){
         this.name = name;
         this.age = age;
+        this.board = board;
         account = new Account(points);
         die = new Die();
+        piece = new Piece(board.getSquare(1), pieceType);
     }
+    
+    public void takeTurn(){
+        die.roll();
+        Square nextLocation = board.nextLocation(piece.getLocation(), die.getFaceValue());
+        piece.setLocation(nextLocation);
+        this.applyEffect(piece.getLocation());
+    }
+    
+    private void applyEffect(Square location){
+            
+    }
+    
     
     public int getPoints(){
         return account.getPoints();
@@ -44,27 +61,15 @@ public class Player {
         this.age = age;
     }
     
-    public void takeTurn(){
-        die.roll();
-        Square nextLocation = piece.nextLocation(die.getFaceValue());
-        piece.setLocation(nextLocation);
-        
-    }
-    
-   
-   
-    
-    
-    
-    
-    
     @Override
     public String toString() {
         return "Player{" +
                 "name='" + name + '\'' +
-                ", account=" + account +
                 ", age=" + age +
+                ", account=" + account +
                 ", die=" + die +
+                ", board=" + board +
+                ", piece=" + piece +
                 '}';
     }
 }
