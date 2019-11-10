@@ -3,16 +3,17 @@ package game_classes;
 // Creates a Player object with name and an account belongs to it.
 
 public class Player {
+    
     private String name;
     private Account account;
+    private int age;
+    private Die die;
     
-    public Player(String name, int points){
+    public Player(String name, int points, int age){
         this.name = name;
+        this.age = age;
         account = new Account(points);
-    }
-    // Setter and getters for player class that uses account class.
-    public void addPoints(int points){
-        account.addPoints(points);
+        die = new Die();
     }
     
     public int getPoints(){
@@ -23,7 +24,10 @@ public class Player {
         account.setPoints(points);
     }
     
-    // Setter and getters for player class that uses account class.
+    public void addPoints(int points){
+        account.addPoints(points);
+    }
+    
     public String getName(){
         return name;
     }
@@ -32,8 +36,36 @@ public class Player {
         this.name = name;
     }
     
+    public int getAge() {
+        return age;
+    }
+    
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
+    public void takeTurn(){
+        die.roll();
+        Square nextLocation = piece.nextLocation(die.getFaceValue());
+        piece.setLocation(nextLocation);
+        
+    }
+    
+   
+   
+    
+    
+    
+    
+    
+    @Override
     public String toString() {
-        return "name: " + name + " " + "Account: " + account;
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", account=" + account +
+                ", age=" + age +
+                ", die=" + die +
+                '}';
     }
 }
 
