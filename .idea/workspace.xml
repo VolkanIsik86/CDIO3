@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cac02743-5f64-4ea4-b11e-ab91ce015397" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/game_classes/Piece.java" afterDir="false" />
+    <list default="true" id="efe3e71a-59f4-4648-8eeb-31d0185fe047" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game_classes/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game_classes/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game_classes/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game_classes/Piece.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game_classes/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game_classes/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game_classes/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game_classes/Square.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -1,7 +1,5 @@
 package game_classes;
 
-// Creates a Player object with name and an account belongs to it.
-
 public class Player {
     
     private String name;
@@ -25,11 +23,14 @@ public class Player {
         die.roll();
         Square nextLocation = board.nextLocation(piece.getLocation(), die.getFaceValue());
         piece.setLocation(nextLocation);
-        this.applyEffect(piece.getLocation());
+        nextLocation.applyEffect(this);
     }
     
-    private void applyEffect(Square location){
-            
+    public boolean attempPurchase(Property property){
+        if (property.getPrice > this.getPoints())
+            return false;
+        else
+            return true;
     }
     
     
