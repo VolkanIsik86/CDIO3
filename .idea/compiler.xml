@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Gruppe31_CDIO3" />
         <module name="31" />
+        <module name="CDIO3" />
+        <module name="Gruppe31_CDIO3" />
       </profile>
     </annotationProcessing>
   </component>
