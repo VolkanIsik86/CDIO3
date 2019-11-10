@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cac02743-5f64-4ea4-b11e-ab91ce015397" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/game_classes/Board.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/game_classes/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/game_classes/GameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,11 +33,14 @@
   </component>
   <component name="ProjectId" id="1TOxouXe4xRxPPWkn45ubWAx3sX" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -87,6 +90,12 @@
       <workItem from="1573347878704" duration="256000" />
       <workItem from="1573354503311" duration="44000" />
       <workItem from="1573383475114" duration="259000" />
+      <workItem from="1573389861467" duration="62000" />
+      <workItem from="1573389967771" duration="67000" />
+      <workItem from="1573390094882" duration="153000" />
+      <workItem from="1573390264544" duration="40000" />
+      <workItem from="1573390324600" duration="19000" />
+      <workItem from="1573390365571" duration="43000" />
     </task>
     <servers />
   </component>
