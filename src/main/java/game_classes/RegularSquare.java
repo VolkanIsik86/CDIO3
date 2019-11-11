@@ -2,12 +2,13 @@ package game_classes;
 
 public class RegularSquare extends Square {
 
-    public RegularSquare(String name, int index, String color) {
-        super(name, index, color);
+    public RegularSquare(String name, int index) {
+        super(name, index);
     }
 
-    @Override
-    public void landedOn(Piece p) {
-        // do nothing
+    public void landedOn(Player p) {
+
     }
+
+
 }

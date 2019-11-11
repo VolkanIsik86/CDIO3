@@ -1,12 +1,13 @@
 package game_classes;
 
 public class GoToJailSquare extends Square {
-    public GoToJailSquare(String name, int index, String color) {
-        super(name, index, color);
+    public GoToJailSquare(String name, int index) {
+        super(name, index);
     }
 
-    @Override
-    public void landedOn(Piece p) {
-        p.setLocation(Square jail);
+    public void landedOn(Player p) {
+
     }
+
+
 }

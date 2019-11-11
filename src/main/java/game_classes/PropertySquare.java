@@ -1,21 +1,48 @@
 package game_classes;
 
-public class PropertySquare extends Square {
-
+public abstract class PropertySquare extends Square {
+    private String color;
+    private int price;
+    private Player owner;
 
     public PropertySquare(String name, int index, String color, int price, Player owner) {
-        super(name, index, color, price, owner);
-    }
-
-    public void landedOn(Piece p) {
-
-    }
-
-    public void payRent() {
+        super(name, index);
+        this.color = color;
+        this.owner = owner;
+        this.price = price;
 
     }
 
-    public void getRent() {
-
+    public String getColor() {
+        return color;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public Player getOwner() {
+        return owner;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
+    public void landedOn(Player p) {
+        if (owner!= p){
+            p.attempPurchase(Square);
+        }
+        else
+            payRent();
+    }
+    public abstract void payRent();
+    public abstract void getRent();
 }
