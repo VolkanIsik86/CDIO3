@@ -7,7 +7,7 @@ public class RegularSquare extends Square {
     }
 
     @Override
-    public void landedOn() {
+    public void landedOn(Piece p) {
         // do nothing
     }
 }

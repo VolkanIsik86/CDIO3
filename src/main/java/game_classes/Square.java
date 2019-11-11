@@ -6,11 +6,16 @@ public abstract class Square {
     private int index;
     private String color;
     private Square nextSquare;
+    private int price;
+    private Player owner;
 
-    public Square(String name, int index, String color) {
+    public Square(String name, int index, String color,int price, Player owner) {
         this.name = name;
         this.index = index;
         this.color = color;
+        this.price = price;
+        this.owner = owner;
+
     }
     //gettere
 
@@ -30,12 +35,18 @@ public abstract class Square {
         return nextSquare;
     }
 
-
+    public int getPrice() {
+        return price;
+    }
     //settere
 
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public void setColor(String color) {
@@ -46,8 +57,17 @@ public abstract class Square {
         this.nextSquare = nextSquare;
     }
 
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     // logik implementeres afhengig af felt i de andre klasser
-    public abstract void landedOn();
+    public abstract void landedOn(Piece p);
+
+    public abstract void payRent();
+    public abstract void getRent();
+
+
 
 
     @Override
