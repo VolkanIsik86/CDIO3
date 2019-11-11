@@ -8,6 +8,8 @@ public class GameLogic {
     private Player[] players;
     private Scanner input = new Scanner(System.in);
     private TxtReader txt;
+    private Account account = new Account();
+    private int die1, die2;
 
     //Konstruktør
     public GameLogic(){

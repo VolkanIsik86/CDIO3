@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cac02743-5f64-4ea4-b11e-ab91ce015397" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game_classes/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game_classes/GameLogic.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,6 +109,8 @@
       <workItem from="1573405652547" duration="20000" />
       <workItem from="1573405691835" duration="6000" />
       <workItem from="1573405709312" duration="598000" />
+      <workItem from="1573463254484" duration="20000" />
+      <workItem from="1573463531500" duration="23000" />
     </task>
     <servers />
   </component>
