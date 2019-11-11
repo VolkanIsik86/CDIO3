@@ -21,4 +21,5 @@ public class Piece {
     public void setLocation(Square newLocation){
         location = newLocation;
     }
+
 }

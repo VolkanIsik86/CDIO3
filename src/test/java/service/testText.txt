@@ -1,0 +1,6 @@
+Key,,Tekst1
+Key2,,Tekst med mellemrum
+Key med mellemrum,,Tekst2
+1 tal først,,Tekst3
+Samme key,,samme1
+Samme key,,samme2
