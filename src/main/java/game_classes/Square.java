@@ -1,39 +1,62 @@
 package game_classes;
 
-import javax.swing.*;
+public abstract class Square {
 
-public class Square {
-    
-    private String navn;
-    private final int index;
+    private String name;
+    private int index;
     private String color;
-    private boolean bonusTurn;
+    private Square nextSquare;
 
-    //kontrollør
-    public Square(int effektval, String descriptiontxt, boolean bonusTurnBool) {
-        index = effektval;
-        navn = descriptiontxt;
-        bonusTurn = bonusTurnBool;
+    public Square(String name, int index, String color) {
+        this.name = name;
+        this.index = index;
+        this.color = color;
     }
-
     //gettere
-    public String getName(){
-        return navn;
+
+    public String getName() {
+        return name;
     }
 
-    public int getIndex(){
+    public int getIndex() {
         return index;
     }
 
-    //getter bonus-turn. Denne værdi kan bestemme om spilleren skal have en ekstra tur efter at lande på feltet
-    public boolean getBonusTurn(){
-        return bonusTurn;
+    public String getColor() {
+        return color;
     }
 
-    public String toString(){
-        return "Effect desciption: " + navn + "\n"
-                + "Effect: "+ index + "\n"
-                + "Bonus turn: " + bonusTurn;
+    public Square getNextSquare() {
+        return nextSquare;
     }
 
+
+    //settere
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setNextSquare(Square nextSquare) {
+        this.nextSquare = nextSquare;
+    }
+
+    // logik implementeres afhengig af felt i de andre klasser
+    public abstract void landedOn();
+
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "name='" + name + '\'' +
+                ", index=" + index +
+                ", color='" + color + '\'' +
+                ", nextSquare=" + nextSquare +
+                '}';
+    }
 }
