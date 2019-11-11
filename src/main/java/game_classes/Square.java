@@ -55,4 +55,6 @@ public abstract class Square {
                 ", nextSquare=" + nextSquare +
                 '}';
     }
+
+
 }

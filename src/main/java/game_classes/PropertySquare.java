@@ -38,11 +38,13 @@ public abstract class PropertySquare extends Square {
     }
     public void landedOn(Player p) {
         if (owner!= p){
-            p.attempPurchase(Square);
+            p.attempPurchase(PropertySquare );
         }
-        else
-            payRent();
+        else {
+            payRent(p);
+            getRent();
+        }
     }
-    public abstract void payRent();
+    public abstract void payRent(Player p);
     public abstract void getRent();
 }

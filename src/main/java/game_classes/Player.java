@@ -26,8 +26,8 @@ public class Player {
         nextLocation.applyEffect(this);
     }
     
-    public boolean attempPurchase(Property property){
-        if (property.getPrice > this.getPoints())
+    public boolean attempPurchase(PropertySquare property){
+        if (property.getPrice() > this.getPoints())
             return false;
         else
             return true;
