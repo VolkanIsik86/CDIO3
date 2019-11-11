@@ -7,9 +7,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game_classes/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game_classes/GameLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/TxtReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/TxtReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game_classes/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game_classes/Square.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -169,7 +167,42 @@
       <workItem from="1573405709312" duration="598000" />
       <workItem from="1573463254484" duration="20000" />
       <workItem from="1573463531500" duration="23000" />
+      <workItem from="1573463593273" duration="222000" />
+      <workItem from="1573463908005" duration="15000" />
+      <workItem from="1573463936373" duration="134000" />
+      <workItem from="1573464472881" duration="115000" />
+      <workItem from="1573464615209" duration="33000" />
+      <workItem from="1573464692162" duration="55000" />
+      <workItem from="1573464831810" duration="22000" />
+      <workItem from="1573464918295" duration="17000" />
+      <workItem from="1573464958045" duration="35000" />
+      <workItem from="1573465031908" duration="133000" />
+      <workItem from="1573465233556" duration="127000" />
+      <workItem from="1573465384058" duration="62000" />
+      <workItem from="1573465528747" duration="75000" />
+      <workItem from="1573465612791" duration="17000" />
+      <workItem from="1573465640544" duration="418000" />
+      <workItem from="1573466183805" duration="6000" />
+      <workItem from="1573466200105" duration="83000" />
+      <workItem from="1573466301534" duration="25000" />
+      <workItem from="1573466402067" duration="91000" />
+      <workItem from="1573466518668" duration="257000" />
     </task>
+    <task id="LOCAL-00001" summary="Piece">
+      <created>1573463773312</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573463773312</updated>
+    </task>
+    <task id="LOCAL-00002" summary="GameLogic">
+      <created>1573466428465</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573466428465</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,17 +222,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/service/TxtReaderTest.java</url>
-          <line>8</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Piece" />
+    <MESSAGE value="GameLogic" />
+    <option name="LAST_COMMIT_MESSAGE" value="GameLogic" />
   </component>
 </project>
