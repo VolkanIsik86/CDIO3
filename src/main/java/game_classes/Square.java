@@ -3,6 +3,7 @@ package game_classes;
 import javax.swing.*;
 
 public class Square {
+    
     private String navn;
     private final int index;
     private String color;
@@ -34,4 +35,5 @@ public class Square {
                 + "Effect: "+ index + "\n"
                 + "Bonus turn: " + bonusTurn;
     }
+
 }
