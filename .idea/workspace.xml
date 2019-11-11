@@ -111,7 +111,33 @@
       <workItem from="1573405709312" duration="598000" />
       <workItem from="1573463254484" duration="20000" />
       <workItem from="1573463531500" duration="23000" />
+      <workItem from="1573463593273" duration="222000" />
+      <workItem from="1573463908005" duration="15000" />
+      <workItem from="1573463936373" duration="134000" />
+      <workItem from="1573464472881" duration="115000" />
+      <workItem from="1573464615209" duration="33000" />
+      <workItem from="1573464692162" duration="55000" />
+      <workItem from="1573464831810" duration="22000" />
+      <workItem from="1573464918295" duration="17000" />
+      <workItem from="1573464958045" duration="35000" />
+      <workItem from="1573465031908" duration="133000" />
+      <workItem from="1573465233556" duration="127000" />
+      <workItem from="1573465384058" duration="62000" />
+      <workItem from="1573465528747" duration="75000" />
+      <workItem from="1573465612791" duration="17000" />
+      <workItem from="1573465640544" duration="418000" />
+      <workItem from="1573466183805" duration="6000" />
+      <workItem from="1573466200105" duration="83000" />
+      <workItem from="1573466301534" duration="25000" />
     </task>
+    <task id="LOCAL-00001" summary="Piece">
+      <created>1573463773312</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573463773312</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,5 +155,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Piece" />
+    <option name="LAST_COMMIT_MESSAGE" value="Piece" />
   </component>
 </project>
