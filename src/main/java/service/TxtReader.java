@@ -29,8 +29,9 @@ public class TxtReader {
             //Add lines to 2D array
             lines = new String[N_LINES][2];
             for (int i = 0; i < N_LINES; i++) {
+                String[] oneLine = txtReader.readLine().split(",,");
                 for (int j = 0; j < 2; j++) {
-                    lines[i][j] = txtReader.readLine().split(",,")[j];
+                    lines[i][j] = oneLine[j];
                 }
             }
             txtReader.close();
@@ -47,9 +48,10 @@ public class TxtReader {
         
         //Find corresponding index to key
         for (int i = 0; i < N_LINES; i++) {
-            if (lines[i][0].equalsIgnoreCase(key))
+            if (lines[i][0].equalsIgnoreCase(key)){
                 index = i;
-            break;
+                break;
+            }
         }
         
         if (index == -1){
