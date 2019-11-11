@@ -1,19 +1,38 @@
 package game_classes;
 
-// Creates a Player object with name and an account belongs to it.
-
 public class Player {
-    private String name;
-    private Account account;
     
-    public Player(String name, int points){
+    private String name;
+    private int age;
+    
+    private Account account;
+    private Die die;
+    private Board board;
+    private Piece piece;
+    
+    public Player(String name, int age, int points, String pieceType, Board board){
         this.name = name;
+        this.age = age;
+        this.board = board;
         account = new Account(points);
+        die = new Die();
+        piece = new Piece(board.getSquare(1), pieceType);
     }
-    // Setter and getters for player class that uses account class.
-    public void addPoints(int points){
-        account.addPoints(points);
+    
+    public void takeTurn(){
+        die.roll();
+        Square nextLocation = board.nextLocation(piece.getLocation(), die.getFaceValue());
+        piece.setLocation(nextLocation);
+        nextLocation.applyEffect(this);
     }
+    
+    public boolean attempPurchase(Property property){
+        if (property.getPrice > this.getPoints())
+            return false;
+        else
+            return true;
+    }
+    
     
     public int getPoints(){
         return account.getPoints();
@@ -23,7 +42,10 @@ public class Player {
         account.setPoints(points);
     }
     
-    // Setter and getters for player class that uses account class.
+    public void addPoints(int points){
+        account.addPoints(points);
+    }
+    
     public String getName(){
         return name;
     }
@@ -32,8 +54,24 @@ public class Player {
         this.name = name;
     }
     
+    public int getAge() {
+        return age;
+    }
+    
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
+    @Override
     public String toString() {
-        return "name: " + name + " " + "Account: " + account;
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", account=" + account +
+                ", die=" + die +
+                ", board=" + board +
+                ", piece=" + piece +
+                '}';
     }
 }
 
