@@ -33,6 +33,14 @@ public class Player {
             return true;
     }
     
+    public void setLocation(Square newLocation){
+        piece.setLocation(newLocation);
+    }
+    
+    public Square getLocation(){
+        return piece.getLocation();
+    }
+    
     
     public int getPoints(){
         return account.getPoints();
