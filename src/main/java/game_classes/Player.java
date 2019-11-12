@@ -44,6 +44,10 @@ public class Player {
         return piece.getLocation();
     }
     
+    public Square getSquare(int index){
+        return board.getSquare(index);
+    }
+    
     public int getPoints(){
         return account.getPoints();
     }
