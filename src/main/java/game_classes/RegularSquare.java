@@ -7,6 +7,7 @@ public class RegularSquare extends Square {
     }
 
     public void landedOn(Player p) {
+        // DO NOTHING
 
     }
 

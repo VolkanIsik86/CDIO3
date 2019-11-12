@@ -6,6 +6,7 @@ public class GoToJailSquare extends Square {
     }
 
     public void landedOn(Player p) {
+        p.set
 
     }
 

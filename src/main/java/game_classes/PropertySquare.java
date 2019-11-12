@@ -38,7 +38,7 @@ public abstract class PropertySquare extends Square {
     }
     public void landedOn(Player p) {
         if (owner!= p){
-            p.attempPurchase(PropertySquare );
+            p.attempPurchase();
         }
         else {
             payRent(p);
