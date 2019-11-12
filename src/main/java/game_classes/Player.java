@@ -26,7 +26,7 @@ public class Player {
         die.roll();
         Square nextLocation = board.nextLocation(piece.getLocation(), die.getFaceValue());
         piece.setLocation(nextLocation);
-        nextLocation.applyEffect(this);
+        nextLocation.landedOn(this);
     }
     
     public boolean attempPurchase(PropertySquare property){
