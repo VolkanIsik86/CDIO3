@@ -10,28 +10,28 @@ public class Player {
     private Board board;
     private Piece piece;
     
-    public Player(String name, int age, int points, String pieceType, Board board){
-        this.name = name;
-        this.age = age;
-        this.board = board;
-        account = new Account(points);
-        die = new Die();
-        piece = new Piece(board.getSquare(1), pieceType);
-    }
+//    public Player(String name, int age, int points, String pieceType, Board board){
+//        this.name = name;
+//        this.age = age;
+//        this.board = board;
+//        account = new Account(points);
+//        die = new Die();
+//        piece = new Piece(board.getSquare(1), pieceType);
+//    }
     
-    public void takeTurn(){
-        die.roll();
-        Square nextLocation = board.nextLocation(piece.getLocation(), die.getFaceValue());
-        piece.setLocation(nextLocation);
-        nextLocation.applyEffect(this);
-    }
+//    public void takeTurn(){
+//        die.roll();
+//        Square nextLocation = board.nextLocation(piece.getLocation(), die.getFaceValue());
+//        piece.setLocation(nextLocation);
+//        nextLocation.applyEffect(this);
+//    }
     
-    public boolean attempPurchase(Property property){
-        if (property.getPrice > this.getPoints())
-            return false;
-        else
-            return true;
-    }
+//    public boolean attempPurchase(Property property){
+//        if (property.getPrice > this.getPoints())
+//            return false;
+//        else
+//            return true;
+//    }
     
     public void setLocation(Square newLocation){
         piece.setLocation(newLocation);

@@ -37,7 +37,7 @@ public class GameLogic {
         //Array af spillere laves
         for (int index = 0; index < players.length; index++) {
             final String navn = readPlayerName(index);
-            players[index] = new Player(navn, startKapital);
+//            players[index] = new Player(navn, startKapital);
         }
     }
 
