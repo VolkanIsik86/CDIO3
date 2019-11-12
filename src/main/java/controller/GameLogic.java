@@ -1,5 +1,6 @@
-package game_classes;
+package controller;
 
+import game_classes.Player;
 import service.TxtReader;
 import java.util.Scanner;
 

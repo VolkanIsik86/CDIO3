@@ -1,7 +1,7 @@
 package game_classes;
 
-import square.PropertySquare;
-import square.Square;
+import game_classes.square.PropertySquare;
+import game_classes.square.Square;
 
 public class Player {
     

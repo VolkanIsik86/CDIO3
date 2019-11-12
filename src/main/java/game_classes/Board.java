@@ -1,6 +1,6 @@
 package game_classes;
 
-import square.Square;
+import game_classes.square.Square;
 
 public class Board {
 

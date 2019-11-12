@@ -1,5 +1,5 @@
 // implementeres hvis måske!!!
-//package square;
+//package game_classes.square;
 //
 //import game_classes.Player;
 //
