@@ -1,5 +1,6 @@
 package game_classes.square;
 
+import controller.SquareController;
 import game_classes.Player;
 
 public abstract class Square {
@@ -7,6 +8,7 @@ public abstract class Square {
     private String name;
     private int index;
     private Square nextSquare;
+    protected SquareController controller;
 
 
     public Square(String name, int index) {

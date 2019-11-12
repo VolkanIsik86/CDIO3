@@ -1,6 +1,6 @@
 package game_classes;
 
-import game_classes.square.Square;
+import game_classes.square.*;
 import service.TxtReader;
 
 public class Board {
@@ -19,16 +19,16 @@ public class Board {
 
             switch (oneLine[0]) {
                 case ("Regular"):
-                    oneLine[i] = new Regular(sDec.getLine("1"),sDec.getLine("2"));
+                    oneLine[i] = new RegularSquare(sDec.getLine("1"),sDec.getLine("2"));
                     break;
                 case("Property"):
-                    oneLine[i] = new Property(sDec.getLine("1"),sDec.getLine("2"),sDec.getLine("3"),sDec.getLine("4"));
+                    oneLine[i] = new PropertySquare(sDec.getLine("1"),sDec.getLine("2"),sDec.getLine("3"),sDec.getLine("4"));
                     break;
                 case("Jail"):
-                    oneLine[i] = new Jail(sDec.getLine("1"),sDec.getLine("2"));
+                    oneLine[i] = new GoToJailSquare(sDec.getLine("1"),sDec.getLine("2"));
                     break;
                 case("Chance"):
-                    oneLine[i] = new Chance(sDec.getLine("1"),sDec.getLine("2"));
+                    oneLine[i] = new ChanceSquare(sDec.getLine("1"),sDec.getLine("2"));
                     break;
             }
         }
@@ -45,7 +45,10 @@ public class Board {
         return squares[nextIndex];
         
     }
-    
+
+    public Square[] getSquares() {
+        return squares;
+    }
     //Skal have en .nextLocation(Square location, eyes)
     
 }

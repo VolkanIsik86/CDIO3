@@ -1,11 +1,13 @@
 package game_classes.square;
 
+
 import game_classes.Player;
 
 public class PropertySquare extends Square {
     private String color;
     private int price;
     private Player owner = null;
+
 
     public PropertySquare(String name, int index, String color, int price) {
         super(name, index);
@@ -38,16 +40,7 @@ public class PropertySquare extends Square {
         this.owner = owner;
     }
     public void landedOn(Player p) {
-        if (owner == null){
-            if (p.attempPurchase(this)){
-                this.setOwner(p);
-            }
-
-        }
-        else {
-            payRent(p);
-            getRent();
-        }
+        controller.attempToBuy(this,p);
     }
     public  void payRent(Player p){
         p.addPoints(- this.getPrice());
