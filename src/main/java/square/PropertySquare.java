@@ -57,4 +57,5 @@ public class PropertySquare extends Square {
         this.getOwner().addPoints(this.getPrice());
         // get rent logic
     }
+
 }
