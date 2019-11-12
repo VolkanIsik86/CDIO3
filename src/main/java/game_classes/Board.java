@@ -1,5 +1,6 @@
 package game_classes;
 
+import game_classes.square.Square;
 import service.TxtReader;
 
 public class Board {
@@ -34,7 +35,15 @@ public class Board {
     }
 
     public Square getSquare(int index){
-        return squares[index+1];
+        return squares[index];
+    }
+    
+    public Square nextLocation(Square currentLocation, int roll){
+        
+        int nextIndex;
+        nextIndex = (currentLocation.getIndex() + roll)%SIZE;
+        return squares[nextIndex];
+        
     }
     
     //Skal have en .nextLocation(Square location, eyes)
