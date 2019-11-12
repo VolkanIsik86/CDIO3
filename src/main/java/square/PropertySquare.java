@@ -2,15 +2,14 @@ package square;
 
 import game_classes.Player;
 
-public abstract class PropertySquare extends Square {
+public class PropertySquare extends Square {
     private String color;
     private int price;
-    private Player owner;
+    private Player owner = null;
 
-    public PropertySquare(String name, int index, String color, int price, Player owner) {
+    public PropertySquare(String name, int index, String color, int price) {
         super(name, index);
         this.color = color;
-        this.owner = owner;
         this.price = price;
 
     }
@@ -39,14 +38,23 @@ public abstract class PropertySquare extends Square {
         this.owner = owner;
     }
     public void landedOn(Player p) {
-        if (owner!= p){
-            p.attempPurchase();
+        if (owner == null){
+            if (p.attempPurchase(this)){
+                this.setOwner(p);
+            }
+
         }
         else {
             payRent(p);
             getRent();
         }
     }
-    public abstract void payRent(Player p);
-    public abstract void getRent();
+    public  void payRent(Player p){
+        p.addPoints(- this.getPrice());
+        // pay rent logic
+    }
+    public  void getRent(){
+        this.getOwner().addPoints(this.getPrice());
+        // get rent logic
+    }
 }
