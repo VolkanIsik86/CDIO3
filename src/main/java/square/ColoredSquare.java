@@ -1,4 +1,6 @@
-package game_classes;
+package square;
+
+import game_classes.Player;
 
 public class ColoredSquare extends PropertySquare {
     public ColoredSquare(String name, int index, String color, int price, Player owner) {

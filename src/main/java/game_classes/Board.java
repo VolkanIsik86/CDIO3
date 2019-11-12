@@ -1,5 +1,7 @@
 package game_classes;
 
+import square.Square;
+
 public class Board {
 
     private int SIZE = 24;

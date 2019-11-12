@@ -1,5 +1,8 @@
 package game_classes;
 
+import square.PropertySquare;
+import square.Square;
+
 public class Player {
     
     private String name;
@@ -32,7 +35,6 @@ public class Player {
         else
             return true;
     }
-    
     
     public int getPoints(){
         return account.getPoints();

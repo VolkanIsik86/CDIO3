@@ -1,4 +1,6 @@
-package game_classes;
+package square;
+
+import game_classes.Player;
 
 public abstract class PropertySquare extends Square {
     private String color;

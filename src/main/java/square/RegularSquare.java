@@ -1,4 +1,6 @@
-package game_classes;
+package square;
+
+import game_classes.Player;
 
 public class RegularSquare extends Square {
 
