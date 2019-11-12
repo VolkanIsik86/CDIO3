@@ -8,8 +8,8 @@ public class GoToJailSquare extends Square {
     }
 
     public void landedOn(Player p) {
-        p.setLocation();
-
+        int temp = 7;
+        p.setLocation(p.getSquare(temp));
     }
 
 
