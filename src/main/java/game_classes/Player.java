@@ -1,8 +1,5 @@
 package game_classes;
 
-import game_classes.square.PropertySquare;
-import game_classes.square.Square;
-
 public class Player {
     
     private String name;
@@ -37,9 +34,6 @@ public class Player {
         return piece.getLocation();
     }
     
-    public Square getSquare(int index){
-        return board.getSquare(index);
-    }
     
     public int getPoints(){
         return account.getPoints();
