@@ -1,8 +1,5 @@
 package game_classes;
 
-import game_classes.square.PropertySquare;
-import game_classes.square.Square;
-
 public class Player {
     
     private String name;
@@ -22,12 +19,12 @@ public class Player {
         piece = new Piece(board.getSquare(1), pieceType);
     }
     
-    public void takeTurn(){
-        die.roll();
-        Square nextLocation = board.nextLocation(piece.getLocation(), die.getFaceValue());
-        piece.setLocation(nextLocation);
-        nextLocation.landedOn(this);
-    }
+//    public void takeTurn(){
+//        die.roll();
+//        Square nextLocation = board.nextLocation(piece.getLocation(), die.getFaceValue());
+//        piece.setLocation(nextLocation);
+//        nextLocation.applyEffect(this);
+//    }
     
     public boolean attempPurchase(PropertySquare property){
         if (property.getPrice() > this.getPoints())
@@ -44,9 +41,6 @@ public class Player {
         return piece.getLocation();
     }
     
-    public Square getSquare(int index){
-        return board.getSquare(index);
-    }
     
     public int getPoints(){
         return account.getPoints();
