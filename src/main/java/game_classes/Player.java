@@ -22,13 +22,6 @@ public class Player {
         piece = new Piece(board.getSquare(1), pieceType);
     }
     
-    public void takeTurn(){
-        die.roll();
-        Square nextLocation = board.nextLocation(piece.getLocation(), die.getFaceValue());
-        piece.setLocation(nextLocation);
-        nextLocation.landedOn(this);
-    }
-    
     public boolean attempPurchase(PropertySquare property){
         if (property.getPrice() > this.getPoints())
             return false;
