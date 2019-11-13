@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class main {
     public static void main(String[] args) {
+        
         GUI_Field[] fields = new GUI_Field[24];
 
         //Dette er så simpelt som det kan blive.

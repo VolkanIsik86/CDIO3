@@ -21,19 +21,7 @@ public class TurnLogic {
     }
     
     private void landedOn(Player player){
-        
-        Square
-        
-        switch(String..){
-            case "Property":
-                Property(player);
-                break;
-            case "Jail":
-                break;
-        }
-        
-        
-        player.getLocation()
+    
     }
     
     public void Property(){

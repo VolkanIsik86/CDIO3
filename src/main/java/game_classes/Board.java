@@ -45,4 +45,8 @@ public class Board {
     }
     //Skal have en .nextLocation(Square location, eyes)
     
+    public static void main(String[] args) {
+        
+    }
+    
 }
