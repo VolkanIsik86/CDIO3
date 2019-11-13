@@ -45,10 +45,10 @@ public class Board {
     }
    
     // todo skal slettes (kun til midlertidig test
-    public static void main(String[] args) {
-        Board board = new Board("src/main/java/services/","squareDescriptions");
-        System.out.println(board.getSquare(3).getName());
-    
-    }
+//    public static void main(String[] args) {
+//        Board board = new Board("src/main/java/services/","squareDescriptions");
+//        System.out.println(board.getSquare(3).getName());
+//
+//    }
     
 }
