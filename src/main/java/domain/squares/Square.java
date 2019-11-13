@@ -1,19 +1,22 @@
 package domain.squares;
 
 import controllers.SquareLogic;
+import domain.Board;
 import domain.Player;
 
 public abstract class Square {
 
     private String name;
     private int index;
+    protected Board board;
     private Square nextSquare;
 
 
 
-    public Square(String name, int index) {
+    public Square(String name, int index, Board board) {
         this.name = name;
         this.index = index;
+        this.board = board;
     }
     //gettere
 
@@ -45,6 +48,8 @@ public abstract class Square {
     public void setNextSquare(Square nextSquare) {
         this.nextSquare = nextSquare;
     }
+
+    public abstract void landedOn(Player p);
 
 
 
