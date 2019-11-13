@@ -47,7 +47,7 @@ public abstract class Square {
     }
 
 
-    // logik implementeres afhengig af felt i de andre klasser
+    // Gamelogik skal kalde denne metode for at udføre et logik hensyn til square
     public abstract void landedOn(Player p);
 
 

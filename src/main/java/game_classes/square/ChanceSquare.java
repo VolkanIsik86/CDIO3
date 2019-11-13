@@ -1,10 +1,11 @@
 package game_classes.square;
 
 import game_classes.Player;
-
+// chance square som inde holde chancekorte
 public class ChanceSquare extends Square {
     ChanceCard [] chanceCards = new ChanceCard[4];
 
+// kontruktøren definere korterne her
     public ChanceSquare(String name, int index) {
         super(name, index);
         chanceCards[0] = new ChanceCard("Fødselsdag",0,2);
