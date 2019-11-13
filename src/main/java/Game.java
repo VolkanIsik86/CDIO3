@@ -1,9 +1,8 @@
-package game_classes;
-
-import service.TxtReader;
+import domain.Player;
+import services.TxtReader;
 import java.util.Scanner;
 
-public class GameLogic {
+public class Game {
     
     private int startKapital;
 //    Private Piece piece = new Piece();
@@ -16,7 +15,7 @@ public class GameLogic {
     private String winner;
 
     //Konstruktør
-    public GameLogic(int nPlayers){
+    public Game(int nPlayers){
         this.players =  new Player[nPlayers];
     }
 
@@ -37,7 +36,7 @@ public class GameLogic {
         //Array af spillere laves
         for (int index = 0; index < players.length; index++) {
             final String navn = readPlayerName(index);
-            players[index] = new Player(navn, startKapital);
+//            players[index] = new Player(navn, startKapital);
         }
     }
 

@@ -1,4 +1,4 @@
-package game_classes;
+package domain;
 
 import java.util.Random;
 

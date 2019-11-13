@@ -1,0 +1,24 @@
+0,,Regular-Start-0
+1,,Property-Burgerbaren-1-1-Brun
+2,,Property-Pizzeria-2-1-Brun
+3,,Chance-Chancen-3
+4,,Property-Slikbutikken-4-1-Lyseblå
+5,,Property-Iskiosken-5-1-Lyseblå
+6,,Regular-På besøg-6
+7,,Property-Museet-7-2-Lyserød
+8,,Property-Biblioteket-8-2-Lyserød
+9,,Chance-Chancen-9
+10,,Property-Skaterparken-10-2-Guld
+11,,Property-Swimmingpoolen-11-2-Guld
+12,,Regular-Gratis parkering-12
+13,,Property-Spillehallen-13-3-Rød
+14,,Property-Biografen-14-3-Rød
+15,,Chance-Chancen-15
+16,,Property-Legetøjsbutikken-16-3-Gul
+17,,Property-Dyrehandlen-17-3-Gul
+18,,Jail-Gå I fængsel-18
+19,,Property-Bowlinghallen-19-4-Grøn
+20,,Property-Zoo-20-4-Grøn
+21,,Chance-Chance-21
+22,,Property-Vandlandet-22-5-Blå
+23,,Property-Strandpromenaden-23-5-Blå
