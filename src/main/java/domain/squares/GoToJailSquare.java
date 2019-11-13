@@ -1,6 +1,6 @@
-package game_classes.square;
+package domain.squares;
 
-import game_classes.Player;
+import domain.Player;
 // Gå til fængsel square
 public class GoToJailSquare extends Square {
     public GoToJailSquare(String name, int index) {

@@ -1,6 +1,6 @@
-package game_classes;
+package domain;
 
-import game_classes.square.Square;
+import domain.squares.Square;
 
 public class Piece {
     

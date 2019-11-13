@@ -1,4 +1,4 @@
-package game_classes;
+package domain;
 
 //Formålet med account-klassen er at holde styr på spillernes point
 

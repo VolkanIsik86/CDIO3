@@ -1,6 +1,6 @@
-package game_classes.square;
+package domain.squares;
 
-import game_classes.Player;
+import domain.Player;
 // chance square som inde holde chancekorte
 public class ChanceSquare extends Square {
     ChanceCard [] chanceCards = new ChanceCard[4];

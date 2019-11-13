@@ -1,4 +1,4 @@
-package game_classes.square;
+package domain.squares;
 
 public class ChanceCard {
     private String name;

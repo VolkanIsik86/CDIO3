@@ -1,10 +1,8 @@
-package controller;
-
-import game_classes.Player;
-import service.TxtReader;
+import domain.Player;
+import services.TxtReader;
 import java.util.Scanner;
 
-public class GameLogic {
+public class Game {
     
     private int startKapital;
 //    Private Piece piece = new Piece();
@@ -17,7 +15,7 @@ public class GameLogic {
     private String winner;
 
     //Konstruktør
-    public GameLogic(int nPlayers){
+    public Game(int nPlayers){
         this.players =  new Player[nPlayers];
     }
 

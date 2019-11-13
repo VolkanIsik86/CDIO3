@@ -1,13 +1,13 @@
-package controller;
+package controllers;
 
 
-import game_classes.Board;
-import game_classes.Player;
-import game_classes.square.*;
+import domain.Board;
+import domain.Player;
+import domain.squares.*;
 
 import java.util.Random;
 
-public class SquareController {
+public class SquareLogic {
     Square[] squares;
 
     public void getBoard(Board board){

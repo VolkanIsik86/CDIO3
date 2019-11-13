@@ -1,6 +1,6 @@
-package game_classes.square;
+package domain.squares;
 
-import game_classes.Player;
+import domain.Player;
 //Start, fængsel, parkering squares
 public class RegularSquare extends Square {
 

@@ -1,7 +1,7 @@
-package controller;
+package controllers;
 
-import game_classes.*;
-import game_classes.square.*;
+import domain.*;
+import domain.squares.*;
 
 
 public class TurnLogic {

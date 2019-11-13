@@ -1,7 +1,7 @@
-package game_classes;
+package domain;
 
-import game_classes.square.*;
-import service.TxtReader;
+import domain.squares.*;
+import services.TxtReader;
 
 public class Board {
 
@@ -46,7 +46,7 @@ public class Board {
     //Skal have en .nextLocation(Square location, eyes)
     
     public static void main(String[] args) {
-        
+    
     }
     
 }

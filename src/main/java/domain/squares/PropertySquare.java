@@ -1,7 +1,7 @@
-package game_classes.square;
+package domain.squares;
 
 
-import game_classes.Player;
+import domain.Player;
 // Property square som kan købes ejes og lejes
 public class PropertySquare extends Square {
     private String color;

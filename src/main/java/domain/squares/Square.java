@@ -1,14 +1,14 @@
-package game_classes.square;
+package domain.squares;
 
-import controller.SquareController;
-import game_classes.Player;
+import controllers.SquareLogic;
+import domain.Player;
 
 public abstract class Square {
 
     private String name;
     private int index;
     private Square nextSquare;
-    protected SquareController controller;
+    protected SquareLogic controller;
 
 
     public Square(String name, int index) {
