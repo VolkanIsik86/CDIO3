@@ -41,8 +41,6 @@ public class PropertySquare extends Square {
         this.owner = owner;
     }
 
-
-
     public  void payRent(Player p){
         p.addPoints(- this.getPrice());
         // pay rent logic
@@ -53,6 +51,12 @@ public class PropertySquare extends Square {
     }
 
     public void landedOn(Player p) {
+        if (owner==null)
+            p.attempPurchase(this);
+        else{
+            payRent(p);
+            getRent();
+        }
 
     }
 }
