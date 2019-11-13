@@ -7,19 +7,16 @@ public class Player {
     
     private String name;
     private int age;
-    
     private Account account;
-    private Die die;
-    private Board board;
     private Piece piece;
     
-    public Player(String name, int age, int points, String pieceType, Board board){
+    
+    public Player(String name, int age, int points, Piece piece){
         this.name = name;
         this.age = age;
-        this.board = board;
         account = new Account(points);
-        die = new Die();
-        piece = new Piece(board.getSquare(1), pieceType);
+        this.piece = piece;
+
     }
     
     public boolean attempPurchase(PropertySquare property){
@@ -37,6 +34,9 @@ public class Player {
         return piece.getLocation();
     }
     
+    public int getType(){
+        return piece.getType();
+    }
     
     public int getPoints(){
         return account.getPoints();
@@ -72,8 +72,6 @@ public class Player {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", account=" + account +
-                ", die=" + die +
-                ", board=" + board +
                 ", piece=" + piece +
                 '}';
     }
