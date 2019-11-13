@@ -2,7 +2,7 @@ package game_classes.square;
 
 
 import game_classes.Player;
-
+// Property square som kan købes ejes og lejes
 public class PropertySquare extends Square {
     private String color;
     private int price;
@@ -42,6 +42,8 @@ public class PropertySquare extends Square {
     public void landedOn(Player p) {
         controller.attempToBuy(this,p);
     }
+
+
     public  void payRent(Player p){
         p.addPoints(- this.getPrice());
         // pay rent logic
