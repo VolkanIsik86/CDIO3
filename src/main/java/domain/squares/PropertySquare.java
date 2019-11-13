@@ -1,6 +1,7 @@
 package domain.squares;
 
 
+import domain.Board;
 import domain.Player;
 // Property square som kan købes ejes og lejes
 public class PropertySquare extends Square {
@@ -9,8 +10,8 @@ public class PropertySquare extends Square {
     private Player owner = null;
 
 
-    public PropertySquare(String name, int index, int price, String color) {
-        super(name, index);
+    public PropertySquare(String name, int index, Board board, int price, String color) {
+        super(name, index, board);
         this.color = color;
         this.price = price;
 
@@ -39,10 +40,6 @@ public class PropertySquare extends Square {
     public void setOwner(Player owner) {
         this.owner = owner;
     }
-    public void landedOn(Player p) {
-        controller.attempToBuy(this,p);
-    }
-
 
     public  void payRent(Player p){
         p.addPoints(- this.getPrice());
@@ -53,4 +50,13 @@ public class PropertySquare extends Square {
         // get rent logic
     }
 
+    public void landedOn(Player p) {
+        if (owner==null)
+            p.attempPurchase(this);
+        else{
+            payRent(p);
+            getRent();
+        }
+
+    }
 }
