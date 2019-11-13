@@ -5,14 +5,16 @@ import domain.squares.Square;
 public class Piece {
     
     private Square location;
-    private String type;
+    private int type;
+    private static int pieceType = 0;
     
-    public Piece (Square location, String type){
+    public Piece (Square location){
         this.location = location;
-        this.type = type;
+        this.type = pieceType;
+        pieceType++;
     }
     
-    public String getType() {
+    public int getType() {
         return type;
     }
     

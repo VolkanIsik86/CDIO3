@@ -12,18 +12,22 @@ public class TurnLogic {
     
     public TurnLogic(Board board){
         this.board = board;
-        squareLogic = new SquareLogic(board);
+    
+        // todo udkommenter når Squarelogic er opdateret
+//        squareLogic = new SquareLogic(board);
     }
     
     public void takeTurn(Player player){
         die.roll();
         Square nextLocation = board.nextLocation(player.getLocation(), die.getFaceValue());
         player.setLocation(nextLocation);
-        squareLogic.landedOn(player);
+        
+        // todo udkommenter når Squarelogic er opdateret
+//        squareLogic.landedOn(player);
     }
     
     public void takeRound(){
-        
+    
     }
     
     
