@@ -17,7 +17,5 @@ public class ChanceSquare extends Square {
     public ChanceCard[] getChanceCards() {
         return chanceCards;
     }
-    public void landedOn(Player p) {
-        controller.pullCard(p,chanceCards);
-    }
+
 }

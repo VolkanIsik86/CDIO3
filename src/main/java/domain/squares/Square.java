@@ -8,7 +8,7 @@ public abstract class Square {
     private String name;
     private int index;
     private Square nextSquare;
-    protected SquareLogic controller;
+
 
 
     public Square(String name, int index) {
@@ -46,9 +46,6 @@ public abstract class Square {
         this.nextSquare = nextSquare;
     }
 
-
-    // Gamelogik skal kalde denne metode for at udføre et logik hensyn til square
-    public abstract void landedOn(Player p);
 
 
     @Override

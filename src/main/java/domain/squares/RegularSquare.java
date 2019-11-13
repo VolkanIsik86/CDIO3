@@ -8,10 +8,6 @@ public class RegularSquare extends Square {
         super(name, index);
     }
 
-    public void landedOn(Player p) {
-        // DOES NOTHING
-
-    }
 
 
 }

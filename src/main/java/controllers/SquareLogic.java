@@ -8,11 +8,7 @@ import domain.squares.*;
 import java.util.Random;
 
 public class SquareLogic {
-    Square[] squares;
-
-    public void getBoard(Board board){
-        squares = board.getSquares();
-    }
+    Board monopoly = new Board("src/test/java/services/testText.txt","testText");
 
     public void goToJail(Player p){
         p.setLocation(squares[6]);

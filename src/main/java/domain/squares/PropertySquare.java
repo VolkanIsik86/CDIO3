@@ -39,10 +39,6 @@ public class PropertySquare extends Square {
     public void setOwner(Player owner) {
         this.owner = owner;
     }
-    public void landedOn(Player p) {
-        controller.attempToBuy(this,p);
-    }
-
 
     public  void payRent(Player p){
         p.addPoints(- this.getPrice());
