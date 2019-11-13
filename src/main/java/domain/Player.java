@@ -34,6 +34,10 @@ public class Player {
         return piece.getLocation();
     }
     
+    public int getType(){
+        return piece.getType();
+    }
+    
     public int getPoints(){
         return account.getPoints();
     }
