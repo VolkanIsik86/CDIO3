@@ -8,28 +8,22 @@ public class TurnLogic {
     
     private Die die = new Die();
     private Board board;
+    SquareLogic squareLogic;
     
     public TurnLogic(Board board){
         this.board = board;
+        squareLogic = new SquareLogic(board);
     }
     
     public void takeTurn(Player player){
         die.roll();
         Square nextLocation = board.nextLocation(player.getLocation(), die.getFaceValue());
         player.setLocation(nextLocation);
-        landedOn(player);
+        squareLogic.landedOn(player);
     }
     
-    private void landedOn(Player player){
-    
-    }
-    
-    public void Property(){
-    
-    }
-    
-    public void Jail(){
-    
+    public void takeRound(){
+        
     }
     
     
