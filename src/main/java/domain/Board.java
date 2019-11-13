@@ -18,13 +18,13 @@ public class Board {
             String[] oneLine = sDec.getLine(String.valueOf(i)).split("-");
             
             if ("Regular".equalsIgnoreCase(oneLine[0])) {
-                squares[i] = new RegularSquare(oneLine[1], Integer.parseInt(oneLine[2]));
+                squares[i] = new RegularSquare(oneLine[1], Integer.parseInt(oneLine[2]),this);
             } else if ("Property".equals(oneLine[0])) {
-                squares[i] = new PropertySquare(oneLine[1], Integer.parseInt(oneLine[2]), Integer.parseInt(oneLine[3]), oneLine[4]);
+                squares[i] = new PropertySquare(oneLine[1], Integer.parseInt(oneLine[2]),this, Integer.parseInt(oneLine[3]), oneLine[4]);
             } else if ("Jail".equals(oneLine[0])) {
-                squares[i] = new GoToJailSquare(oneLine[1], Integer.parseInt(oneLine[2]));
+                squares[i] = new GoToJailSquare(oneLine[1], Integer.parseInt(oneLine[2]), this);
             } else if ("Chance".equals(oneLine[0])) {
-                squares[i] = new ChanceSquare(oneLine[1], Integer.parseInt(oneLine[2]));
+                squares[i] = new ChanceSquare(oneLine[1], Integer.parseInt(oneLine[2]), this);
             }
         }
     }
@@ -32,7 +32,6 @@ public class Board {
     public Square getSquare(int index){
         return squares[index];
     }
-    
     public Square nextLocation(Square currentLocation, int roll){
         int nextIndex;
         nextIndex = (currentLocation.getIndex() + roll)%SIZE;

@@ -1,42 +1,27 @@
-package controllers;
-
-
-import domain.Board;
-import domain.Player;
-import domain.squares.*;
-
-import java.util.Random;
-
-public class SquareLogic {
-    Square[] squares;
-
-    public void getBoard(Board board){
-        squares = board.getSquares();
-    }
-
-    public void goToJail(Player p){
-        p.setLocation(squares[6]);
-    }
-    public void attempToBuy(PropertySquare x, Player p){
-        if (x.getOwner()==null){
-            if (x.getPrice() > p.getPoints()){
-                x.setOwner(p);
-            }
-        }
-        else {
-            x.payRent(p);
-            x.getRent();
-        }
-    }
-    public void pullCard(Player p , ChanceCard[] c){
-        int rng = new Random().nextInt(4);
-        int temp = 0;
-        temp = p.getLocation().getIndex();
-        temp = temp + c[rng].getMove();
-        p.setLocation(squares[temp]);
-        p.addPoints(c[rng].getPrice());
-    }
-}
+//package controllers;
+//
+//
+//import domain.Board;
+//import domain.Player;
+//import domain.squares.*;
+//
+//import java.util.Random;
+//
+//public class SquareLogic {
+//    Board monopoly;
+//    public SquareLogic(Board monopoly){
+//        this.monopoly = monopoly;
+//    }
+//
+//    public void landedOn(Player p){
+//        p.getLocation().landedOn(p);
+//
+//
+//
+//        }
+//
+//    }
+//
 
 //        squares = new Square[size];
 //        squares[0] = new RegularSquare("Go_Square",0);
