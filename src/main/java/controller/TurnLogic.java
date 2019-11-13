@@ -22,7 +22,7 @@ public class TurnLogic {
     
     private void landedOn(Player player){
         
-        Square 
+        Square
         
         switch(String..){
             case "Property":
