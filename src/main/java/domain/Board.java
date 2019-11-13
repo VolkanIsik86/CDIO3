@@ -11,11 +11,12 @@ public class Board {
     public Board(String path, String file){
 
         TxtReader sDec = new TxtReader(path,file);
+        squares = new Square[SIZE];
 
         for (int i = 0; i < 24; i++) {
 
-            String[] oneLine = sDec.getLine("1").split("-");
-    
+            String[] oneLine = sDec.getLine(String.valueOf(i)).split("-");
+            
             if ("Regular".equalsIgnoreCase(oneLine[0])) {
                 squares[i] = new RegularSquare(oneLine[1], Integer.parseInt(oneLine[2]));
             } else if ("Property".equals(oneLine[0])) {
@@ -33,19 +34,20 @@ public class Board {
     }
     
     public Square nextLocation(Square currentLocation, int roll){
-        
         int nextIndex;
         nextIndex = (currentLocation.getIndex() + roll)%SIZE;
         return squares[nextIndex];
-        
     }
 
+    // todo skal slettes men bruges pt. af SquareLogic
     public Square[] getSquares() {
         return squares;
     }
-    //Skal have en .nextLocation(Square location, eyes)
-    
+   
+    // todo skal slettes (kun til midlertidig test
     public static void main(String[] args) {
+        Board board = new Board("src/main/java/services/","squareDescriptions");
+        System.out.println(board.getSquare(3).getName());
     
     }
     
