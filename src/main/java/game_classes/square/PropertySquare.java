@@ -9,7 +9,7 @@ public class PropertySquare extends Square {
     private Player owner = null;
 
 
-    public PropertySquare(String name, int index, String color, int price) {
+    public PropertySquare(String name, int index, int price, String color) {
         super(name, index);
         this.color = color;
         this.price = price;

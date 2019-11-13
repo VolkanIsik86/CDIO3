@@ -11,25 +11,19 @@ public class Board {
     public Board(String path, String file){
 
         TxtReader sDec = new TxtReader(path,file);
-        String[] oneLine;
 
         for (int i = 0; i < 24; i++) {
 
-            oneLine = sDec.getLine("1").split("-");
-
-            switch (oneLine[0]) {
-                case ("Regular"):
-                    oneLine[i] = new RegularSquare(sDec.getLine("1"),sDec.getLine("2"));
-                    break;
-                case("Property"):
-                    oneLine[i] = new PropertySquare(sDec.getLine("1"),sDec.getLine("2"),sDec.getLine("3"),sDec.getLine("4"));
-                    break;
-                case("Jail"):
-                    oneLine[i] = new GoToJailSquare(sDec.getLine("1"),sDec.getLine("2"));
-                    break;
-                case("Chance"):
-                    oneLine[i] = new ChanceSquare(sDec.getLine("1"),sDec.getLine("2"));
-                    break;
+            String[] oneLine = sDec.getLine("1").split("-");
+    
+            if ("Regular".equalsIgnoreCase(oneLine[0])) {
+                squares[i] = new RegularSquare(oneLine[1], Integer.parseInt(oneLine[2]));
+            } else if ("Property".equals(oneLine[0])) {
+                squares[i] = new PropertySquare(oneLine[1], Integer.parseInt(oneLine[2]), Integer.parseInt(oneLine[3]), oneLine[4]);
+            } else if ("Jail".equals(oneLine[0])) {
+                squares[i] = new GoToJailSquare(oneLine[1], Integer.parseInt(oneLine[2]));
+            } else if ("Chance".equals(oneLine[0])) {
+                squares[i] = new ChanceSquare(oneLine[1], Integer.parseInt(oneLine[2]));
             }
         }
     }
