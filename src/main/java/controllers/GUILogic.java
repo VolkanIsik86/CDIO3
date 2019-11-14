@@ -37,8 +37,11 @@ public class GUILogic {
             street.setTitle(juniorField[1]);
             //bestemmer farven. MANGEL: at kunne læse farven fra .txt
             street.setBackGroundColor(Color.cyan);
-            //bestemmer bundtext
-            street.setSubText("$10.000");
+            //bestemmer prisen
+            street.setSubText(juniorField[3]);
+            //Hvis prisen er 0, fjernes teksten
+            if (juniorField[3].equals("0"))
+                street.setSubText("");
             fields[i] = street;
         }
         GUI gui = new GUI(fields);

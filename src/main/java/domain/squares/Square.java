@@ -1,6 +1,6 @@
 package domain.squares;
 
-import controllers.SquareLogic;
+
 import domain.Board;
 import domain.Player;
 
