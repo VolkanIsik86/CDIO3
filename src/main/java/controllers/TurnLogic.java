@@ -8,7 +8,7 @@ public class TurnLogic {
     
     private Die die = new Die();
     private Board board;
-    SquareLogic squareLogic;
+
     
     public TurnLogic(Board board){
         this.board = board;
