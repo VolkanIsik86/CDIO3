@@ -1,19 +1,22 @@
 package domain.squares;
 
-import controllers.SquareLogic;
+
+import domain.Board;
 import domain.Player;
 
 public abstract class Square {
 
     private String name;
     private int index;
+    protected Board board;
     private Square nextSquare;
-    protected SquareLogic controller;
 
 
-    public Square(String name, int index) {
+
+    public Square(String name, int index, Board board) {
         this.name = name;
         this.index = index;
+        this.board = board;
     }
     //gettere
 
@@ -46,9 +49,8 @@ public abstract class Square {
         this.nextSquare = nextSquare;
     }
 
-
-    // Gamelogik skal kalde denne metode for at udføre et logik hensyn til square
     public abstract void landedOn(Player p);
+
 
 
     @Override
