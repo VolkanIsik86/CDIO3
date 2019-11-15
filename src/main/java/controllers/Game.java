@@ -21,26 +21,51 @@ public class Game {
     private final int START_POINTS = 10;
     
     public void playGame(){
-       initGUI();
-//       initPlayers();
-//       initBoard();
-   
-   
-   }
-
-   public void initGUI(){
+    
+        initializeGame();
+    
+        //Play a round
+        for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
+            Player currentPlayer = playerList.getPlayer(i);
+            turnLogic.takeTurn(currentPlayer);
+            
+//            turnLogic.check();
+            
+        }
+        
+        
+        
        
+        
+   }
+   
+   private void initializeGame(){
+       initLanguage();
+       initBoard();
+       initControllers();
+       initPlayerList();
+   }
+   
+   private void initLanguage(){
        LanguageLogic languageLogic = new LanguageLogic();
-      
+    
        // Promts user to select language
        language = languageLogic.selectLangauge();
-       
+   }
+   
+   private void initBoard(){
+       board = new Board(path,"squareDescriptions_" + language);
+   }
+   
+   private void initControllers(){
        //Creates GuiLogic object which initializes the GUI itself in its constructor
        guiLogic = new GUILogic(language);
        
-       board = new Board(path,"squareDescriptions_" + language);
        TurnLogic turnLogic = new TurnLogic(board);
-    
+   }
+   
+   private void initPlayerList(){
+       
        //Creates a playerList and adds the players from guiLogic
        PlayerList playerList = new PlayerList(board.getSquare(0));
        String[] playerNames = guiLogic.getPlayerNames();
@@ -48,9 +73,8 @@ public class Game {
            playerList.addPlayer(playerNames[i],10,10);
        }
        
-       System.out.println(playerList.getPlayer(0).getName());
- 
    }
+   
     
     public static void main(String[] args) {
         Game game = new Game();

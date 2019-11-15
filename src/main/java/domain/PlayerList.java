@@ -34,6 +34,10 @@ public class PlayerList {
         return players[index];
     }
     
+    public int NumberOfPlayers(){
+        return players.length;
+    }
+    
     
     // todo slet nedenstående (bare til testing)
 //    public static void main(String[] args) {

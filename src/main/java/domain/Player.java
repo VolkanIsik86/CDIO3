@@ -9,6 +9,7 @@ public class Player {
     private int age;
     private Account account;
     private Piece piece;
+    private boolean lost = false;
     
     
     public Player(String name, int age, int points, Piece piece){
