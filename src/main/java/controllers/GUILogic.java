@@ -1,6 +1,5 @@
 package controllers;
 
-import domain.Player;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -32,7 +31,7 @@ public class GUILogic {
         TxtReader juniorFields = new TxtReader(PATH, FILE);
 
         //Løber igennem for hvert felt
-        for (int i = 0; i < 24; i++) {
+        for (int i = 0; i < N_FIELDS; i++) {
             fields[i] = new GUI_Street();
 
             //opretter objekt
@@ -87,17 +86,19 @@ public class GUILogic {
 
     }
 
-    public void addPlayers(int numberofPlayers) {
+    public String[] addPlayers(int numberofPlayers) {
+        String[] names = new String[numberofPlayers];
         for (int i = 0; i < numberofPlayers; i++) {
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
-            String[] names = new String[numberofPlayers];
             names[i] = name;
             GUI_Car car = new GUI_Car();
             GUI_Player player = new GUI_Player(name, 1000, car);
             GUI_Player[] players = new GUI_Player[numberofPlayers];
             players[i] = player;
             gui.addPlayer(player);
+
         }
+        return names;
     }
 
     public void movePiece(GUI_Player player, int currentField, int moves) {
