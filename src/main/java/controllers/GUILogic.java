@@ -15,13 +15,17 @@ public class GUILogic {
     private Color BROWN = new Color(153,102,0);
     private Color GOLD = new Color (255,204,51);
     private final int N_FIELDS = 24;
+    private GUI_Field[] fields;
+    private GUI gui;
     public GUILogic() {
-
+        makeBoard();
     }
 
     public GUI_Field[] makeBoard(){
+        LanguageLogic language = new LanguageLogic();
+        FILE += "_"+language.LanguageLogic();
 
-        GUI_Field[] fields = new GUI_Field[N_FIELDS];
+        fields = new GUI_Field[N_FIELDS];
         //læser fra fil
         TxtReader juniorFields = new TxtReader(PATH,FILE);
 
@@ -75,6 +79,7 @@ public class GUILogic {
                 street.setSubText("");
             fields[i] = street;
         }
+        gui = new GUI(fields);
         return fields;
 
 
@@ -93,6 +98,14 @@ public class GUILogic {
             fields[currentField+moves-N_FIELDS].setCar(player, true);
         }
 
+    }
+
+    public GUI_Field[] getFields(){
+        return fields;
+    }
+
+    public GUI getGui(){
+        return gui;
     }
 
 
