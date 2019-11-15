@@ -31,7 +31,7 @@ public class GUILogic {
         TxtReader juniorFields = new TxtReader(PATH, FILE+"_"+language);
 
         //Løber igennem for hvert felt
-        for (int i = 0; i < 24; i++) {
+        for (int i = 0; i < N_FIELDS; i++) {
             fields[i] = new GUI_Street();
 
             //opretter objekt
