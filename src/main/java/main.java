@@ -12,7 +12,7 @@ public class main {
         GUI_Player player = new GUI_Player("Test", 1000, car);
 
         guilog.getGui().addPlayer(player);
-        guilog.movePiece(guilog.getFields(), player, 22, 3);
+        guilog.movePiece(player, 22, 3);
 
 
     }
