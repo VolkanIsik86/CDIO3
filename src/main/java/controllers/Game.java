@@ -15,19 +15,26 @@ public class Game {
    PlayerList playerList;
    int antalSpiller;
    String[] spillernavne;
+   String path = "src/main/java/services";
+   String file = "squareDescriptions_en";
 
    public void initGame(){
        GUILogic guiLogic = new GUILogic();
-       Board board = new Board(guiLogic.getPATH(),guiLogic.getFILE());
+       guiLogic.makeBoard();
+       Board board = new Board(path, file);
        TurnLogic turnLogic = new TurnLogic(board);
        PlayerList playerList = new PlayerList(board.getSquare(0));
        int antalSpiller;
-       String[] spillernavne = guiLogic.addPlayers(4);
-       setPlayername();
+       String[] spillernavne = guiLogic.makeUsers();
+       setPlayer();
    }
 
 
-   public void setPlayername() {
+
+
+
+
+   public void setPlayer() {
        for (int i = 0; i < spillernavne.length; i++) {
 
            //TODO player alder skal kunne defineres fra gui.
