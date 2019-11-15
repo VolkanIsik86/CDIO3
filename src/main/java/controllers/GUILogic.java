@@ -1,6 +1,5 @@
 package controllers;
 
-import domain.Player;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -88,10 +87,10 @@ public class GUILogic {
 
     }
 
-    public void addPlayers(int numberofPlayers) {
+    private String[] addPlayers(int numberofPlayers) {
+        String[] names = new String[numberofPlayers];
         for (int i = 0; i < numberofPlayers; i++) {
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
-            String[] names = new String[numberofPlayers];
             names[i] = name;
             GUI_Car car = new GUI_Car();
             GUI_Player player = new GUI_Player(name, 1000, car);
@@ -99,6 +98,7 @@ public class GUILogic {
             players[i] = player;
             gui.addPlayer(player);
         }
+        return names;
     }
 
     public void movePiece(GUI_Player player, int currentField, int moves) {
@@ -119,11 +119,11 @@ public class GUILogic {
         return gui;
     }
 
-    public String getPATH(){
+    public String getPATH() {
         return PATH;
     }
 
-    public String getFILE(){
+    public String getFILE() {
         return FILE;
     }
 
@@ -136,15 +136,16 @@ public class GUILogic {
 //
 //    }
 
-    private void makeUsers() {
+    public String[] makeUsers() {
         final int MAX_PLAYERS = 4;
         final int MIN_PLAYERS = 2;
         GUI_Car car = new GUI_Car();
+
         int nrPlayers = gui.getUserInteger("Select amount of players", MIN_PLAYERS, MAX_PLAYERS);
-        for(int players = 0; players < nrPlayers; players++){
-//            gui.addPlayer(new GUI_Player(gui.getUserString("Choose Player "+players+" name"),game.getPlayerAccount(players), car));
-            gui.addPlayer(new GUI_Player(gui.getUserString("Choose Player "+(players+1)+" name"),1000, car));
-        }
+        String names[] = new String[nrPlayers];
+        names = addPlayers(nrPlayers);
+        
+        return names;
     }
 
 }
