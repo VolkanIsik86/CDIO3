@@ -118,6 +118,14 @@ public class GUILogic {
         return gui;
     }
 
+    public String getPATH(){
+        return PATH;
+    }
+
+    public String getFILE(){
+        return FILE;
+    }
+
     private void selectLangauge() {
         LanguageLogic language = new LanguageLogic();
         FILE += "_" + language.LanguageLogic();
