@@ -3,7 +3,7 @@ package domain.squares;
 
 import domain.Board;
 import domain.Player;
-
+// This abstract super class inherits all squares that belongs to monopoly junior board.
 public abstract class Square {
 
     private String name;
@@ -18,7 +18,6 @@ public abstract class Square {
         this.index = index;
         this.board = board;
     }
-    //gettere
 
     public String getName() {
         return name;
@@ -28,14 +27,9 @@ public abstract class Square {
         return index;
     }
 
-
     public Square getNextSquare() {
         return nextSquare;
     }
-
-
-    //settere
-
 
     public void setName(String name) {
         this.name = name;
@@ -48,6 +42,8 @@ public abstract class Square {
     public void setNextSquare(Square nextSquare) {
         this.nextSquare = nextSquare;
     }
+
+    // landedOn is the key method og squares. This polymorph method affects player with various effects.
 
     public abstract void landedOn(Player p);
 

@@ -3,7 +3,7 @@ package domain.squares;
 
 import domain.Board;
 import domain.Player;
-// Property square som kan købes ejes og lejes
+// Property square is the square that can be owned and other players, who lands on it, pays to the owner.
 public class PropertySquare extends Square {
     private String color;
     private int price;
@@ -41,22 +41,27 @@ public class PropertySquare extends Square {
         this.owner = owner;
     }
 
+    // pay rent logic: removes points from player
     public  void payRent(Player p){
         p.addPoints(- this.getPrice());
-        // pay rent logic
     }
+
+    // get rent logic: Adds points to the owner of this square.
     public  void getRent(){
         this.getOwner().addPoints(this.getPrice());
-        // get rent logic
     }
 
     public void landedOn(Player p) {
-        if (owner==null)
-            p.attempPurchase(this);
+        if (owner==null) {
+            if(p.attempPurchase(this)){
+                this.setOwner(p);
+                payRent(p);
+                //TODO her skal logikken implementeres for hvis spilleren ikke kan betale for feltet.
+            }
+        }
         else{
             payRent(p);
             getRent();
         }
-
     }
 }
