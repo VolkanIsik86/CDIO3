@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Game {
 
-   GUILogic guiLogic = new GUILogic();
+   GUILogic guiLogic = new GUILogic("da");
    Board board = new Board(guiLogic.getPATH(),guiLogic.getFILE());
    TurnLogic turnLogic = new TurnLogic(board);
    PlayerList playerList = new PlayerList(board.getSquare(0));

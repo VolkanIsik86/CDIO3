@@ -24,4 +24,11 @@ public class LanguageLogic {
         }
         return language;
     }
+
+    public String selectLangauge() {
+        LanguageLogic language = new LanguageLogic();
+        String lang = "";
+        lang = language.LanguageLogic();
+        return lang;
+    }
 }

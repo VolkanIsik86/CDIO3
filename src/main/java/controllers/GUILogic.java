@@ -20,16 +20,15 @@ public class GUILogic {
     private GUI gui;
     private Game game;
 
-    public GUILogic() {
-        makeBoard();
+    public GUILogic(String language) {
+        makeBoard(language);
         makeUsers();
     }
 
-    private GUI_Field[] makeBoard() {
-        selectLangauge();
+    private GUI_Field[] makeBoard(String language) {
         fields = new GUI_Field[N_FIELDS];
         //læser fra fil
-        TxtReader juniorFields = new TxtReader(PATH, FILE);
+        TxtReader juniorFields = new TxtReader(PATH, FILE+"_"+language);
 
         //Løber igennem for hvert felt
         for (int i = 0; i < 24; i++) {
@@ -127,10 +126,7 @@ public class GUILogic {
         return FILE;
     }
 
-    private void selectLangauge() {
-        LanguageLogic language = new LanguageLogic();
-        FILE += "_" + language.LanguageLogic();
-    }
+
 
 //    private int amountOfPlayers(){
 //
