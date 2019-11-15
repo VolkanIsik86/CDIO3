@@ -14,28 +14,31 @@ public class Game {
    private Board board;
    private TurnLogic turnLogic;
    private PlayerList playerList;
-   private String path = "src/main/java/services";
+   private String path = "src/main/java/services/";
+   private String language;
    
     //todo ret antal startpoints
     private final int START_POINTS = 10;
     
     public void playGame(){
-       initGame();
-       
-       
-       
-       
+       initGUI();
+//       initPlayers();
+//       initBoard();
+   
+   
    }
 
-   public void initGame(){
+   public void initGUI(){
        
+       LanguageLogic languageLogic = new LanguageLogic();
+      
        // Promts user to select language
-       LanguageLogic language = new LanguageLogic();
+       language = languageLogic.selectLangauge();
        
        //Creates GuiLogic object which initializes the GUI itself in its constructor
-       guiLogic = new GUILogic(language.selectLangauge());
+       guiLogic = new GUILogic(language);
        
-       board = new Board(path,"squareDescriptions_" + language.selectLangauge());
+       board = new Board(path,"squareDescriptions_" + language);
        TurnLogic turnLogic = new TurnLogic(board);
     
        //Creates a playerList and adds the players from guiLogic
@@ -68,7 +71,7 @@ public class Game {
 //       }
 //
 //   }
-    
+
 //    public void createPlayers() {
 //        System.out.println("");
 //
