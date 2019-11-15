@@ -20,6 +20,7 @@ public class GUILogic {
     private GUI gui;
     private Game game;
     private String[] names = new String[0];
+    private GUI_Player[] players = new GUI_Player[0];
 
     public GUILogic(String language) {
         makeBoard(language);
@@ -94,13 +95,19 @@ public class GUILogic {
                 temp[j]=names[j];
             }
             names = temp;
+
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
             names[i] = name;
             GUI_Car car = new GUI_Car();
             GUI_Player player = new GUI_Player(name, 1000, car);
-            GUI_Player[] players = new GUI_Player[numberofPlayers];
+            GUI_Player[] temp2 = new GUI_Player[players.length + 1];
+            for (int j = 0; j < players.length; j++) {
+                temp2[j] = players[j];
+            }
+            players = temp2;
             players[i] = player;
             gui.addPlayer(player);
+            movePiece(player,0,0);
         }
     }
 
@@ -139,8 +146,6 @@ public class GUILogic {
     public String[] makeUsers() {
         final int MAX_PLAYERS = 4;
         final int MIN_PLAYERS = 2;
-        GUI_Car car = new GUI_Car();
-
         int nrPlayers = gui.getUserInteger("Select amount of players", MIN_PLAYERS, MAX_PLAYERS);
         String names[] = new String[nrPlayers];
         addPlayers(nrPlayers);
