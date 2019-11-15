@@ -17,17 +17,31 @@ public class Game {
    int antalSpiller;
    String[] spillernavne;
    String path = "src/main/java/services";
-   String file = "squareDescriptions_en";
+    //todo ret antal startpoints
+    private final int START_POINTS = 10;
+    
+    public void playGame(){
+       initGame();
+   }
 
    public void initGame(){
-       GUILogic guiLogic = new GUILogic();
-       guiLogic.makeBoard();
-       Board board = new Board(path, file);
+       
+       // Promts user to select language
+       LanguageLogic language = new LanguageLogic();
+       
+       //Creates GuiLogic object which initializes the GUI itself in its constructor
+       GUILogic guiLogic = new GUILogic(language.selectLangauge());
+       
+       board = new Board(path,"squareDescriptions_" + language.selectLangauge());
        TurnLogic turnLogic = new TurnLogic(board);
+    
+       //Creates a playerList and adds the players from guiLogic
        PlayerList playerList = new PlayerList(board.getSquare(0));
-       int antalSpiller;
-       String[] spillernavne = guiLogic.makeUsers();
-       setPlayer();
+       String[] playerNames = guiLogic.getPlayerNames();
+       for (int i = 0; i < playerNames.length; i++) {
+           playerList.addPlayer(playerNames[i],10,10);
+       }
+ 
    }
 
 
