@@ -15,11 +15,13 @@ public class Game {
    private TurnLogic turnLogic;
    private PlayerList playerList;
    private String path = "src/main/java/services";
+   
     //todo ret antal startpoints
     private final int START_POINTS = 10;
     
     public void playGame(){
        initGame();
+       
        
        
        
@@ -57,15 +59,16 @@ public class Game {
 
 
 
-   public void setPlayer() {
-       for (int i = 0; i < spillernavne.length; i++) {
-
-           //TODO player alder skal kunne defineres fra gui.
-           playerList.addPlayer(spillernavne[i], 0, 20);
-
-       }
-
-   }
+//   public void setPlayer() {
+//       for (int i = 0; i < spillernavne.length; i++) {
+//
+//           //TODO player alder skal kunne defineres fra gui.
+//           playerList.addPlayer(spillernavne[i], 0, 20);
+//
+//       }
+//
+//   }
+    
 //    public void createPlayers() {
 //        System.out.println("");
 //
