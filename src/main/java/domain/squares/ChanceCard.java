@@ -1,5 +1,7 @@
 package domain.squares;
 
+//Chance card that has point and move modifier.
+
 public class ChanceCard {
     private String name;
     private int move;
