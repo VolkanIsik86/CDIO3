@@ -12,12 +12,14 @@ import java.awt.*;
 public class GUILogic {
     private String PATH = "src/main/java/services/";
     private String FILE = "squareDescriptions";
-    private Color BROWN = new Color(153,102,0);
-    private Color GOLD = new Color (255,204,51);
+    private final int N_FIELDS = 24;
+    private Color BROWN = new Color(153, 102, 0);
+    private Color GOLD = new Color(255, 204, 51);
+
     public GUILogic() {
-        GUI_Field[] fields = new GUI_Field[24];
+        GUI_Field[] fields = new GUI_Field[N_FIELDS];
         //læser fra fil
-        TxtReader juniorFields = new TxtReader(PATH,FILE);
+        TxtReader juniorFields = new TxtReader(PATH, FILE);
 
         //Løber igennem for hvert felt
         for (int i = 0; i < 24; i++) {
@@ -26,11 +28,11 @@ public class GUILogic {
             //opretter objekt
             GUI_Street street = new GUI_Street();
             //generer et array for hver linje i .txt med strenge spredt ud over de forskellige indexer.
-            String[] juniorField = juniorFields.getLine(""+ i).split("-");
+            String[] juniorField = juniorFields.getLine("" + i).split("-");
             //bestemmer titel på felt (index 1)
             street.setTitle(juniorField[1]);
             //bestemmer farven
-            switch(juniorField[4].charAt(0)){
+            switch (juniorField[4].charAt(0)) {
                 case 'r':
                     street.setBackGroundColor(Color.RED);
                     break;
@@ -74,8 +76,17 @@ public class GUILogic {
 
     }
 
+    public void movePiece(GUI_Field[] fields, GUI_Player player, int currentField, int moves) {
+        fields[currentField].setCar(player, false);
+        if ((currentField + moves < N_FIELDS)) {
+            fields[currentField + moves].setCar(player, true);
+        } else {
+            fields[currentField+moves-N_FIELDS].setCar(player, true);
+        }
 
-
+    }
 
 
 }
+
+//https://docs.google.com/document/d/1C4rPeUPHYm1r3fjtO6Nh4f72_ukoeIFES8dZyU63wIQ/edit
