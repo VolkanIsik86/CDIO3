@@ -1,7 +1,6 @@
 import controllers.GUILogic;
-import gui_fields.GUI_Field;
-import gui_fields.GUI_Shipping;
-import gui_fields.GUI_Street;
+import controllers.LanguageLogic;
+import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
@@ -9,17 +8,11 @@ import java.awt.*;
 public class main {
     public static void main(String[] args) {
         GUILogic guilog = new GUILogic();
-        gui_fields.GUI_Field[] fields = guilog.makeBoard();
-        GUI gui = new GUI(fields);
-        guilog.addPlayer(gui,"Johnny");
+        GUI_Car car = new GUI_Car();
+        GUI_Player player = new GUI_Player("Test", 1000, car);
 
-
-        //Spørg IngeLise om vision
-        //Overvej at hive fully dressed ud af skemaet
-
-
-
-
+        guilog.getGui().addPlayer(player);
+        guilog.movePiece(guilog.getFields(), player, 22, 3);
 
 
     }
