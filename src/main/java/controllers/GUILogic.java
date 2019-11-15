@@ -19,6 +19,7 @@ public class GUILogic {
     private GUI_Field[] fields;
     private GUI gui;
     private Game game;
+    private String[] names = new String[0];
 
     public GUILogic(String language) {
         makeBoard(language);
@@ -86,9 +87,13 @@ public class GUILogic {
 
     }
 
-    private String[] addPlayers(int numberofPlayers) {
-        String[] names = new String[numberofPlayers];
+    private void addPlayers(int numberofPlayers) {
         for (int i = 0; i < numberofPlayers; i++) {
+            String[] temp = new String[names.length + 1];
+            for (int j = 0; j < names.length; j++) {
+                temp[j]=names[j];
+            }
+            names = temp;
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
             names[i] = name;
             GUI_Car car = new GUI_Car();
@@ -97,7 +102,6 @@ public class GUILogic {
             players[i] = player;
             gui.addPlayer(player);
         }
-        return names;
     }
 
     public void movePiece(GUI_Player player, int currentField, int moves) {
@@ -139,12 +143,15 @@ public class GUILogic {
 
         int nrPlayers = gui.getUserInteger("Select amount of players", MIN_PLAYERS, MAX_PLAYERS);
         String names[] = new String[nrPlayers];
-        names = addPlayers(nrPlayers);
+        addPlayers(nrPlayers);
 
         return names;
     }
     public void displayDie(int faceValue){
         gui.setDie(faceValue);
+    }
+    public String[] getPlayerNames(){
+        return names;
     }
 
 }

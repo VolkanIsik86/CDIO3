@@ -28,6 +28,9 @@ public class Board {
             }
         }
     }
+    
+    // todo getJail (og brug det i squares)
+    // todo getStart (og brug det i squares)
 
     public Square getSquare(int index){
         return squares[index];
