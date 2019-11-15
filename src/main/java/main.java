@@ -9,7 +9,7 @@ import java.awt.*;
 public class main {
     public static void main(String[] args) {
         GUILogic guilog = new GUILogic();
-
+        GUI gui = new GUI(guilog.makeBoard());
 
 
     }
