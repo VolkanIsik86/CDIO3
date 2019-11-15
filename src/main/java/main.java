@@ -7,7 +7,8 @@ import java.awt.*;
 
 public class main {
     public static void main(String[] args) {
-        GUILogic guilog = new GUILogic();
+        LanguageLogic language = new LanguageLogic();
+        GUILogic guilog = new GUILogic(language.selectLangauge());
 
 
     }
