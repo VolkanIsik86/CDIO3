@@ -1,6 +1,7 @@
 package controllers;
 
 import domain.Player;
+import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_fields.GUI_Street;
@@ -121,9 +122,9 @@ public class GUILogic {
     private void makeUsers() {
         final int MAX_PLAYERS = 4;
         final int MIN_PLAYERS = 2;
-        final Player[] player = game.getPlayers();
+        GUI_Car car = new GUI_Car();
         for(int players = gui.getUserInteger("Select amount of players", MIN_PLAYERS, MAX_PLAYERS); players <= MAX_PLAYERS; players++){
-//            gui.addPlayer(gui.getUserString("Choose Player "+players+" name"));
+            gui.addPlayer(new GUI_Player(gui.getUserString("Choose Player "+players+" name"),game.getPlayerAccount(players), car));
         }
     }
 
