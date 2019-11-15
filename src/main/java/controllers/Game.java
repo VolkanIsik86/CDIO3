@@ -51,7 +51,7 @@ public class Game {
         return navn;
     }
 
-    public Player[] getPlayers(){
-        return players;
+    public int getPlayerAccount(int index){
+        return players[index].getPoints();
     }
 }
