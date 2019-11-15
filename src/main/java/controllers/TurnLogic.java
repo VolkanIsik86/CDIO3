@@ -22,6 +22,7 @@ public class TurnLogic {
         Square nextLocation = board.nextLocation(player.getLocation(), die.getFaceValue());
         player.setLocation(nextLocation);
         
+        
         // todo udkommenter når Squarelogic er opdateret
 //        squareLogic.landedOn(player);
     }
