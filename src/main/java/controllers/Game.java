@@ -10,18 +10,19 @@ import java.util.Scanner;
 public class Game {
 
 
-   GUILogic guiLogic;
-   Board board;
-   TurnLogic turnLogic;
-   PlayerList playerList;
-   int antalSpiller;
-   String[] spillernavne;
-   String path = "src/main/java/services";
+   private GUILogic guiLogic;
+   private Board board;
+   private TurnLogic turnLogic;
+   private PlayerList playerList;
+   private String path = "src/main/java/services";
     //todo ret antal startpoints
     private final int START_POINTS = 10;
     
     public void playGame(){
        initGame();
+       
+       
+       
    }
 
    public void initGame(){
@@ -30,7 +31,7 @@ public class Game {
        LanguageLogic language = new LanguageLogic();
        
        //Creates GuiLogic object which initializes the GUI itself in its constructor
-       GUILogic guiLogic = new GUILogic(language.selectLangauge());
+       guiLogic = new GUILogic(language.selectLangauge());
        
        board = new Board(path,"squareDescriptions_" + language.selectLangauge());
        TurnLogic turnLogic = new TurnLogic(board);
@@ -41,8 +42,15 @@ public class Game {
        for (int i = 0; i < playerNames.length; i++) {
            playerList.addPlayer(playerNames[i],10,10);
        }
+       
+       System.out.println(playerList.getPlayer(0).getName());
  
    }
+    
+    public static void main(String[] args) {
+        Game game = new Game();
+        game.playGame();
+    }
 
 
 
