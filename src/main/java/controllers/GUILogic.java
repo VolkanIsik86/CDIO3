@@ -14,13 +14,14 @@ public class GUILogic {
     private String FILE = "squareDescriptions";
     private Color BROWN = new Color(153,102,0);
     private Color GOLD = new Color (255,204,51);
+    private final int N_FIELDS = 24;
     public GUILogic() {
 
     }
 
     public GUI_Field[] makeBoard(){
 
-        GUI_Field[] fields = new GUI_Field[24];
+        GUI_Field[] fields = new GUI_Field[N_FIELDS];
         //læser fra fil
         TxtReader juniorFields = new TxtReader(PATH,FILE);
 
@@ -84,7 +85,15 @@ public class GUILogic {
         gui.addPlayer(p1);
     }
 
+    public void movePiece(GUI_Field[] fields, GUI_Player player, int currentField, int moves) {
+        fields[currentField].setCar(player, false);
+        if ((currentField + moves < N_FIELDS)) {
+            fields[currentField + moves].setCar(player, true);
+        } else {
+            fields[currentField+moves-N_FIELDS].setCar(player, true);
+        }
 
+    }
 
 
 
