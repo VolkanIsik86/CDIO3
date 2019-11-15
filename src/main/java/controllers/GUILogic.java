@@ -1,5 +1,6 @@
 package controllers;
 
+import domain.Player;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -18,6 +19,7 @@ public class GUILogic {
     private final int N_FIELDS = 24;
     private GUI_Field[] fields;
     private GUI gui;
+    private Game game;
 
     public GUILogic() {
         makeBoard();
@@ -98,7 +100,7 @@ public class GUILogic {
         }
     }
 
-    public void movePiece(GUI_Field[] fields, GUI_Player player, int currentField, int moves) {
+    public void movePiece(GUI_Player player, int currentField, int moves) {
         fields[currentField].setCar(player, false);
         if ((currentField + moves < N_FIELDS)) {
             fields[currentField + moves].setCar(player, true);
@@ -119,6 +121,19 @@ public class GUILogic {
     private void selectLangauge() {
         LanguageLogic language = new LanguageLogic();
         FILE += "_" + language.LanguageLogic();
+    }
+
+//    private int amountOfPlayers(){
+//
+//    }
+
+    private void makeUsers() {
+        final int MAX_PLAYERS = 4;
+        final int MIN_PLAYERS = 2;
+        final Player[] player = game.getPlayers();
+        for(int players = gui.getUserInteger("Select amount of players", MIN_PLAYERS, MAX_PLAYERS); players <= MAX_PLAYERS; players++){
+//            gui.addPlayer(gui.getUserString("Choose Player "+players+" name"));
+        }
     }
 
 }
