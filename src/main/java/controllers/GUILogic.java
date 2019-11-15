@@ -147,5 +147,8 @@ public class GUILogic {
 
         return names;
     }
+    public void displayDie(int faceValue){
+        gui.setDie(faceValue);
+    }
 
 }
