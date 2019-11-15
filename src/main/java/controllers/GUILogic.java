@@ -136,13 +136,25 @@ public class GUILogic {
     public String getFILE() {
         return FILE;
     }
+    public GUI_Player getPlayer(String playerName) {
+        boolean q = true;
+        GUI_Player dims = null;
+        for (GUI_Player player : players) {
+            if (q) {
+                if (player.getName().equals(playerName)) {
+                    dims = player;
+                    q = false;
+                } else {
+                    System.out.println("Dit fuck-up er i at den spiller du kalder ikke eksisterer i gui'en");
+                    dims = null;
+                }
 
+            }
 
+        }
 
-//    private int amountOfPlayers(){
-//
-//    }
-
+        return dims;
+    }
     public String[] makeUsers() {
         final int MAX_PLAYERS = 4;
         final int MIN_PLAYERS = 2;
