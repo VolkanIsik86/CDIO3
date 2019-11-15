@@ -23,6 +23,7 @@ public class GUILogic {
 
     public GUILogic() {
         makeBoard();
+        makeUsers();
     }
 
     public GUI_Field[] makeBoard() {
@@ -139,8 +140,10 @@ public class GUILogic {
         final int MAX_PLAYERS = 4;
         final int MIN_PLAYERS = 2;
         GUI_Car car = new GUI_Car();
-        for(int players = gui.getUserInteger("Select amount of players", MIN_PLAYERS, MAX_PLAYERS); players <= MAX_PLAYERS; players++){
-            gui.addPlayer(new GUI_Player(gui.getUserString("Choose Player "+players+" name"),game.getPlayerAccount(players), car));
+        int nrPlayers = gui.getUserInteger("Select amount of players", MIN_PLAYERS, MAX_PLAYERS);
+        for(int players = 0; players < nrPlayers; players++){
+//            gui.addPlayer(new GUI_Player(gui.getUserString("Choose Player "+players+" name"),game.getPlayerAccount(players), car));
+            gui.addPlayer(new GUI_Player(gui.getUserString("Choose Player "+(players+1)+" name"),1000, car));
         }
     }
 
