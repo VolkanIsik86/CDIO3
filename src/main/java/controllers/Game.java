@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class Game {
 
+
    GUILogic guiLogic;
    Board board;
    TurnLogic turnLogic;
@@ -62,4 +63,5 @@ public class Game {
 //            final String navn = readPlayerName(index);
 ////            players[index] = new Player(navn, startKapital);
         }
+
 
