@@ -25,7 +25,7 @@ public class GUILogic {
         makeUsers();
     }
 
-    public GUI_Field[] makeBoard() {
+    private GUI_Field[] makeBoard() {
         selectLangauge();
         fields = new GUI_Field[N_FIELDS];
         //læser fra fil
@@ -144,7 +144,7 @@ public class GUILogic {
         int nrPlayers = gui.getUserInteger("Select amount of players", MIN_PLAYERS, MAX_PLAYERS);
         String names[] = new String[nrPlayers];
         names = addPlayers(nrPlayers);
-        
+
         return names;
     }
 
