@@ -1,5 +1,7 @@
 package controllers;
 
+import domain.Player;
+import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_fields.GUI_Street;
@@ -17,6 +19,7 @@ public class GUILogic {
     private final int N_FIELDS = 24;
     private GUI_Field[] fields;
     private GUI gui;
+    private Game game;
 
     public GUILogic() {
         makeBoard();
@@ -84,12 +87,20 @@ public class GUILogic {
 
     }
 
-    public void addPlayer(GUI gui, String name) {
-        GUI_Player p1 = new GUI_Player(name);
-        gui.addPlayer(p1);
+    public void addPlayers(int numberofPlayers) {
+        for (int i = 0; i < numberofPlayers; i++) {
+            String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
+            String[] names = new String[numberofPlayers];
+            names[i] = name;
+            GUI_Car car = new GUI_Car();
+            GUI_Player player = new GUI_Player(name, 1000, car);
+            GUI_Player[] players = new GUI_Player[numberofPlayers];
+            players[i] = player;
+            gui.addPlayer(player);
+        }
     }
 
-    public void movePiece(GUI_Field[] fields, GUI_Player player, int currentField, int moves) {
+    public void movePiece(GUI_Player player, int currentField, int moves) {
         fields[currentField].setCar(player, false);
         if ((currentField + moves < N_FIELDS)) {
             fields[currentField + moves].setCar(player, true);
@@ -110,6 +121,19 @@ public class GUILogic {
     private void selectLangauge() {
         LanguageLogic language = new LanguageLogic();
         FILE += "_" + language.LanguageLogic();
+    }
+
+//    private int amountOfPlayers(){
+//
+//    }
+
+    private void makeUsers() {
+        final int MAX_PLAYERS = 4;
+        final int MIN_PLAYERS = 2;
+        GUI_Car car = new GUI_Car();
+        for(int players = gui.getUserInteger("Select amount of players", MIN_PLAYERS, MAX_PLAYERS); players <= MAX_PLAYERS; players++){
+            gui.addPlayer(new GUI_Player(gui.getUserString("Choose Player "+players+" name"),game.getPlayerAccount(players), car));
+        }
     }
 
 }

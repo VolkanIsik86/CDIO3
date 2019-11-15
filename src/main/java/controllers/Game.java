@@ -1,3 +1,5 @@
+package controllers;
+
 import domain.Player;
 import services.TxtReader;
 import java.util.Scanner;
@@ -47,5 +49,9 @@ public class Game {
         if (navn.equals(""))
             return txt.getLine("Key") + " " + (index + 1);
         return navn;
+    }
+
+    public int getPlayerAccount(int index){
+        return players[index].getPoints();
     }
 }
