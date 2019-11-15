@@ -15,6 +15,11 @@ public class GUILogic {
     private Color BROWN = new Color(153,102,0);
     private Color GOLD = new Color (255,204,51);
     public GUILogic() {
+
+    }
+
+    public GUI_Field[] makeBoard(){
+
         GUI_Field[] fields = new GUI_Field[24];
         //læser fra fil
         TxtReader juniorFields = new TxtReader(PATH,FILE);
@@ -69,9 +74,14 @@ public class GUILogic {
                 street.setSubText("");
             fields[i] = street;
         }
-        GUI gui = new GUI(fields);
+        return fields;
 
 
+
+    }
+    public void addPlayer(GUI gui,String name){
+        GUI_Player p1 = new GUI_Player(name);
+        gui.addPlayer(p1);
     }
 
 
