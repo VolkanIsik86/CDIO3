@@ -141,7 +141,7 @@ public class GUILogic {
         final int MIN_PLAYERS = 2;
         GUI_Car car = new GUI_Car();
         for(int players = gui.getUserInteger("Select amount of players", MIN_PLAYERS, MAX_PLAYERS); players <= MAX_PLAYERS; players++){
-            gui.addPlayer(new GUI_Player(gui.getUserString("Choose Player "+players+" name"),game.getPlayerAccount(players), car));
+ //           gui.addPlayer(new GUI_Player(gui.getUserString("Choose Player "+players+" name"),game.getPlayerAccount(players), car));
         }
     }
 
