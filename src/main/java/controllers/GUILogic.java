@@ -20,19 +20,18 @@ public class GUILogic {
     private GUI gui;
     private Game game;
 
-    public GUILogic() {
-        makeBoard();
+    public GUILogic(String language) {
+        makeBoard(language);
         makeUsers();
     }
 
-    public GUI_Field[] makeBoard() {
-        selectLangauge();
+    private GUI_Field[] makeBoard(String language) {
         fields = new GUI_Field[N_FIELDS];
         //læser fra fil
-        TxtReader juniorFields = new TxtReader(PATH, FILE);
+        TxtReader juniorFields = new TxtReader(PATH, FILE+"_"+language);
 
         //Løber igennem for hvert felt
-        for (int i = 0; i < 24; i++) {
+        for (int i = 0; i < N_FIELDS; i++) {
             fields[i] = new GUI_Street();
 
             //opretter objekt
@@ -127,10 +126,7 @@ public class GUILogic {
         return FILE;
     }
 
-    private void selectLangauge() {
-        LanguageLogic language = new LanguageLogic();
-        FILE += "_" + language.LanguageLogic();
-    }
+
 
 //    private int amountOfPlayers(){
 //
@@ -144,7 +140,7 @@ public class GUILogic {
         int nrPlayers = gui.getUserInteger("Select amount of players", MIN_PLAYERS, MAX_PLAYERS);
         String names[] = new String[nrPlayers];
         names = addPlayers(nrPlayers);
-        
+
         return names;
     }
 
