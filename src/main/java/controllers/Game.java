@@ -1,57 +1,18 @@
 package controllers;
 
+import domain.Board;
+import domain.*;
 import domain.Player;
+import domain.PlayerList;
 import services.TxtReader;
 import java.util.Scanner;
 
 public class Game {
-    
-    private int startKapital;
-//    Private Piece piece = new Piece();
-//    private Square[] squares = new Square[][24];
-    private Player[] players;
-    private Scanner input = new Scanner(System.in);
-    private TxtReader txt;
-//    private Account account = new Account();
-    private int die1, die2;
-    private String winner;
 
-    //Konstruktør
-    public Game(int nPlayers){
-        this.players =  new Player[nPlayers];
-    }
+   GUILogic guiLogic = new GUILogic();
+   Board board = new Board(guiLogic.getPATH(),guiLogic.getFILE());
+   TurnLogic turnLogic = new TurnLogic(board);
+   PlayerList playerList = new PlayerList(board.getSquare(0));
 
-    public void createPlayers() {
-        System.out.println("");
-
-        //Point bliver bestemt efter antal spillere
-        if (players.equals(2)){
-            startKapital = 20;
-        }
-        if (players.equals(3)){
-            startKapital = 18;
-        }
-        if (players.equals(4)){
-            startKapital = 16;
-        }
-
-        //Array af spillere laves
-        for (int index = 0; index < players.length; index++) {
-            final String navn = readPlayerName(index);
-//            players[index] = new Player(navn, startKapital);
-        }
-    }
-
-    private String readPlayerName(final int index) {
-        final String navn = input.nextLine();
-
-        //Hvis tomt generer standardnavn
-        if (navn.equals(""))
-            return txt.getLine("Key") + " " + (index + 1);
-        return navn;
-    }
-
-    public int getPlayerAccount(int index){
-        return players[index].getPoints();
-    }
+   
 }
