@@ -97,6 +97,7 @@ public class GUILogic {
             int[] tempAge = new int[names.length+1];
             for (int j = 0; j < names.length; j++) {
                 temp[j]=names[j];
+                tempAge[j]=ages[j];
             }
             names = temp;
             ages = tempAge;
