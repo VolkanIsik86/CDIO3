@@ -23,6 +23,7 @@ public class GUILogic {
     private Game game;
     private String[] names = new String[0];
     private GUI_Player[] players = new GUI_Player[0];
+    private int[] ages = new int [0];
 
     public GUILogic(String language) {
         makeBoard(language);
@@ -93,13 +94,17 @@ public class GUILogic {
     private void addPlayers(int numberofPlayers) {
         for (int i = 0; i < numberofPlayers; i++) {
             String[] temp = new String[names.length + 1];
+            int[] tempage = new int[names.length+1];
             for (int j = 0; j < names.length; j++) {
                 temp[j]=names[j];
             }
             names = temp;
+            ages = tempage;
 
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
             names[i] = name;
+            int age = gui.getUserInteger("Enter age of player "  + (i+1) + ":" , 0,90);
+            ages[i] = age;
             GUI_Car car = new GUI_Car();
             GUI_Player player = new GUI_Player(name, 1000, car);
             GUI_Player[] temp2 = new GUI_Player[players.length + 1];
@@ -207,6 +212,7 @@ public class GUILogic {
     public String[] getPlayerNames(){
         return names;
     }
+    public int [] getPlayerAges() {return ages;}
 
     private void sleep(long n){
         try {
