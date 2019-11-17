@@ -103,7 +103,7 @@ public class GUILogic {
 
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
             names[i] = name;
-            int age = gui.getUserInteger("Enter age of player "  + (i+1) + ":" , 0,90);
+            int age = gui.getUserInteger("Enter age of player "  + (i+1) + ":" , 5,150);
             ages[i] = age;
             GUI_Car car = new GUI_Car();
             GUI_Player player = new GUI_Player(name, 1000, car);
