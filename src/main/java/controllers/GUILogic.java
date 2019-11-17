@@ -94,12 +94,12 @@ public class GUILogic {
     private void addPlayers(int numberofPlayers) {
         for (int i = 0; i < numberofPlayers; i++) {
             String[] temp = new String[names.length + 1];
-            int[] tempage = new int[names.length+1];
+            int[] tempAge = new int[names.length+1];
             for (int j = 0; j < names.length; j++) {
                 temp[j]=names[j];
             }
             names = temp;
-            ages = tempage;
+            ages = tempAge;
 
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
             names[i] = name;
