@@ -95,6 +95,8 @@ public class GUILogic {
             }
             names = temp;
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
+    
+            //todo hvorfor står der names[i] nedenfor og ikke names[names.length-1]?
             names[i] = name;
             GUI_Car car = new GUI_Car();
             GUI_Player player = new GUI_Player(name, 1000, car);
