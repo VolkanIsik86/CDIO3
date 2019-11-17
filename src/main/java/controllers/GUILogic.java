@@ -156,11 +156,11 @@ public class GUILogic {
         return dims;
     }
     public String[] makeUsers() {
-        final int MAX_PLAYERS = 4;
-        final int MIN_PLAYERS = 2;
-        int nrPlayers = gui.getUserInteger("Select amount of players", MIN_PLAYERS, MAX_PLAYERS);
-        String names[] = new String[nrPlayers];
-        addPlayers(nrPlayers);
+
+        String nrPlayers = gui.getUserSelection("Hvor mange spillere skal spille spillet?", "2","3","4");
+        int antalSpillere = Integer.parseInt(nrPlayers);
+        String names[] = new String[antalSpillere];
+        addPlayers(antalSpillere);
 
         return names;
     }
