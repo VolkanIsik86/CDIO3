@@ -198,7 +198,7 @@ public class GUILogic {
         return dims;
     }
     public String[] makeUsers() {
-
+        //todo skal ændres til at fungere på alle sprog1
         String nrPlayers = gui.getUserSelection("Hvor mange spillere skal spille spillet?", "2","3","4");
         int NumberOfPlayers = Integer.parseInt(nrPlayers);
 
