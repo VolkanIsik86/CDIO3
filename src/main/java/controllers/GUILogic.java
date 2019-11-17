@@ -181,6 +181,8 @@ public class GUILogic {
                     dims = player;
                     q = false;
                 } else {
+
+                    // todo hvorfor bliver den her linje hele tiden printet??
                     System.out.println("Dit fuck-up er i at den spiller du kalder ikke eksisterer i gui'en");
                     dims = null;
                 }
