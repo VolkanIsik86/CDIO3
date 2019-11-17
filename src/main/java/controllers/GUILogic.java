@@ -1,5 +1,7 @@
 package controllers;
 
+import domain.Player;
+import domain.squares.Square;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -125,6 +127,13 @@ public class GUILogic {
         return fields;
     }
 
+    public void update(Player player, Square oldLocation, int roll){
+
+        GUI_Player gui_Player = getPlayer(player.getName());
+        movePiece(gui_Player,oldLocation.getIndex(),roll);
+
+    }
+
     public GUI getGui() {
         return gui;
     }
@@ -169,6 +178,10 @@ public class GUILogic {
     }
     public String[] getPlayerNames(){
         return names;
+    }
+
+    private void sleep(int n){
+        
     }
 
 }

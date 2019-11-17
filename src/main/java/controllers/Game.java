@@ -4,16 +4,17 @@ import domain.Board;
 import domain.*;
 import domain.Player;
 import domain.PlayerList;
+import domain.squares.Square;
 import services.TxtReader;
 import java.util.Scanner;
 
 public class Game {
 
 
-   private GUILogic guiLogic;
-   private Board board;
-   private TurnLogic turnLogic;
-   private PlayerList playerList;
+   protected GUILogic guiLogic;
+   protected Board board;
+   protected TurnLogic turnLogic;
+   protected PlayerList playerList;
    private String path = "src/main/java/services/";
    private String language;
    
@@ -25,12 +26,24 @@ public class Game {
         initializeGame();
     
         //Play a round
-        for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
-            Player currentPlayer = playerList.getPlayer(i);
-            turnLogic.takeTurn(currentPlayer);
-            
-//            turnLogic.check();
-            
+
+        for (int j = 0; j < 5; j++) {
+            for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
+
+                Player currentPlayer = playerList.getPlayer(i);
+
+                Square oldLocation;
+                oldLocation =currentPlayer.getLocation();
+
+                int roll = turnLogic.takeTurn(currentPlayer);
+
+                // todo slet når vi er færdige med at teste
+                // System.out.println("Roll: " + roll);
+                // System.out.println(currentPlayer.getName() + ": " + currentPlayer.getPoints());
+
+                guiLogic.update(currentPlayer, oldLocation, roll);
+
+            }
         }
         
         
@@ -61,13 +74,13 @@ public class Game {
        //Creates GuiLogic object which initializes the GUI itself in its constructor
        guiLogic = new GUILogic(language);
        
-       TurnLogic turnLogic = new TurnLogic(board);
+       turnLogic = new TurnLogic(board,guiLogic);
    }
    
    private void initPlayerList(){
        
        //Creates a playerList and adds the players from guiLogic
-       PlayerList playerList = new PlayerList(board.getSquare(0));
+       playerList = new PlayerList(board.getSquare(0));
        String[] playerNames = guiLogic.getPlayerNames();
        for (int i = 0; i < playerNames.length; i++) {
            playerList.addPlayer(playerNames[i],10,10);

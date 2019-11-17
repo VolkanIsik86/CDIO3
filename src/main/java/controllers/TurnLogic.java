@@ -8,16 +8,25 @@ public class TurnLogic {
     
     private Die die = new Die();
     private Board board;
+    private GUILogic guiLogic;
     
-    public TurnLogic(Board board) {
+    public TurnLogic(Board board, GUILogic guiLogic)
+    {
         this.board = board;
+        this.guiLogic = guiLogic;
     }
     
-    public void takeTurn(Player player) {
+    public int takeTurn(Player player) {
+
         die.roll();
+        int roll = die.getFaceValue();
+        guiLogic.displayDie(roll);
+
         Square nextLocation = board.nextLocation(player.getLocation(), die.getFaceValue());
         nextLocation.landedOn(player);
         player.setLocation(nextLocation);
+
+        return die.getFaceValue();
     
     }
 }
