@@ -9,6 +9,8 @@ public class Player {
     private int age;
     private Account account;
     private Piece piece;
+    private boolean lost = false;
+    private boolean jail = false;
     
     
     public Player(String name, int age, int points, Piece piece){
@@ -17,6 +19,10 @@ public class Player {
         account = new Account(points);
         this.piece = piece;
 
+    }
+
+    public void setJail(boolean status){
+        jail = status;
     }
     
     public boolean attempPurchase(PropertySquare property){

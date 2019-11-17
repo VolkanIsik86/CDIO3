@@ -45,6 +45,10 @@ public class Board {
     public Square[] getSquares() {
         return squares;
     }
+
+    public Square getJail(){
+        return squares[5];
+    }
    
     // todo skal slettes (kun til midlertidig test
 //    public static void main(String[] args) {

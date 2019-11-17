@@ -12,7 +12,7 @@ public class GoToJailSquare extends Square {
 
     // Moves player to jail.
     public void landedOn(Player p) {
-        p.setLocation(board.nextLocation(this,-12));
-        // TODO er ikke helt sikker om vi kan sige -12 her. Denne metode skal testes.
+        p.setLocation(board.getJail());
+        p.setJail(true);
     }
 }

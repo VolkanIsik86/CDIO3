@@ -1,5 +1,6 @@
 package domain.squares;
 
+// todo lav landedOn metoden til en boolean
 
 import domain.Board;
 import domain.Player;
