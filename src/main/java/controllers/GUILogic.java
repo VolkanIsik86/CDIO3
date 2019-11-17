@@ -158,9 +158,10 @@ public class GUILogic {
     public String[] makeUsers() {
 
         String nrPlayers = gui.getUserSelection("Hvor mange spillere skal spille spillet?", "2","3","4");
-        int antalSpillere = Integer.parseInt(nrPlayers);
-        String names[] = new String[antalSpillere];
-        addPlayers(antalSpillere);
+        int NumberOfPlayers = Integer.parseInt(nrPlayers);
+
+        String names[] = new String[NumberOfPlayers];
+        addPlayers(NumberOfPlayers);
 
         return names;
     }
