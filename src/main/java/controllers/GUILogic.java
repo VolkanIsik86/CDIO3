@@ -114,11 +114,38 @@ public class GUILogic {
     }
 
     public void movePiece(GUI_Player player, int currentField, int moves) {
-        fields[currentField].setCar(player, false);
+
+        System.out.println("currentField: " + currentField);
+
         if ((currentField + moves < N_FIELDS)) {
-            fields[currentField + moves].setCar(player, true);
+
+            for (int i = currentField; i < currentField + moves; i++) {
+
+                fields[i].setCar(player, false);
+                fields[i + 1].setCar(player, true);
+                sleep(200);
+            }
+
         } else {
-            fields[currentField + moves - N_FIELDS].setCar(player, true);
+
+            for (int i = currentField; i < currentField + moves; i++) {
+
+                // todo fix det scenarie, hvor en bil kører fordi startfeltet nedenfor:
+                if (i+1 < N_FIELDS){
+                    fields[i].setCar(player, false);
+                    fields[i + 1].setCar(player, true);
+                } else if (i+1 == N_FIELDS){
+                    fields[i].setCar(player, false);
+                    fields[(i + 1)%24].setCar(player, true);
+                } else{
+                    fields[i%N_FIELDS].setCar(player, false);
+                    fields[(i + 1)%N_FIELDS].setCar(player, true);
+                }
+            }
+
+
+
+
         }
 
     }
@@ -180,8 +207,23 @@ public class GUILogic {
         return names;
     }
 
-    private void sleep(int n){
-        
+    private void sleep(long n){
+        try {
+            Thread.sleep(n);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
+
+// todo GUI skal vise det felt man lander på i midten
+// todo opdatere spillernes point
+// todo skal ændre på feltfarverne når man ejer det
+// todo implementeres en OK menu før spillet slår med terningerne
+// todo chancekort
+// todo kraftigt overveje vores .update funktion
+// todo spillerne skal også vælge alder
+
+

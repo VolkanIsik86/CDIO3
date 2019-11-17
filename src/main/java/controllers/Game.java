@@ -27,7 +27,7 @@ public class Game {
     
         //Play a round
 
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < 25; j++) {
             for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
 
                 Player currentPlayer = playerList.getPlayer(i);
@@ -43,9 +43,12 @@ public class Game {
 
                 guiLogic.update(currentPlayer, oldLocation, roll);
 
+                //todo check for winner --> break;
+
             }
         }
-        
+
+
         
         
        

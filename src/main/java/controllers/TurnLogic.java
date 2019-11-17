@@ -26,6 +26,8 @@ public class TurnLogic {
         nextLocation.landedOn(player);
         player.setLocation(nextLocation);
 
+        
+        // todo taketurn skal ikke returnere en int, men det skal fixes i Game og Gui logic
         return die.getFaceValue();
     
     }
