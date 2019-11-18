@@ -32,7 +32,7 @@ public class GUILogic {
     private GUI_Field[] makeBoard(String language) {
         fields = new GUI_Field[N_FIELDS];
         //læser fra fil
-        TxtReader juniorFields = new TxtReader(PATH, FILE+"_"+language);
+        TxtReader juniorFields = new TxtReader(PATH, FILE + "_" + language);
 
         //Løber igennem for hvert felt
         for (int i = 0; i < N_FIELDS; i++) {
@@ -94,12 +94,12 @@ public class GUILogic {
         for (int i = 0; i < numberofPlayers; i++) {
             String[] temp = new String[names.length + 1];
             for (int j = 0; j < names.length; j++) {
-                temp[j]=names[j];
+                temp[j] = names[j];
             }
             names = temp;
 
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
-    
+
             //todo hvorfor står der names[i] nedenfor og ikke names[names.length-1]?
             names[i] = name;
             GUI_Car car = new GUI_Car();
@@ -111,55 +111,47 @@ public class GUILogic {
             players = temp2;
             players[i] = player;
             gui.addPlayer(player);
-            movePiece(player,0,0);
+            movePiece(player, 0, 0);
         }
     }
 
     public void movePiece(GUI_Player player, int currentField, int moves) {
 
         System.out.println("currentField: " + currentField);
-
-        if ((currentField + moves < N_FIELDS)) {
-
-            for (int i = currentField; i < currentField + moves; i++) {
-
-                fields[i].setCar(player, false);
-                fields[i + 1].setCar(player, true);
+        int movesDone = 0;
+        if (moves != 0) {
+            if (currentField + moves >= N_FIELDS) {
+                for (int i = 1; currentField + i < N_FIELDS; i++) {
+                    fields[currentField + i - 1].setCar(player, false);
+                    fields[currentField + i].setCar(player, true);
+                    movesDone++;
+                    sleep(200);
+                }
+                fields[N_FIELDS - 1].setCar(player, false);
+                currentField = 0;
+                fields[currentField].setCar(player, true);
+                sleep(200);
+                movesDone++;
+            }
+            for (int i = 0; i + movesDone < moves; i++) {
+                fields[currentField].setCar(player, false);
+                fields[currentField + 1].setCar(player, true);
+                currentField = currentField + 1;
                 sleep(200);
             }
-
         } else {
-
-            for (int i = currentField; i < currentField + moves; i++) {
-
-                // todo fix det scenarie, hvor en bil kører fordi startfeltet nedenfor:
-                if (i+1 < N_FIELDS){
-                    fields[i].setCar(player, false);
-                    fields[i + 1].setCar(player, true);
-                } else if (i+1 == N_FIELDS){
-                    fields[i].setCar(player, false);
-                    fields[(i + 1)%24].setCar(player, true);
-                } else{
-                    fields[i%N_FIELDS].setCar(player, false);
-                    fields[(i + 1)%N_FIELDS].setCar(player, true);
-                }
-            }
-
-
-
-
+            fields[0].setCar(player, true);
         }
-
     }
 
     public GUI_Field[] getFields() {
         return fields;
     }
 
-    public void update(Player player, Square oldLocation, int roll){
+    public void update(Player player, Square oldLocation, int roll) {
 
         GUI_Player gui_Player = getPlayer(player.getName());
-        movePiece(gui_Player,oldLocation.getIndex(),roll);
+        movePiece(gui_Player, oldLocation.getIndex(), roll);
 
     }
 
@@ -174,6 +166,7 @@ public class GUILogic {
     public String getFILE() {
         return FILE;
     }
+
     public GUI_Player getPlayer(String playerName) {
         boolean q = true;
         GUI_Player dims = null;
@@ -193,9 +186,10 @@ public class GUILogic {
 
         return dims;
     }
+
     public String[] makeUsers() {
 
-        String nrPlayers = gui.getUserSelection("Hvor mange spillere skal spille spillet?", "2","3","4");
+        String nrPlayers = gui.getUserSelection("Hvor mange spillere skal spille spillet?", "2", "3", "4");
         int NumberOfPlayers = Integer.parseInt(nrPlayers);
 
         String names[] = new String[NumberOfPlayers];
@@ -203,14 +197,16 @@ public class GUILogic {
 
         return names;
     }
-    public void displayDie(int faceValue){
+
+    public void displayDie(int faceValue) {
         gui.setDie(faceValue);
     }
-    public String[] getPlayerNames(){
+
+    public String[] getPlayerNames() {
         return names;
     }
 
-    private void sleep(long n){
+    private void sleep(long n) {
         try {
             Thread.sleep(n);
         } catch (InterruptedException e) {
