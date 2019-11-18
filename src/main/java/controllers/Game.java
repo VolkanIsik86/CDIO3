@@ -11,10 +11,10 @@ import java.util.Scanner;
 public class Game {
 
 
-   protected GUILogic guiLogic;
-   protected Board board;
-   protected TurnLogic turnLogic;
-   protected PlayerList playerList;
+   private GUILogic guiLogic;
+   private Board board;
+   private TurnLogic turnLogic;
+   private PlayerList playerList;
    private String path = "src/main/java/services/";
    private String language;
    
