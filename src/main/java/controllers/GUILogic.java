@@ -18,6 +18,7 @@ public class GUILogic {
     private Color BROWN = new Color(153, 102, 0);
     private Color GOLD = new Color(255, 204, 51);
     private final int N_FIELDS = 24;
+    private final int DELAY = 200;
     private GUI_Field[] fields;
     private GUI gui;
     private Game game;
@@ -134,16 +135,16 @@ public class GUILogic {
                 for (int i = 1; currentField + i < N_FIELDS; i++) {
                     moveRest(player, currentField, i);
                     movesDone++;
-                    sleep(200);
+                    sleep(DELAY);
                 }
                 currentField = passStart(player);
                 movesDone++;
-                sleep(200);
+                sleep(DELAY);
             }
             //Kører flytning af piece, tjekker om der er moves tilbage
             for (int i = 0; i + movesDone < moves; i++) {
                 currentField = moveOnce(player, currentField);
-                sleep(200);
+                sleep(DELAY);
             }
         } else {
             fields[0].setCar(player, true);
