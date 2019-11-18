@@ -178,12 +178,11 @@ public class GUILogic {
         boolean q = true;
         GUI_Player dims = null;
         for (GUI_Player player : players) {
-            if (q) {
+            if (q == true) {
                 if (player.getName().equals(playerName)) {
                     dims = player;
                     q = false;
                 } else {
-                    System.out.println("Dit fuck-up er i at den spiller du kalder ikke eksisterer i gui'en");
                     dims = null;
                 }
 
