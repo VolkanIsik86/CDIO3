@@ -118,30 +118,49 @@ public class GUILogic {
     public void movePiece(GUI_Player player, int currentField, int moves) {
 
         System.out.println("currentField: " + currentField);
-        int movesDone = 0;
+        int movesDone = 0; //Bruges til at holde styr på antal moves udført
         if (moves != 0) {
+            //Tjekker om piece position bliver større end board
             if (currentField + moves >= N_FIELDS) {
+                //Kører resten af felterne igennem inden start
                 for (int i = 1; currentField + i < N_FIELDS; i++) {
-                    fields[currentField + i - 1].setCar(player, false);
-                    fields[currentField + i].setCar(player, true);
+                    moveRest(player, currentField, i);
                     movesDone++;
                     sleep(200);
                 }
-                fields[N_FIELDS - 1].setCar(player, false);
-                currentField = 0;
-                fields[currentField].setCar(player, true);
-                sleep(200);
+                currentField = passStart(player);
                 movesDone++;
+                sleep(200);
             }
+            //Kører flytning af piece, tjekker om der er moves tilbage
             for (int i = 0; i + movesDone < moves; i++) {
-                fields[currentField].setCar(player, false);
-                fields[currentField + 1].setCar(player, true);
-                currentField = currentField + 1;
+                currentField = moveOnce(player, currentField);
                 sleep(200);
             }
         } else {
             fields[0].setCar(player, true);
         }
+    }
+
+    private void moveRest(GUI_Player player, int field, int increment) {
+        fields[field + increment - 1].setCar(player, false);
+        fields[field + increment].setCar(player, true);
+    }
+
+    private int moveOnce(GUI_Player player, int field) {
+        fields[field].setCar(player, false);
+        fields[field + 1].setCar(player, true);
+        field = field + 1;
+        return field;
+    }
+
+    private int passStart(GUI_Player player) {
+        //Placerer piece på start
+        int currentField;
+        fields[N_FIELDS - 1].setCar(player, false);
+        currentField = 0;
+        fields[currentField].setCar(player, true);
+        return currentField;
     }
 
     public GUI_Field[] getFields() {
