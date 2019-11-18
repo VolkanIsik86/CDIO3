@@ -91,26 +91,34 @@ public class GUILogic {
     }
 
     private void addPlayers(int numberofPlayers) {
+        //Gør det samme for antallet af spillere der er valgt
         for (int i = 0; i < numberofPlayers; i++) {
+            //Udvider listen over spillere med 1
             String[] temp = new String[names.length + 1];
             for (int j = 0; j < names.length; j++) {
                 temp[j]=names[j];
             }
             names = temp;
-
+            //Beder spilleren indtaste et navn
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
     
             //todo hvorfor står der names[i] nedenfor og ikke names[names.length-1]?
+            //Tilføjer spillerens navn til listen over navne
             names[i] = name;
+            //Konstruere en tilfældig GUI-bil
             GUI_Car car = new GUI_Car();
+            //Konstruere en spiller med den tilfældige bil og et navn
             GUI_Player player = new GUI_Player(name, 1000, car);
+            //tilføjer spillerne til en spillerliste
             GUI_Player[] temp2 = new GUI_Player[players.length + 1];
             for (int j = 0; j < players.length; j++) {
                 temp2[j] = players[j];
             }
             players = temp2;
             players[i] = player;
+            //Tilføjer spilleren på brættet
             gui.addPlayer(player);
+            //Flytter spilleren til startfeltet
             movePiece(player,0,0);
         }
     }
@@ -177,6 +185,7 @@ public class GUILogic {
     public GUI_Player getPlayer(String playerName) {
         boolean q = true;
         GUI_Player dims = null;
+        //Undersøger hvilken GUI-spiller som spilleren der er kaldt passer sammen med ved at undersøge navnet.
         for (GUI_Player player : players) {
             if (q == true) {
                 if (player.getName().equals(playerName)) {
