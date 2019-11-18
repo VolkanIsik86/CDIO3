@@ -118,38 +118,49 @@ public class GUILogic {
     public void movePiece(GUI_Player player, int currentField, int moves) {
 
         System.out.println("currentField: " + currentField);
-
-        if ((currentField + moves < N_FIELDS)) {
-
-            for (int i = currentField; i < currentField + moves; i++) {
-
-                fields[i].setCar(player, false);
-                fields[i + 1].setCar(player, true);
+        int movesDone = 0; //Bruges til at holde styr på antal moves udført
+        if (moves != 0) {
+            //Tjekker om piece position bliver større end board
+            if (currentField + moves >= N_FIELDS) {
+                //Kører resten af felterne igennem inden start
+                for (int i = 1; currentField + i < N_FIELDS; i++) {
+                    moveRest(player, currentField, i);
+                    movesDone++;
+                    sleep(200);
+                }
+                currentField = passStart(player);
+                movesDone++;
                 sleep(200);
             }
-
-        } else {
-
-            for (int i = currentField; i < currentField + moves; i++) {
-
-                // todo fix det scenarie, hvor en bil kører fordi startfeltet nedenfor:
-                if (i+1 < N_FIELDS){
-                    fields[i].setCar(player, false);
-                    fields[i + 1].setCar(player, true);
-                } else if (i+1 == N_FIELDS){
-                    fields[i].setCar(player, false);
-                    fields[(i + 1)%24].setCar(player, true);
-                } else{
-                    fields[i%N_FIELDS].setCar(player, false);
-                    fields[(i + 1)%N_FIELDS].setCar(player, true);
-                }
+            //Kører flytning af piece, tjekker om der er moves tilbage
+            for (int i = 0; i + movesDone < moves; i++) {
+                currentField = moveOnce(player, currentField);
+                sleep(200);
             }
-
-
-
-
+        } else {
+            fields[0].setCar(player, true);
         }
+    }
 
+    private void moveRest(GUI_Player player, int field, int increment) {
+        fields[field + increment - 1].setCar(player, false);
+        fields[field + increment].setCar(player, true);
+    }
+
+    private int moveOnce(GUI_Player player, int field) {
+        fields[field].setCar(player, false);
+        fields[field + 1].setCar(player, true);
+        field = field + 1;
+        return field;
+    }
+
+    private int passStart(GUI_Player player) {
+        //Placerer piece på start
+        int currentField;
+        fields[N_FIELDS - 1].setCar(player, false);
+        currentField = 0;
+        fields[currentField].setCar(player, true);
+        return currentField;
     }
 
     public GUI_Field[] getFields() {
@@ -183,7 +194,6 @@ public class GUILogic {
                     dims = player;
                     q = false;
                 } else {
-                    System.out.println("Dit fuck-up er i at den spiller du kalder ikke eksisterer i gui'en");
                     dims = null;
                 }
 
