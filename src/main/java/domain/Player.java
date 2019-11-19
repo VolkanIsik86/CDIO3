@@ -35,7 +35,15 @@ public class Player {
     public void setLocation(Square newLocation){
         piece.setLocation(newLocation);
     }
-    
+
+    public boolean getLost() {
+        return lost;
+    }
+
+    public void setLost(boolean lost) {
+        this.lost = lost;
+    }
+
     public Square getLocation(){
         return piece.getLocation();
     }
