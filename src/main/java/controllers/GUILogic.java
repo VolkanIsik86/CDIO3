@@ -117,7 +117,7 @@ public class GUILogic {
 
             int age = gui.getUserInteger("Enter age of "  + name + ":" , 5,150);
             ages[i] = age;
-=======
+
             //Konstruere en tilfældig GUI-bil
 
             GUI_Car car = new GUI_Car();
