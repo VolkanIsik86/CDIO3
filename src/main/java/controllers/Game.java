@@ -17,7 +17,7 @@ public class Game {
    private PlayerList playerList;
    private String path = "src/main/java/services/";
    private String language;
-   private String winner;
+   private String loser;
    
     //todo ret antal startpoints
     private final int START_POINTS = 10;
@@ -46,7 +46,7 @@ public class Game {
 
                 //todo check for winner --> break; Skal også vises i GUILogic!
                 if (currentPlayer.getPoints()<=0){
-                    winner = currentPlayer.getName();
+                    loser = currentPlayer.getName();
 
                 }
             }
