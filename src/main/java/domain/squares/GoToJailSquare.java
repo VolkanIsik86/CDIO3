@@ -11,9 +11,8 @@ public class GoToJailSquare extends Square {
     }
 
     // Moves player to jail.
-    public boolean landedOn(Player p) {
+    public void landedOn(Player p) {
         p.setLocation(board.getJail());
         p.setJail(true);
-        return true;
     }
 }

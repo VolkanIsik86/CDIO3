@@ -36,8 +36,7 @@ public abstract class Square {
     
     // landedOn is the key method of squares.
     // This polymorph method affects player with various effects.
-    // The method returns true if the player didn't loose the game as a consequence.
-    public abstract boolean landedOn(Player p);
+    public abstract void landedOn(Player p);
     
     @Override
     public String toString() {

@@ -56,7 +56,7 @@ public class PropertySquare extends Square {
         payRent(p);
     }
     
-    public boolean landedOn(Player p) {
+    public void landedOn(Player p) {
         
         //If property is not owned
         if (owner == null) {
@@ -64,13 +64,11 @@ public class PropertySquare extends Square {
             //If player has the requested fonds
             if (p.attemptToPurchase(this)){
                 purchase(p);
-                return true;
             }
             
             //If player doesn't have the requested fonds
             else {
                 p.setLost(true);
-                return false;
             }
         }
         
@@ -81,13 +79,11 @@ public class PropertySquare extends Square {
             if (p.attemptToPay(this.getPrice())){
                 payRent(p);
                 earnRent();
-                return true;
             }
     
             //If player doesn't have the requested fonds
             else {
                 p.setLost(true);
-                return false;
             }
             
         }

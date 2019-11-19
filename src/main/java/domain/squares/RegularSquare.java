@@ -10,8 +10,8 @@ public class RegularSquare extends Square {
     }
 
     @Override
-    public boolean landedOn(Player p) {
-        return true;
+    public void landedOn(Player p) {
+        //Does nothing..
     }
 
 
