@@ -94,7 +94,7 @@ public class GUILogic {
     private void addPlayers(int numberofPlayers) {
         for (int i = 0; i < numberofPlayers; i++) {
             String[] temp = new String[names.length + 1];
-            int[] tempAge = new int[names.length+1];
+            int[] tempAge = new int[ages.length+1];
             for (int j = 0; j < names.length; j++) {
                 temp[j]=names[j];
                 tempAge[j]=ages[j];
