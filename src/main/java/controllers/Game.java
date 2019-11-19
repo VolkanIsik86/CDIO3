@@ -19,7 +19,7 @@ public class Game {
    private String path = "src/main/java/services/";
    private String language;
 
-   
+
     //todo ret antal startpoints
     private final int START_POINTS = 10;
     
@@ -95,7 +95,9 @@ public class Game {
        for (int i = 0; i < playerNames.length; i++) {
            playerList.addPlayer(playerNames[i],ageOfPlayer[i],10);
        }
-       
+
+       playerList.sortPlayersByAge();
+
    }
    //todo uafgjort mellem spillere med ens point mangler at blive implementeret
    private Player getWinner(){
@@ -118,7 +120,7 @@ public class Game {
        }
        return winner;
    }
-   
+
     
     public static void main(String[] args) {
         Game game = new Game();
