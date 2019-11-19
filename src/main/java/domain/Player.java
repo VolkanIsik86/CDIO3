@@ -20,6 +20,10 @@ public class Player {
 
     }
 
+    public void setLost(boolean status){
+        lost = status;
+    }
+    
     public void setJail(boolean status){
         jail = status;
     }
