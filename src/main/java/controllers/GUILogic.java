@@ -18,6 +18,7 @@ public class GUILogic {
     private Color BROWN = new Color(153, 102, 0);
     private Color GOLD = new Color(255, 204, 51);
     private final int N_FIELDS = 24;
+    private final int DELAY = 200;
     private GUI_Field[] fields;
     private GUI gui;
     private Game game;
@@ -91,26 +92,34 @@ public class GUILogic {
     }
 
     private void addPlayers(int numberofPlayers) {
+        //Gør det samme for antallet af spillere der er valgt
         for (int i = 0; i < numberofPlayers; i++) {
+            //Udvider listen over spillere med 1
             String[] temp = new String[names.length + 1];
             for (int j = 0; j < names.length; j++) {
                 temp[j]=names[j];
             }
             names = temp;
-
+            //Beder spilleren indtaste et navn
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
     
             //todo hvorfor står der names[i] nedenfor og ikke names[names.length-1]?
+            //Tilføjer spillerens navn til listen over navne
             names[i] = name;
+            //Konstruere en tilfældig GUI-bil
             GUI_Car car = new GUI_Car();
+            //Konstruere en spiller med den tilfældige bil og et navn
             GUI_Player player = new GUI_Player(name, 1000, car);
+            //tilføjer spillerne til en spillerliste
             GUI_Player[] temp2 = new GUI_Player[players.length + 1];
             for (int j = 0; j < players.length; j++) {
                 temp2[j] = players[j];
             }
             players = temp2;
             players[i] = player;
+            //Tilføjer spilleren på brættet
             gui.addPlayer(player);
+            //Flytter spilleren til startfeltet
             movePiece(player,0,0);
         }
     }
@@ -118,38 +127,49 @@ public class GUILogic {
     public void movePiece(GUI_Player player, int currentField, int moves) {
 
         System.out.println("currentField: " + currentField);
-
-        if ((currentField + moves < N_FIELDS)) {
-
-            for (int i = currentField; i < currentField + moves; i++) {
-
-                fields[i].setCar(player, false);
-                fields[i + 1].setCar(player, true);
-                sleep(200);
-            }
-
-        } else {
-
-            for (int i = currentField; i < currentField + moves; i++) {
-
-                // todo fix det scenarie, hvor en bil kører fordi startfeltet nedenfor:
-                if (i+1 < N_FIELDS){
-                    fields[i].setCar(player, false);
-                    fields[i + 1].setCar(player, true);
-                } else if (i+1 == N_FIELDS){
-                    fields[i].setCar(player, false);
-                    fields[(i + 1)%24].setCar(player, true);
-                } else{
-                    fields[i%N_FIELDS].setCar(player, false);
-                    fields[(i + 1)%N_FIELDS].setCar(player, true);
+        int movesDone = 0; //Bruges til at holde styr på antal moves udført
+        if (moves != 0) {
+            //Tjekker om piece position bliver større end board
+            if (currentField + moves >= N_FIELDS) {
+                //Kører resten af felterne igennem inden start
+                for (int i = 1; currentField + i < N_FIELDS; i++) {
+                    moveRest(player, currentField, i);
+                    movesDone++;
+                    sleep(DELAY);
                 }
+                currentField = passStart(player);
+                movesDone++;
+                sleep(DELAY);
             }
-
-
-
-
+            //Kører flytning af piece, tjekker om der er moves tilbage
+            for (int i = 0; i + movesDone < moves; i++) {
+                currentField = moveOnce(player, currentField);
+                sleep(DELAY);
+            }
+        } else {
+            fields[0].setCar(player, true);
         }
+    }
 
+    private void moveRest(GUI_Player player, int field, int increment) {
+        fields[field + increment - 1].setCar(player, false);
+        fields[field + increment].setCar(player, true);
+    }
+
+    private int moveOnce(GUI_Player player, int field) {
+        fields[field].setCar(player, false);
+        fields[field + 1].setCar(player, true);
+        field = field + 1;
+        return field;
+    }
+
+    private int passStart(GUI_Player player) {
+        //Placerer piece på start
+        int currentField;
+        fields[N_FIELDS - 1].setCar(player, false);
+        currentField = 0;
+        fields[currentField].setCar(player, true);
+        return currentField;
     }
 
     public GUI_Field[] getFields() {
@@ -177,13 +197,13 @@ public class GUILogic {
     public GUI_Player getPlayer(String playerName) {
         boolean q = true;
         GUI_Player dims = null;
+        //Undersøger hvilken GUI-spiller som spilleren der er kaldt passer sammen med ved at undersøge navnet.
         for (GUI_Player player : players) {
             if (q) {
                 if (player.getName().equals(playerName)) {
                     dims = player;
                     q = false;
                 } else {
-                    System.out.println("Dit fuck-up er i at den spiller du kalder ikke eksisterer i gui'en");
                     dims = null;
                 }
 

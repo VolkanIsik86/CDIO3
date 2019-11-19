@@ -40,7 +40,7 @@ public class PropertySquare extends Square {
     public void setOwner(Player owner) {
         this.owner = owner;
     }
-
+    
     //Pay rent logic: withdraws balance from player
     private void payRent(Player p){
         p.withdraw(this.getPrice());
@@ -57,6 +57,9 @@ public class PropertySquare extends Square {
                 this.setOwner(p);
                 payRent(p);
                 //TODO her skal logikken implementeres for hvis spilleren ikke kan betale for feltet.
+            }
+            else {
+                p.setLost(true);
             }
         }
         else{

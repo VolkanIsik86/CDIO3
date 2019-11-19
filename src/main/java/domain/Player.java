@@ -19,10 +19,6 @@ public class Player {
         this.piece = piece;
 
     }
-
-    public void setLost(boolean status){
-        lost = status;
-    }
     
     public void setJail(boolean status){
         jail = status;
@@ -45,7 +41,15 @@ public class Player {
     public void setLocation(Square newLocation){
         piece.setLocation(newLocation);
     }
-    
+
+    public boolean getLost() {
+        return lost;
+    }
+
+    public void setLost(boolean status) {
+        this.lost = status;
+    }
+
     public Square getLocation(){
         return piece.getLocation();
     }
