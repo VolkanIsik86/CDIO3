@@ -48,23 +48,49 @@ public class PropertySquare extends Square {
 
     // get rent logic: Adds points to the owner of this square.
     private  void earnRent(){
-        this.getOwner().deposit(this.getPrice());
+        owner.deposit(this.getPrice());
+    }
+    
+    private void purchase(Player p){
+        this.setOwner(p);
+        payRent(p);
     }
 
-    public void landedOn(Player p) {
-        if (owner==null) {
+    
+    public boolean landedOn(Player p) {
+        
+        //If property is not owned
+        if (owner == null) {
+            
+            //If player has the requested fonds
             if (p.attemptToPurchase(this)){
-                this.setOwner(p);
-                payRent(p);
-                //TODO her skal logikken implementeres for hvis spilleren ikke kan betale for feltet.
+                purchase(p);
+                return true;
             }
+            
+            //If player doesn't have the requested fonds
             else {
                 p.setLost(true);
+                return false;
             }
         }
+        
+        //If property is owned
         else{
-            payRent(p);
-            earnRent();
+    
+            //If player has the requested fonds
+            if (p.attemptToPay(this.getPrice())){
+                payRent(p);
+                earnRent();
+                return true;
+            }
+    
+            //If player doesn't have the requested fonds
+            else {
+                p.setLost(true);
+                return false;
+            }
+            
         }
     }
 }

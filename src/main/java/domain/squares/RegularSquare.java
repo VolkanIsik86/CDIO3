@@ -9,8 +9,8 @@ public class RegularSquare extends Square {
         super(name, index,board);
     }
 
-    public void landedOn(Player p) {
-        // Does nothing...
+    public boolean landedOn(Player p) {
+        return true;
     }
 
 
