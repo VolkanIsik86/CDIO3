@@ -9,6 +9,7 @@ public class RegularSquare extends Square {
         super(name, index,board);
     }
 
+    @Override
     public boolean landedOn(Player p) {
         return true;
     }

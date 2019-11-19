@@ -55,7 +55,6 @@ public class PropertySquare extends Square {
         this.setOwner(p);
         payRent(p);
     }
-
     
     public boolean landedOn(Player p) {
         
