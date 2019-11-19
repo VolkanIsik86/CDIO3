@@ -17,7 +17,7 @@ public class Game {
    private PlayerList playerList;
    private String path = "src/main/java/services/";
    private String language;
-   private String loser;
+
    
     //todo ret antal startpoints
     private final int START_POINTS = 10;
@@ -45,8 +45,15 @@ public class Game {
                 guiLogic.update(currentPlayer, oldLocation, roll);
 
                 //todo check for winner --> break; Skal også vises i GUILogic!
-                if (currentPlayer.getPoints()<=0){
-                    loser = currentPlayer.getName();
+                if (currentPlayer.getLost()){
+                    int maxScore = playerList.getPlayer(0).getBalance();
+                    Player winner = playerList.getPlayer(0);
+                    for (int k = 1; k < playerList.NumberOfPlayers(); k++) {
+                        if (playerList.getPlayer(k).getBalance()>maxScore){
+                            winner = playerList.getPlayer(k);
+                        }
+
+                    }
 
                 }
             }

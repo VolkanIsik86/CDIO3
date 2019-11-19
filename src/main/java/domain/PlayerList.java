@@ -13,7 +13,7 @@ public class PlayerList {
         this.startSquare = startSquare;
     }
     
-    public void addPlayer(String name, int age, int points){
+    public void addPlayer(String name, int age, int Balance){
         
         // Increase size of player-array by 1
         Player[] temp = new Player[players.length+1];
@@ -26,7 +26,7 @@ public class PlayerList {
         Piece piece = new Piece(startSquare);
         
         //Create and add new player to array
-        players[players.length-1] = new Player(name, age, points, piece);
+        players[players.length-1] = new Player(name, age, Balance, piece);
         
     }
     
@@ -36,6 +36,10 @@ public class PlayerList {
     
     public int NumberOfPlayers(){
         return players.length;
+    }
+    //Returnerer player array
+    public Player [] getPlayers(){
+        return players;
     }
     
 }
