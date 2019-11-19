@@ -45,15 +45,15 @@ public class Player {
     }
     
     public int getPoints(){
-        return account.getPoints();
+        return account.getBalance();
     }
     
     public void setPoints(int points){
-        account.setPoints(points);
+        account.setBalance(points);
     }
     
     public void addPoints(int points){
-        account.addPoints(points);
+        account.withdraw(points);
     }
     
     public String getName(){
