@@ -24,6 +24,7 @@ public class GUILogic {
     private Game game;
     private String[] names = new String[0];
     private GUI_Player[] players = new GUI_Player[0];
+    private int[] ages = new int [0];
 
     public GUILogic(String language) {
         makeBoard(language);
@@ -96,17 +97,29 @@ public class GUILogic {
         for (int i = 0; i < numberofPlayers; i++) {
             //Udvider listen over spillere med 1
             String[] temp = new String[names.length + 1];
+            int[] tempAge = new int[ages.length+1];
             for (int j = 0; j < names.length; j++) {
                 temp[j]=names[j];
+                tempAge[j]=ages[j];
             }
             names = temp;
+
+            ages = tempAge;
+
+
             //Beder spilleren indtaste et navn
+
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
     
             //todo hvorfor står der names[i] nedenfor og ikke names[names.length-1]?
             //Tilføjer spillerens navn til listen over navne
             names[i] = name;
+
+            int age = gui.getUserInteger("Enter age of "  + name + ":" , 5,150);
+            ages[i] = age;
+=======
             //Konstruere en tilfældig GUI-bil
+
             GUI_Car car = new GUI_Car();
             //Konstruere en spiller med den tilfældige bil og et navn
             GUI_Player player = new GUI_Player(name, 1000, car);
@@ -214,7 +227,7 @@ public class GUILogic {
         return dims;
     }
     public String[] makeUsers() {
-
+        //todo skal ændres til at fungere på alle sprog1
         String nrPlayers = gui.getUserSelection("Hvor mange spillere skal spille spillet?", "2","3","4");
         int NumberOfPlayers = Integer.parseInt(nrPlayers);
 
@@ -229,6 +242,7 @@ public class GUILogic {
     public String[] getPlayerNames(){
         return names;
     }
+    public int [] getPlayerAges() {return ages;}
 
     private void sleep(long n){
         try {
