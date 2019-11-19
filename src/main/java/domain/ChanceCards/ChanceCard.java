@@ -1,8 +1,10 @@
-package domain.squares;
+package domain.ChanceCards;
 
 //Chance card that has point and move modifier.
 
-public class ChanceCard {
+import domain.Player;
+
+public abstract class ChanceCard {
     private String name;
     private int move;
     private int price;
@@ -36,5 +38,7 @@ public class ChanceCard {
     public void setPrice(int price) {
         this.price = price;
     }
-
+    
+    public abstract boolean applyEffect(Player p);
+    
 }

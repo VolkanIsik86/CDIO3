@@ -12,21 +12,27 @@ public class Player {
     private boolean lost = false;
     private boolean jail = false;
     
-    
-    public Player(String name, int age, int points, Piece piece){
+    public Player(String name, int age, int balance, Piece piece){
         this.name = name;
         this.age = age;
-        account = new Account(points);
+        account = new Account(balance);
         this.piece = piece;
 
     }
-
+    
     public void setJail(boolean status){
         jail = status;
     }
     
-    public boolean attempPurchase(PropertySquare property){
-        if (property.getPrice() > this.getPoints())
+    public boolean attemptToPurchase(PropertySquare property){
+        if (property.getPrice() > this.getBalance())
+            return false;
+        else
+            return true;
+    }
+    
+    public boolean attemptToPay(int amount){
+        if (amount > this.getBalance())
             return false;
         else
             return true;
@@ -40,8 +46,8 @@ public class Player {
         return lost;
     }
 
-    public void setLost(boolean lost) {
-        this.lost = lost;
+    public void setLost(boolean status) {
+        this.lost = status;
     }
 
     public Square getLocation(){
@@ -52,16 +58,20 @@ public class Player {
         return piece.getType();
     }
     
-    public int getPoints(){
-        return account.getPoints();
+    public int getBalance(){
+        return account.getBalance();
     }
     
-    public void setPoints(int points){
-        account.setPoints(points);
+    public void setBalance(int points){
+        account.setBalance(points);
     }
     
-    public void addPoints(int points){
-        account.addPoints(points);
+    public void withdraw(int amount){
+        account.withdraw(amount);
+    }
+    
+    public void deposit(int amount){
+        account.deposit(amount);
     }
     
     public String getName(){
@@ -87,6 +97,8 @@ public class Player {
                 ", age=" + age +
                 ", account=" + account +
                 ", piece=" + piece +
+                ", lost=" + lost +
+                ", jail=" + jail +
                 '}';
     }
 }

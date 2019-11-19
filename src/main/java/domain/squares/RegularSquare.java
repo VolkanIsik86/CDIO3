@@ -9,9 +9,9 @@ public class RegularSquare extends Square {
         super(name, index,board);
     }
 
+    @Override
     public void landedOn(Player p) {
-        // Does nothing...
-
+        //Does nothing..
     }
 
 
