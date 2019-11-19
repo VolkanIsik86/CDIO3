@@ -22,7 +22,7 @@ public class ChanceSquare extends Square {
     public void landedOn(Player p) {
         int rng = new Random().nextInt(4);
         p.setLocation(board.nextLocation(this,chanceCards[rng].getMove()));
-        p.addPoints((chanceCards[rng].getPrice()));
+        p.withdraw((chanceCards[rng].getPrice()));
         if(chanceCards[rng].getMove()>0){
             p.getLocation().landedOn(p);
         }

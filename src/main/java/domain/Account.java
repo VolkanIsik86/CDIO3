@@ -17,15 +17,12 @@ public class Account {
         this.balance = balance;
     }
     
-    //Subtracts the legal amount.
-    //Returns false if withdrawal > balance, otherwise true.
-    public boolean withdraw(int withdrawal){
-        if (withdrawal > balance){
+    //Subtracts no more than the legal amount
+    public void withdraw(int amount){
+        if (amount > balance){
             balance = 0;
-            return false;
         } else {
-            balance = balance - withdrawal;
-            return true;
+            balance = balance - amount;
         }
     }
     
@@ -33,9 +30,10 @@ public class Account {
         balance = balance + addition;
     }
     
-    
-    public String toString(){
-        return "Balance: " + balance;
+    @Override
+    public String toString() {
+        return "Account{" +
+                "balance=" + balance +
+                '}';
     }
-    
 }

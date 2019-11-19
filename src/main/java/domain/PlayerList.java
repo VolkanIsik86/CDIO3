@@ -38,22 +38,4 @@ public class PlayerList {
         return players.length;
     }
     
-    
-    // todo slet nedenstående (bare til testing)
-//    public static void main(String[] args) {
-//
-//        Board board = new Board("src/main/java/services/","squareDescriptions");
-//        PlayerList players = new PlayerList(board.getSquare(0));
-//
-//        players.addPlayer("navn",25,2000);
-//        System.out.println(players.getPlayer(0).getName());
-//
-//        players.addPlayer("Hans",56,1000);
-//
-//        System.out.println(players.getPlayer(0).getType());
-//        System.out.println(players.getPlayer(1).getType());
-//
-//    }
-
-    
 }

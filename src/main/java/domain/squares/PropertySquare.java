@@ -43,17 +43,17 @@ public class PropertySquare extends Square {
 
     // pay rent logic: removes points from player
     public  void payRent(Player p){
-        p.addPoints(- this.getPrice());
+        p.withdraw(- this.getPrice());
     }
 
     // get rent logic: Adds points to the owner of this square.
     public  void getRent(){
-        this.getOwner().addPoints(this.getPrice());
+        this.getOwner().withdraw(this.getPrice());
     }
 
     public void landedOn(Player p) {
         if (owner==null) {
-            if(p.attempPurchase(this)){
+            if(p.attemptToPurchase(this)){
                 this.setOwner(p);
                 payRent(p);
                 //TODO her skal logikken implementeres for hvis spilleren ikke kan betale for feltet.
