@@ -3,29 +3,37 @@ package domain;
 //Formålet med account-klassen er at holde styr på spillernes point
 
 public class Account {
-    private int points;
+    private int balance;
     
-    public Account(int points){
-        this.points = points;
+    public Account(int balance){
+        this.balance = balance;
     }
     
-    public int getPoints(){
-        return points;
+    public int getBalance(){
+        return balance;
     }
     
-    public void setPoints(int points){
-        this.points = points;
+    public void setBalance(int balance){
+        this.balance = balance;
     }
     
-    public void addPoints(int addition){
-        points = points + addition;
-        if (points <= 0 ){
-            points = 0;
+    //Subtracts no more than the legal amount
+    public void withdraw(int amount){
+        if (amount > balance){
+            balance = 0;
+        } else {
+            balance = balance - amount;
         }
     }
     
-    public String toString(){
-        return "Points: " + points;
+    public void deposit(int addition){
+        balance = balance + addition;
     }
     
+    @Override
+    public String toString() {
+        return "Account{" +
+                "balance=" + balance +
+                '}';
+    }
 }

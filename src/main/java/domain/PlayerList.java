@@ -13,7 +13,7 @@ public class PlayerList {
         this.startSquare = startSquare;
     }
     
-    public void addPlayer(String name, int age, int points){
+    public void addPlayer(String name, int age, int Balance){
         
         // Increase size of player-array by 1
         Player[] temp = new Player[players.length+1];
@@ -26,7 +26,7 @@ public class PlayerList {
         Piece piece = new Piece(startSquare);
         
         //Create and add new player to array
-        players[players.length-1] = new Player(name, age, points, piece);
+        players[players.length-1] = new Player(name, age, Balance, piece);
         
     }
     
@@ -37,7 +37,11 @@ public class PlayerList {
     public int NumberOfPlayers(){
         return players.length;
     }
-// Hentet inspiration fra geeksforgeeks.org/insertion-sort/
+    //Returnerer player array
+    public Player [] getPlayers(){
+        return players;
+    }
+    // Hentet inspiration fra geeksforgeeks.org/insertion-sort/
     public void sortPlayersByAge(){
 
         for (int i = 0; i < players.length ; i++) {
@@ -51,23 +55,4 @@ public class PlayerList {
             players[j+1] = key;
         }
     }
-    
-    
-    // todo slet nedenstående (bare til testing)
-//    public static void main(String[] args) {
-//
-//        Board board = new Board("src/main/java/services/","squareDescriptions");
-//        PlayerList players = new PlayerList(board.getSquare(0));
-//
-//        players.addPlayer("navn",25,2000);
-//        System.out.println(players.getPlayer(0).getName());
-//
-//        players.addPlayer("Hans",56,1000);
-//
-//        System.out.println(players.getPlayer(0).getType());
-//        System.out.println(players.getPlayer(1).getType());
-//
-//    }
-
-    
 }

@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Die {
     
+    private final int N_SIDES = 6;
     private int dieValue = 0;
     private Random rnd = new Random();
     
@@ -18,7 +19,7 @@ public class Die {
     
     // finder et tilfældigt tal mellem 1 og antal sider som vælges i main
     public void roll(){
-        this.dieValue = (rnd.nextInt(6)+1);
+        this.dieValue = (rnd.nextInt(N_SIDES)+1);
     }
     
     // skriver ud

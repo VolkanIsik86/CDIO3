@@ -9,14 +9,19 @@ public class Board {
     private Square[] squares;
 
     public Board(String path, String file){
-
-        TxtReader sDec = new TxtReader(path,file);
+    
         squares = new Square[SIZE];
+        
+        //Load square descriptions
+        TxtReader sDec = new TxtReader(path,file);
+        
+        //For all squares
+        for (int i = 0; i < SIZE; i++) {
 
-        for (int i = 0; i < 24; i++) {
-
+            //Extract corresponding square description
             String[] oneLine = sDec.getLine(String.valueOf(i)).split("-");
             
+            //Create the proper square subclass and place in array
             if ("Regular".equalsIgnoreCase(oneLine[0])) {
                 squares[i] = new RegularSquare(oneLine[1], Integer.parseInt(oneLine[2]),this);
             } else if ("Property".equals(oneLine[0])) {
@@ -49,12 +54,10 @@ public class Board {
     public Square getJail(){
         return squares[5];
     }
-   
-    // todo skal slettes (kun til midlertidig test
-//    public static void main(String[] args) {
-//        Board board = new Board("src/main/java/services/","squareDescriptions");
-//        System.out.println(board.getSquare(3).getName());
-//
-//    }
+    
+    public Square getStart() {
+        return squares[0];
+    }
+    
     
 }

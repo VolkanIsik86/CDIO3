@@ -1,5 +1,6 @@
 package controllers;
 
+import com.sun.media.jfxmedia.events.PlayerEvent;
 import domain.Board;
 import domain.*;
 import domain.Player;
@@ -17,7 +18,8 @@ public class Game {
    private PlayerList playerList;
    private String path = "src/main/java/services/";
    private String language;
-   
+
+
     //todo ret antal startpoints
     private final int START_POINTS = 10;
     
@@ -41,14 +43,19 @@ public class Game {
                 // System.out.println("Roll: " + roll);
                 // System.out.println(currentPlayer.getName() + ": " + currentPlayer.getPoints());
 
+                if (currentPlayer.getLost() == true)
+                    break;
+
                 guiLogic.update(currentPlayer, oldLocation, roll);
 
-                //todo check for winner --> break;
+
+
             }
+            getWinner();
         }
 
 
-        
+
         
        
         
@@ -92,7 +99,28 @@ public class Game {
        playerList.sortPlayersByAge();
 
    }
-   
+   //todo uafgjort mellem spillere med ens point mangler at blive implementeret
+   private Player getWinner(){
+
+       Player winner = playerList.getPlayer(0);
+
+       for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
+           Player currentPlayer = playerList.getPlayer(i);
+           if (currentPlayer.getLost()){
+               int maxScore = playerList.getPlayer(0).getBalance();
+               for (int k = 1; k < playerList.NumberOfPlayers(); k++) {
+                   if (playerList.getPlayer(k).getBalance()>maxScore){
+                       winner = playerList.getPlayer(k);
+                   }
+
+               }
+
+           }
+
+       }
+       return winner;
+   }
+
     
     public static void main(String[] args) {
         Game game = new Game();

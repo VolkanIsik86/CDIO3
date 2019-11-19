@@ -3,18 +3,18 @@ package domain.squares;
 
 import domain.Board;
 import domain.Player;
-// Property square is the square that can be owned and other players, who lands on it, pays to the owner.
+
+// Property square is the square that can be owned and other players, who land on it, pays to the owner.
 public class PropertySquare extends Square {
+    
     private String color;
     private int price;
     private Player owner = null;
-
-
+    
     public PropertySquare(String name, int index, Board board, int price, String color) {
         super(name, index, board);
         this.color = color;
         this.price = price;
-
     }
 
     public String getColor() {
@@ -40,36 +40,52 @@ public class PropertySquare extends Square {
     public void setOwner(Player owner) {
         this.owner = owner;
     }
-
-    // pay rent logic: removes points from player
-    public  void payRent(Player p){
-        if(p.getPoints() < this.getPrice()){
-            p.setLost(true);
-        }
-        else {
-            p.addPoints(-this.getPrice());
-        }
+    
+    //Pay rent logic: withdraws balance from player
+    private void payRent(Player p){
+        p.withdraw(this.getPrice());
     }
 
     // get rent logic: Adds points to the owner of this square.
-    public  void getRent(){
-        this.getOwner().addPoints(this.getPrice());
+    private  void earnRent(){
+        owner.deposit(this.getPrice());
     }
-
+    
+    private void purchase(Player p){
+        this.setOwner(p);
+        payRent(p);
+    }
+    
     public void landedOn(Player p) {
-        if (owner==null) {
-            if(p.attempPurchase(this)){
-                this.setOwner(p);
-                payRent(p);
-                //TODO her skal logikken implementeres for hvis spilleren ikke kan betale for feltet.
+        
+        //If property is not owned
+        if (owner == null) {
+            
+            //If player has the requested fonds
+            if (p.attemptToPurchase(this)){
+                purchase(p);
             }
+            
+            //If player doesn't have the requested fonds
             else {
                 p.setLost(true);
             }
         }
+        
+        //If property is owned
         else{
-            payRent(p);
-            getRent();
+    
+            //If player has the requested fonds
+            if (p.attemptToPay(this.getPrice())){
+                payRent(p);
+                earnRent();
+            }
+    
+            //If player doesn't have the requested fonds
+            else {
+                p.setLost(true);
+            }
+            
         }
     }
 }
