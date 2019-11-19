@@ -1,0 +1,16 @@
+0,,Move-1
+1,,Move-2
+2,,Move-3
+3,,Move-4
+4,,Pay-1
+5,,Pay-1
+6,,Pay-2
+7,,Pay-3
+8,,Earn-1
+9,,Earn-1
+10,,Earn-2
+11,,Earn-2
+12,,Earn-3
+13,,Earn-4
+
+

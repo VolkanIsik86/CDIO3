@@ -9,10 +9,8 @@ public abstract class ChanceCard {
     private int move;
     private int price;
 
-    public ChanceCard(String name, int move, int price) {
+    public ChanceCard(String name) {
         this.name = name;
-        this.move = move;
-        this.price = price;
     }
 
     public String getName() {
@@ -39,6 +37,6 @@ public abstract class ChanceCard {
         this.price = price;
     }
     
-    public abstract boolean applyEffect(Player p);
+    public abstract void applyEffect(Player p);
     
 }

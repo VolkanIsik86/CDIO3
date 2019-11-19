@@ -2,9 +2,9 @@ package domain.ChanceCards;
 
 import domain.Player;
 
-public class Pay extends ChanceCard {
+public class PayCard extends ChanceCard {
     
-    public Pay(String name, int move, int price) {
+    public PayCard(String name, int move, int price) {
         super(name, move, price);
     }
     
