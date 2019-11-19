@@ -37,6 +37,20 @@ public class PlayerList {
     public int NumberOfPlayers(){
         return players.length;
     }
+// Hentet inspiration fra geeksforgeeks.org/insertion-sort/
+    public void sortPlayersByAge(){
+
+        for (int i = 0; i < players.length ; i++) {
+            Player key = players[i];
+            int j = i-1;
+
+            while (j>=0 && players[j].getAge() > key.getAge()){
+                players[j+1] = players[j];
+                j=j-1;
+            }
+            players[j+1] = key;
+        }
+    }
     
     
     // todo slet nedenstående (bare til testing)

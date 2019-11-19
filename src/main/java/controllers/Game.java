@@ -44,7 +44,6 @@ public class Game {
                 guiLogic.update(currentPlayer, oldLocation, roll);
 
                 //todo check for winner --> break;
-
             }
         }
 
@@ -89,7 +88,9 @@ public class Game {
        for (int i = 0; i < playerNames.length; i++) {
            playerList.addPlayer(playerNames[i],ageOfPlayer[i],10);
        }
-       
+
+       playerList.sortPlayersByAge();
+
    }
    
     
