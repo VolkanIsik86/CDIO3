@@ -115,7 +115,7 @@ public class GUILogic {
                     boolean sameNameTest = true;
                     while (sameNameTest) {
                     if (name.equals(samename)) {
-                        name = gui.getUserString("name is alre ady in use, type another name:");
+                        name = gui.getUserString("name is already in use, type another name:");
 
                     }
                     else
@@ -269,6 +269,10 @@ public class GUILogic {
 
     }
 
+    public void setPlayerBalance(GUI_Player player, int value){
+        player.setBalance(value);
+    }
+
 }
 
 // todo GUI skal vise det felt man lander på i midten
@@ -277,6 +281,6 @@ public class GUILogic {
 // todo implementeres en OK menu før spillet slår med terningerne
 // todo chancekort
 // todo kraftigt overveje vores .update funktion
-// todo spillerne skal også vælge alder
+
 
 
