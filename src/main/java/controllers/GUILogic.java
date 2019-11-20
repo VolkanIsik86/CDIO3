@@ -110,10 +110,26 @@ public class GUILogic {
             //Beder spilleren indtaste et navn
 
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
+
+                for (String samename : names) {
+                    boolean sameNameTest = true;
+                    while (sameNameTest) {
+                    if (name.equals(samename)) {
+                        name = gui.getUserString("name is alre ady in use, type another name:");
+
+                    }
+                    else
+                        sameNameTest = false;
+
+                }
+            }
     
             //todo hvorfor står der names[i] nedenfor og ikke names[names.length-1]?
+            //Fordi vi er inde i et for-loop og det betyder det samme. Desuden er det pænere sådan her.
             //Tilføjer spillerens navn til listen over navne
+
             names[i] = name;
+
 
             int age = gui.getUserInteger("Enter age of "  + name + ":" , 5,150);
             ages[i] = age;
