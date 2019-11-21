@@ -5,37 +5,16 @@ package domain.ChanceCards;
 import domain.Player;
 
 public abstract class ChanceCard {
-    private String name;
-    private int move;
-    private int price;
+    private String type;
 
-    public ChanceCard(String name) {
-        this.name = name;
+    public ChanceCard(String type) {
+        this.type = type;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getMove() {
-        return move;
-    }
-
-    public void setMove(int move) {
-        this.move = move;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
+    
     
     public abstract void applyEffect(Player p);
     

@@ -84,6 +84,7 @@ public class PropertySquare extends Square {
             //If player doesn't have the requested fonds
             else {
                 p.setLost(true);
+                p.setBalance(0);
             }
             
         }

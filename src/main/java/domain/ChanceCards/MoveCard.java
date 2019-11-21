@@ -4,12 +4,15 @@ import domain.Player;
 
 public class MoveCard extends ChanceCard {
     
-    public MoveCard(String name, int move, int price) {
-        super(name, move, price);
+    private int moves;
+    
+    public MoveCard(String type, int moves) {
+        super(type);
+        this.moves = moves;
     }
 
-    public boolean applyEffect(Player p){
-        return true;
+    public void applyEffect(Player p){
+    
     }
     
 }

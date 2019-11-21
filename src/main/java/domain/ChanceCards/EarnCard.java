@@ -6,8 +6,8 @@ public class EarnCard extends ChanceCard{
     
     int amount;
     
-    public EarnCard(String name, int amount) {
-        super(name);
+    public EarnCard(String type, int amount) {
+        super(type);
         this.amount = amount;
     }
     
