@@ -253,6 +253,7 @@ public class GUILogic {
         return names;
     }
     public void displayDie(int faceValue){
+        showMessage("lol, kast lige terningen");
         gui.setDie(faceValue);
     }
     public String[] getPlayerNames(){
@@ -271,6 +272,9 @@ public class GUILogic {
 
     public void setPlayerBalance(GUI_Player player, int value){
         player.setBalance(value);
+    }
+    private void showMessage(String message){
+        gui.showMessage(message);
     }
 
 }
