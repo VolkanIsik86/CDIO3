@@ -110,10 +110,26 @@ public class GUILogic {
             //Beder spilleren indtaste et navn
 
             String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
+
+                for (String samename : names) {
+                    boolean sameNameTest = true;
+                    while (sameNameTest) {
+                    if (name.equals(samename)) {
+                        name = gui.getUserString("name is already in use, type another name:");
+
+                    }
+                    else
+                        sameNameTest = false;
+
+                }
+            }
     
             //todo hvorfor står der names[i] nedenfor og ikke names[names.length-1]?
+            //Fordi vi er inde i et for-loop og det betyder det samme. Desuden er det pænere sådan her.
             //Tilføjer spillerens navn til listen over navne
+
             names[i] = name;
+
 
             int age = gui.getUserInteger("Enter age of "  + name + ":" , 5,150);
             ages[i] = age;
@@ -237,6 +253,7 @@ public class GUILogic {
         return names;
     }
     public void displayDie(int faceValue){
+        showMessage("lol, kast lige terningen");
         gui.setDie(faceValue);
     }
     public String[] getPlayerNames(){
@@ -253,6 +270,13 @@ public class GUILogic {
 
     }
 
+    public void setPlayerBalance(GUI_Player player, int value){
+        player.setBalance(value);
+    }
+    private void showMessage(String message){
+        gui.showMessage(message);
+    }
+
 }
 
 // todo GUI skal vise det felt man lander på i midten
@@ -261,6 +285,6 @@ public class GUILogic {
 // todo implementeres en OK menu før spillet slår med terningerne
 // todo chancekort
 // todo kraftigt overveje vores .update funktion
-// todo spillerne skal også vælge alder
+
 
 
