@@ -55,4 +55,27 @@ public class PlayerList {
             players[j+1] = key;
         }
     }
+    //BALANCE skal sættes efter antal spillere
+    //2 spillere giver balance på 20M
+    //3 spillere giver blance på 18M
+    //4 spillere giver blance på 16M
+    public void setStartBalance(){
+        for (int i = 0; i < players.length; i++) {
+
+            if (getPlayers().equals(2)){
+                    getPlayer(i).setBalance(20);
+            }
+            if (getPlayers().equals(3)){
+                getPlayer(i).setBalance(18);
+            }
+            if (getPlayers().equals(4)){
+                getPlayer(i).setBalance(16);
+            }
+        }
+
+    }
+
+
+
+
 }
