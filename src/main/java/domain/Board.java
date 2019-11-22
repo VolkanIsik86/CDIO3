@@ -33,22 +33,15 @@ public class Board {
             }
         }
     }
-    
-    // todo getJail (og brug det i squares)
-    // todo getStart (og brug det i squares)
 
     public Square getSquare(int index){
         return squares[index];
     }
+    
     public Square nextLocation(Square currentLocation, int roll){
         int nextIndex;
         nextIndex = (currentLocation.getIndex() + roll)%SIZE;
         return squares[nextIndex];
-    }
-
-    // todo skal slettes men bruges pt. af SquareLogic
-    public Square[] getSquares() {
-        return squares;
     }
 
     public Square getJail(){

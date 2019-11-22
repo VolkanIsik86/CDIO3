@@ -26,12 +26,11 @@ public class TurnLogic {
         guiLogic.displayDie(roll);
 
         Square nextLocation = board.nextLocation(player.getLocation(), die.getFaceValue());
-        nextLocation.landedOn(player);
         player.setLocation(nextLocation);
+        nextLocation.landedOn(player);
         
         //sætter spillerens pengebeholdning til at være den samme i GUI-Logikken som i spil-logikken.
         guiLogic.setPlayerBalance(guiPlayer,player.getBalance());
-
         
         // todo taketurn skal ikke returnere en int, men det skal fixes i Game og Gui logic først
         return die.getFaceValue();

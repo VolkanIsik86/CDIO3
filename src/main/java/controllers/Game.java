@@ -28,35 +28,35 @@ public class Game {
         initializeGame();
     
         //Play a round
-
-        for (int j = 0; j < 25; j++) {
+        String looser = "null";
+        do {
+            
             for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
-
+                
                 Player currentPlayer = playerList.getPlayer(i);
+                System.out.println("\nTager en tur for: " + currentPlayer.getName());
+                System.out.println("Spilleren stod på: " + currentPlayer.getLocation().getIndex());
+                System.out.println("Spilleren havde: " + currentPlayer.getBalance() + " point");
+                
                 Square oldLocation;
                 oldLocation = currentPlayer.getLocation();
-
+                
                 int roll = turnLogic.takeTurn(currentPlayer);
-
-                // todo slet når vi er færdige med at teste
-                // System.out.println("Roll: " + roll);
-                // System.out.println(currentPlayer.getName() + ": " + currentPlayer.getPoints());
-
-                if (currentPlayer.getLost() == true)
-                    break;
-
+                System.out.println("Spiller slog: " + roll);
+                System.out.println("Spilleren har nu: " + currentPlayer.getBalance() + " point");
+                
                 guiLogic.update(currentPlayer, oldLocation, roll);
-
-
-
+                
+                if (currentPlayer.getLost() == true){
+                    looser = currentPlayer.getName();
+                    break;
+                }
             }
-            getWinner();
-        }
-
-
-
+            
+        } while(looser.equals("null"));
+    
+        getWinner();
         
-       
         
    }
    
@@ -92,10 +92,13 @@ public class Game {
        String[] playerNames = guiLogic.getPlayerNames();
        int [] ageOfPlayer = guiLogic.getPlayerAges();
        for (int i = 0; i < playerNames.length; i++) {
-           playerList.addPlayer(playerNames[i],ageOfPlayer[i],10);
+           playerList.addPlayer(playerNames[i],ageOfPlayer[i],20);
        }
 
        playerList.sortPlayersByAge();
+       
+  
+       
 
    }
    //todo uafgjort mellem spillere med ens point mangler at blive implementeret

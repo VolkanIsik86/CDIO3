@@ -153,9 +153,9 @@ public class GUILogic {
         }
     }
 
+    //todo når en spiller lander på "Go to jail" bliver spilleren som det er nu ikke fjernet fra feltet
     public void movePiece(GUI_Player player, int currentField, int moves) {
-
-        System.out.println("currentField: " + currentField);
+        
         int movesDone = 0; //Bruges til at holde styr på antal moves udført
         if (moves != 0) {
             //Tjekker om piece position bliver større end board
@@ -223,6 +223,7 @@ public class GUILogic {
     public String getFILE() {
         return FILE;
     }
+    
     public GUI_Player getPlayer(String playerName) {
         boolean q = true;
         GUI_Player dims = null;
@@ -242,6 +243,7 @@ public class GUILogic {
 
         return dims;
     }
+    
     public String[] makeUsers() {
         //todo skal ændres til at fungere på alle sprog1
         String nrPlayers = gui.getUserSelection("Hvor mange spillere skal spille spillet?", "2","3","4");
@@ -252,13 +254,18 @@ public class GUILogic {
 
         return names;
     }
+    
     public void displayDie(int faceValue){
+        
+        //todo Skal hente den rigtige sætning afhængig af sprog
+        //todo det skal også fremgå vis tur det er.
         showMessage("lol, kast lige terningen");
         gui.setDie(faceValue);
     }
     public String[] getPlayerNames(){
         return names;
     }
+    
     public int [] getPlayerAges() {return ages;}
 
     private void sleep(long n){
@@ -273,7 +280,8 @@ public class GUILogic {
     public void setPlayerBalance(GUI_Player player, int value){
         player.setBalance(value);
     }
-    private void showMessage(String message){
+    
+    public void showMessage(String message){
         gui.showMessage(message);
     }
 

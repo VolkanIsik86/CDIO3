@@ -16,14 +16,11 @@ public class ChanceSquare extends Square {
     public ChanceSquare(String name, int index, Board board) {
         super(name, index, board);
         
-        //todo skal nok flyttes til en txt
-//        chanceCards[0] = new ChanceCard("Fødselsdag",0,2);
-//        chanceCards[1] = new ChanceCard("Ryk 3 frem",3,0);
-//        chanceCards[2] = new ChanceCard("Lotto",0,2);
-//        chanceCards[3] = new ChanceCard("Ryk 5 frem",5,0);
     }
 
     // Pulls a random card from chancecards array and affects the player with it.
+    
+    //todo skal skrives færdig
     public void landedOn(Player p) {
     
         int rng = new Random().nextInt(N_CHANCECARDS);
