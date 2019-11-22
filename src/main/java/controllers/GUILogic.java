@@ -26,6 +26,7 @@ public class GUILogic {
     private GUI_Player[] players = new GUI_Player[0];
     private int[] ages = new int [0];
 
+
     public GUILogic(String language) {
         makeBoard(language);
         makeUsers();
@@ -209,6 +210,9 @@ public class GUILogic {
 
         GUI_Player gui_Player = getPlayer(player.getName());
         movePiece(gui_Player,oldLocation.getIndex(),roll);
+        if (oldLocation.getIndex() + roll == 3 || oldLocation.getIndex() + roll == 9 || oldLocation.getIndex() + roll == 15 || oldLocation.getIndex() + roll == 21){
+            gui.displayChanceCard("Her en chance kort");
+        }
 
     }
 
