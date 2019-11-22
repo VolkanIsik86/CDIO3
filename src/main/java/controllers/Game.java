@@ -39,6 +39,7 @@ public class Game {
                 System.out.println("Spilleren stod på: " + currentPlayer.getLocation().getIndex());
                 System.out.println("Spilleren havde: " + currentPlayer.getBalance() + " point");
                 
+                //todo skal det ændres?
                 Square oldLocation;
                 oldLocation = currentPlayer.getLocation();
                 
@@ -57,7 +58,6 @@ public class Game {
         } while(looser.equals("null"));
     
         getWinner();
-        
         
    }
    

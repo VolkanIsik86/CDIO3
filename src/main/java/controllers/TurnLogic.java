@@ -29,7 +29,7 @@ public class TurnLogic {
         player.setLocation(nextLocation);
         nextLocation.landedOn(player);
         
-        //sætter spillerens pengebeholdning til at være den samme i GUI-Logikken som i spil-logikken.
+        //sætter spillerens pengebeholdning til at være den samme i GUI'en som i backenden.
         guiLogic.setPlayerBalance(guiPlayer,player.getBalance());
         
         // todo taketurn skal ikke returnere en int, men det skal fixes i Game og Gui logic først

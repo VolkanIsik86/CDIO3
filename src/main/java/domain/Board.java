@@ -41,7 +41,7 @@ public class Board {
     
     public Square nextLocation(Square currentLocation, int roll){
         int nextIndex;
-        nextIndex = (currentLocation.getIndex() + roll)%SIZE;
+        nextIndex = (currentLocation.getIndex() + roll) % SIZE;
         return squares[nextIndex];
     }
 
