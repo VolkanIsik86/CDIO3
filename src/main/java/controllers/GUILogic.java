@@ -10,6 +10,7 @@ import gui_main.GUI;
 import services.TxtReader;
 
 import java.awt.*;
+import java.util.Random;
 
 
 public class GUILogic {
@@ -135,11 +136,25 @@ public class GUILogic {
             int age = gui.getUserInteger("Enter age of "  + name + ":" , 5,150);
             ages[i] = age;
 
-            //Konstruere en tilfældig GUI-bil
+            //Konstruere en tilfældig type af GUI-bil med tilfældig farver. (Inspireret af Læren Daniel Kolditz Rubin-Grøn)
+            Random rng = new Random();
+            // Farve objektet initaliseret med en konstruktør hvor RGB farverne defineret tilfældigt
+            Color tempcolor = new Color(rng.nextInt(255),rng.nextInt(255),rng.nextInt(255));
+            GUI_Car car = new GUI_Car(tempcolor,tempcolor, GUI_Car.Type.values()[i%4], GUI_Car.Pattern.HORIZONTAL_DUAL_COLOR);
 
-            GUI_Car car = new GUI_Car();
             //Konstruere en spiller med den tilfældige bil og et navn
-            GUI_Player player = new GUI_Player(name, 0, car);
+
+            int tempbalance = 0;
+            if (numberofPlayers==2){
+                tempbalance = 20;
+            }
+            else if (numberofPlayers==3){
+                tempbalance = 18;
+            }
+            else
+                tempbalance = 16;
+
+            GUI_Player player = new GUI_Player(name, tempbalance, car);
             //tilføjer spillerne til en spillerliste
             GUI_Player[] temp2 = new GUI_Player[players.length + 1];
             for (int j = 0; j < players.length; j++) {
