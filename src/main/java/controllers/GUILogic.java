@@ -138,7 +138,7 @@ public class GUILogic {
 
             GUI_Car car = new GUI_Car();
             //Konstruere en spiller med den tilfældige bil og et navn
-            GUI_Player player = new GUI_Player(name, 1000, car);
+            GUI_Player player = new GUI_Player(name, 0, car);
             //tilføjer spillerne til en spillerliste
             GUI_Player[] temp2 = new GUI_Player[players.length + 1];
             for (int j = 0; j < players.length; j++) {
