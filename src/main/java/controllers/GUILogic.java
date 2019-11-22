@@ -186,10 +186,17 @@ public class GUILogic {
                 movesDone++;
                 sleep(DELAY);
             }
+
             //Kører flytning af piece, tjekker om der er moves tilbage
             for (int i = 0; i + movesDone < moves; i++) {
                 currentField = moveOnce(player, currentField);
                 sleep(DELAY);
+            }
+            // Go to jail logikken
+            if(currentField == 18){
+
+                fields[currentField].setCar(player, false);
+                fields[6].setCar(player, true);
             }
         } else {
             fields[0].setCar(player, true);
