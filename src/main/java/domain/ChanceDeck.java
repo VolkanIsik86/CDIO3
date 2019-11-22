@@ -9,13 +9,15 @@ import services.TxtReader;
 
 public class ChanceDeck {
     
-    private final int N_CARDS = 4;
-    private ChanceCard[] chanceCards = new ChanceCard[N_CARDS];
+    private final int N_CARDS;
+    private ChanceCard[] chanceCards;
     
     //Creates all the Chance cards and adds them to an array
     public ChanceDeck(String path, String file) {
     
         TxtReader cDec = new TxtReader(path, file);
+        N_CARDS = cDec.getN_LINES();
+        chanceCards = new ChanceCard[N_CARDS];
     
         //For all cards
         for (int i = 0; i < N_CARDS; i++) {

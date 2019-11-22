@@ -6,10 +6,11 @@ import static org.junit.Assert.*;
 
 public class TxtReaderTest {
     
-    TxtReader txt = new TxtReader("src/test/java/service/","testText");
+    TxtReader txt = new TxtReader("src/test/java/services/","testText");
     
     @Test
     public void getLine() {
+        assertEquals(6,txt.getN_LINES());
         assertEquals("Tekst1",txt.getLine("key"));
         assertEquals("Tekst med mellemrum",txt.getLine("key2"));
         assertEquals("Tekst2",txt.getLine("key med mellemrum"));

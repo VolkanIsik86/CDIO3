@@ -34,6 +34,7 @@ public class Game {
             for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
                 
                 Player currentPlayer = playerList.getPlayer(i);
+                
                 System.out.println("\nTager en tur for: " + currentPlayer.getName());
                 System.out.println("Spilleren stod på: " + currentPlayer.getLocation().getIndex());
                 System.out.println("Spilleren havde: " + currentPlayer.getBalance() + " point");
@@ -92,7 +93,7 @@ public class Game {
        String[] playerNames = guiLogic.getPlayerNames();
        int [] ageOfPlayer = guiLogic.getPlayerAges();
        for (int i = 0; i < playerNames.length; i++) {
-           playerList.addPlayer(playerNames[i],ageOfPlayer[i],20);
+           playerList.addPlayer(playerNames[i],ageOfPlayer[i]);
        }
 
        playerList.sortPlayersByAge();

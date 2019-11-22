@@ -5,15 +5,16 @@ import services.TxtReader;
 
 public class Board {
 
-    private int SIZE = 24;
+    private int SIZE;
     private Square[] squares;
 
     public Board(String path, String file){
-    
-        squares = new Square[SIZE];
         
         //Load square descriptions
         TxtReader sDec = new TxtReader(path,file);
+        
+        SIZE = sDec.getN_LINES();
+        squares = new Square[SIZE];
         
         //For all squares
         for (int i = 0; i < SIZE; i++) {

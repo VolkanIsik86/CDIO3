@@ -5,10 +5,10 @@
 4,,Pay-1
 5,,Pay-1
 6,,Pay-2
-7,,Pay-3
-8,,Earn-1
-9,,Earn-1
-10,,Earn-2
+7,,Pay-2
+8,,Pay-3
+9,,Pay-3
+10,,Earn-1
 11,,Earn-2
 12,,Earn-3
 13,,Earn-4
