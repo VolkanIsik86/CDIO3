@@ -33,9 +33,8 @@ public class Game {
             for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
 
                 Player currentPlayer = playerList.getPlayer(i);
-
                 Square oldLocation;
-                oldLocation =currentPlayer.getLocation();
+                oldLocation = currentPlayer.getLocation();
 
                 int roll = turnLogic.takeTurn(currentPlayer);
 
