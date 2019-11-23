@@ -58,9 +58,9 @@ public class PropertySquare extends Square {
         payRent(p);
     }
     
-    public void landedOn(Player p) {
+    public void landedOn(Player player) {
         
-        if (this.equals(p)){
+        if (this.equals(player)){
             guiLogic.showMessage(landedOnTxt.getLine("Owned by yourself property square"));
             return;
         }
@@ -71,34 +71,38 @@ public class PropertySquare extends Square {
             guiLogic.showMessage(landedOnTxt.getLine("Not owned property square"));
             
             //If player has the requested fonds
-            if (p.attemptToPurchase(this)){
-                purchase(p);
+            if (player.attemptToPurchase(this)){
+                purchase(player);
+                guiLogic.setPlayerBalance(player);
             }
             
             //If player doesn't have the requested fonds
             else {
+                player.setLost(true);
+                player.setBalance(0);
                 guiLogic.showMessage(landedOnTxt.getLine("Does not have fonds to buy"));
-                p.setLost(true);
-                p.setBalance(0);
+                guiLogic.setPlayerBalance(player);
             }
         }
         
         //If property is owned
         else{
-    
+            
             guiLogic.showMessage(landedOnTxt.getLine("Owned by another property square"));
     
             //If player has the requested fonds
-            if (p.attemptToPay(this.getPrice())){
-                payRent(p);
+            if (player.attemptToPay(this.getPrice())){
+                payRent(player);
                 earnRent();
+                guiLogic.setPlayerBalance(player);
             }
     
             //If player doesn't have the requested fonds
             else {
+                player.setLost(true);
+                player.setBalance(0);
                 guiLogic.showMessage(landedOnTxt.getLine("Does not have fonds for rent"));
-                p.setLost(true);
-                p.setBalance(0);
+                guiLogic.setPlayerBalance(player);
             }
             
         }

@@ -216,6 +216,7 @@ public class GUILogic {
                 currentField = moveOnce(guiPlayer, currentField);
                 sleep(DELAY);
             }
+            
             // Go to jail logikken
             if(currentField == 18){
 
@@ -267,9 +268,8 @@ public class GUILogic {
     public GUI_Player getGUIPlayer(Player player) {
         
         String playerName = player.getName();
-        boolean notFound = true;
         
-        //Undersøger hvilken GUI-spiller som spilleren der er kaldt passer sammen med ved at undersøge navnet.
+        //For all GUIPlayers
         for (GUI_Player guiPlayer : guiPlayers) {
             
             //If names match
