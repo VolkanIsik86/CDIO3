@@ -60,8 +60,15 @@ public class PropertySquare extends Square {
     
     public void landedOn(Player p) {
         
+        if (this.equals(p)){
+            guiLogic.showMessage(landedOnTxt.getLine("Owned by yourself property square"));
+            return;
+        }
+        
         //If property is not owned
         if (owner == null) {
+    
+            guiLogic.showMessage(landedOnTxt.getLine("Not owned property square"));
             
             //If player has the requested fonds
             if (p.attemptToPurchase(this)){
@@ -70,6 +77,7 @@ public class PropertySquare extends Square {
             
             //If player doesn't have the requested fonds
             else {
+                guiLogic.showMessage(landedOnTxt.getLine("Does not have fonds to buy"));
                 p.setLost(true);
                 p.setBalance(0);
             }
@@ -77,6 +85,8 @@ public class PropertySquare extends Square {
         
         //If property is owned
         else{
+    
+            guiLogic.showMessage(landedOnTxt.getLine("Owned by another property square"));
     
             //If player has the requested fonds
             if (p.attemptToPay(this.getPrice())){
@@ -86,6 +96,7 @@ public class PropertySquare extends Square {
     
             //If player doesn't have the requested fonds
             else {
+                guiLogic.showMessage(landedOnTxt.getLine("Does not have fonds for rent"));
                 p.setLost(true);
                 p.setBalance(0);
             }

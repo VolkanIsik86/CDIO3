@@ -47,6 +47,16 @@ public class Player {
             return true;
     }
     
+    public boolean equals(Player player){
+        
+        if (this.getName().equals(player.getName())){
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+    
     public void setLocation(Square newLocation){
         piece.setLocation(newLocation);
     }
