@@ -1,13 +1,9 @@
 package controllers;
 
-import com.sun.media.jfxmedia.events.PlayerEvent;
 import domain.Board;
-import domain.*;
 import domain.Player;
 import domain.PlayerList;
-import domain.squares.Square;
 import services.TxtReader;
-import java.util.Scanner;
 
 public class Game {
    
@@ -15,8 +11,12 @@ public class Game {
    private Board board;
    private TurnLogic turnLogic;
    private PlayerList playerList;
-   private String path = "src/main/java/services/";
+   private String looser = "null";
+   
+   private String languagePath = "src/main/java/services/languagefiles/";
    private String language;
+   private TxtReader landedOnTxt;
+   private TxtReader squaresTxt;
    
    
     //todo ret antal startpoints
@@ -25,61 +25,66 @@ public class Game {
     public void playGame(){
     
         initializeGame();
-    
-        //Play a round
-        String looser = "null";
         
         do {
-            for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
-                
-                Player currentPlayer = playerList.getPlayer(i);
-                
-                System.out.println("\nTager en tur for: " + currentPlayer.getName());
-                System.out.println("Spilleren stod på: " + currentPlayer.getLocation().getIndex());
-                System.out.println("Spilleren havde: " + currentPlayer.getBalance() + " point");
-                
-                //todo skal det ændres?
-                Square oldLocation = currentPlayer.getLocation();
-                
-                int roll = turnLogic.takeTurn(currentPlayer);
-                System.out.println("Spiller slog: " + roll);
-                System.out.println("Spilleren har nu: " + currentPlayer.getBalance() + " point");
-                
-                guiLogic.update(currentPlayer);
-                
-                if (currentPlayer.getLost() == true){
-                    looser = currentPlayer.getName();
-                    break;
-                }
-            }
-            
+            playRound();
         } while(looser.equals("null"));
     
         getWinner();
    }
    
+   private void playRound(){
+       for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
+        
+           Player currentPlayer = playerList.getPlayer(i);
+        
+           System.out.println("\nTager en tur for: " + currentPlayer.getName());
+           System.out.println("Spilleren stod på: " + currentPlayer.getLocation().getIndex());
+           System.out.println("Spilleren havde: " + currentPlayer.getBalance() + " point");
+        
+           int roll = turnLogic.takeTurn(currentPlayer);
+        
+           System.out.println("Spiller slog: " + roll);
+           System.out.println("Spilleren har nu: " + currentPlayer.getBalance() + " point");
+
+           if (currentPlayer.getLost() == true){
+               looser = currentPlayer.getName();
+               break;
+           }
+       }
+   }
+   
    private void initializeGame(){
        initLanguage();
+       initGUILogic();
        initBoard();
-       initControllers();
+       initTurnLogic();
        initPlayerList();
    }
    
    private void initLanguage(){
+       
        LanguageLogic languageLogic = new LanguageLogic();
     
-       // Promts user to select language
+       //Promts user to select language
        language = languageLogic.selectLangauge();
+       
+       landedOnTxt = new TxtReader(languagePath, "landedOn_" + language);
+       squaresTxt = new TxtReader(languagePath, "squareDescriptions_" + language);
+       
+       
+   }
+   
+   private void initGUILogic(){
+       //Creates GuiLogic object which initializes the GUI itself in its constructor
+       guiLogic = new GUILogic(language);
    }
    
    private void initBoard(){
-       board = new Board(path,"squareDescriptions_" + language);
+       board = new Board(squaresTxt, landedOnTxt, guiLogic);
    }
    
-   private void initControllers(){
-       //Creates GuiLogic object which initializes the GUI itself in its constructor
-       guiLogic = new GUILogic(language);
-       
+   private void initTurnLogic(){
        turnLogic = new TurnLogic(board,guiLogic);
    }
    

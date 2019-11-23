@@ -1,12 +1,21 @@
 package domain;
 
+import controllers.GUILogic;
 import org.junit.Test;
+import services.TxtReader;
 
 import static org.junit.Assert.*;
 
 public class BoardTest {
     
-    Board board = new Board("src/main/java/services/","squareDescriptions");
+    String languagePath = "src/main/java/services/languagefiles/";
+    
+    GUILogic guiLogic = new GUILogic("da");
+    
+    TxtReader squareTxt = new TxtReader("src/main/java/services/languagefiles/","squareDescriptions_da");
+    TxtReader landedOnTxt = new TxtReader("src/main/java/services/languagefiles/","landedOn_da");
+    
+    Board board = new Board(squareTxt, landedOnTxt, guiLogic);
     
     // todo hurtig test, skal muligvis udbygges
     

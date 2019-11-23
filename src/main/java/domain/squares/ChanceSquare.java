@@ -1,8 +1,10 @@
 package domain.squares;
 
+import controllers.GUILogic;
 import domain.Board;
 import domain.ChanceCards.ChanceCard;
 import domain.Player;
+import services.TxtReader;
 
 import java.util.Random;
 
@@ -11,11 +13,10 @@ public class ChanceSquare extends Square {
     
     private final int N_CHANCECARDS = 4;
     ChanceCard[] chanceCards = new ChanceCard[N_CHANCECARDS];
-
-// Chance cards are defined her
-    public ChanceSquare(String name, int index, Board board) {
-        super(name, index, board);
-        
+    
+    // Chance cards are defined her
+    public ChanceSquare(String name, int index, Board board, GUILogic guiLogic, TxtReader landedOnTxt) {
+        super(name, index, board, guiLogic, landedOnTxt);
     }
 
     // Pulls a random card from chancecards array and affects the player with it.

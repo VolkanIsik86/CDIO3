@@ -11,35 +11,28 @@ public class TurnLogic {
     private Board board;
     private GUILogic guiLogic;
     
-    public TurnLogic(Board board, GUILogic guiLogic)
-    {
+    public TurnLogic(Board board, GUILogic guiLogic) {
         this.board = board;
         this.guiLogic = guiLogic;
     }
     
     public int takeTurn(Player player) {
-    
-        GUI_Player guiPlayer = guiLogic.getPlayer(player.getName());
         
+        //Roll the die
         die.roll();
         int roll = die.getFaceValue();
         player.setLastRoll(roll);
         guiLogic.displayDie(roll);
 
-        Square nextLocation = board.nextLocation(player.getLocation(), die.getFaceValue());
+        //Calculate and move to next location
+        Square nextLocation = board.nextLocation(player, die.getFaceValue());
         player.setLocation(nextLocation);
+        guiLogic.movePiece(player);
         
-        //Checks if player has landed on a chanceSquare
-        if (board.checkForChanceSquare(nextLocation)){
-            player.setChanceStatus(true);
-        } else {
-            player.setChanceStatus(false);
-        }
-        
+        //Apply the squares effect to the player
         nextLocation.landedOn(player);
         
-        //sætter spillerens pengebeholdning til at være den samme i GUI'en som i backenden.
-        guiLogic.setPlayerBalance(guiPlayer,player.getBalance());
+//        guiLogic.setPlayerBalance(player);
         
         // todo taketurn skal ikke returnere en int, men det skal fixes i Game og Gui logic først
         return die.getFaceValue();

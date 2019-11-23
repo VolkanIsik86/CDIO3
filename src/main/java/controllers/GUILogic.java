@@ -1,7 +1,6 @@
 package controllers;
 
 import domain.Player;
-import domain.squares.Square;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -15,7 +14,7 @@ import java.util.Random;
 
 public class GUILogic {
     
-    private String PATH = "src/main/java/services/";
+    private String PATH = "src/main/java/services/languagefiles/";
     private String FILE = "squareDescriptions";
     private Color BROWN = new Color(153, 102, 0);
     private Color GOLD = new Color(255, 204, 51);
@@ -38,7 +37,7 @@ public class GUILogic {
         fields = new GUI_Field[N_FIELDS];
         
         //læser fra fil
-        TxtReader juniorFields = new TxtReader(PATH, FILE+"_"+language);
+        TxtReader juniorFields = new TxtReader(PATH, FILE + "_" + language);
 
         //Løber igennem for hvert felt
         for (int i = 0; i < N_FIELDS; i++) {
@@ -193,7 +192,7 @@ public class GUILogic {
         
         int currentField = p.getLastLocation().getIndex();
         int moves = p.getLastRoll();
-        GUI_Player player = getPlayer(p.getName());
+        GUI_Player player = getGUIPlayer(p);
         
         int movesDone = 0; //Bruges til at holde styr på antal moves udført
         if (moves != 0) {
@@ -253,14 +252,6 @@ public class GUILogic {
         return fields;
     }
 
-    public void update (Player player){
-        
-//        if (player.getChanceStatus()){
-//            gui.displayChanceCard("Her en chance kort");
-//        }
-
-    }
-
     public GUI getGui() {
         return gui;
     }
@@ -273,14 +264,17 @@ public class GUILogic {
         return FILE;
     }
     
-    public GUI_Player getPlayer(String playerName) {
+    public GUI_Player getGUIPlayer(Player player) {
+        
+        String playerName = player.getName();
+        
         boolean q = true;
         GUI_Player dims = null;
         //Undersøger hvilken GUI-spiller som spilleren der er kaldt passer sammen med ved at undersøge navnet.
-        for (GUI_Player player : players) {
+        for (GUI_Player guiPlayer : players) {
             if (q) {
                 if (player.getName().equals(playerName)) {
-                    dims = player;
+                    dims = guiPlayer;
                     q = false;
                 } else {
                     dims = null;
@@ -316,8 +310,10 @@ public class GUILogic {
 
     }
 
-    public void setPlayerBalance(GUI_Player player, int value){
-        player.setBalance(value);
+    public void setPlayerBalance(Player player){
+        
+        GUI_Player guiPlayer = getGUIPlayer(player);
+        guiPlayer.setBalance(player.getBalance());
     }
     
     public void showMessage(String message){

@@ -1,0 +1,6 @@
+Regular square,,Du er landet på et neutralt felt, og der sker derfor ikke noget†††
+Owned by another property square,,Du er landet på en ejendom ejet af en anden spiller, og skal derfor betale husleje
+Owned by yourself property square,,Du er landet på en ejendom du allerede selv ejer, og skal derfor ikke foretage dig noget
+Not owned property square,,Du er landet på en ejendom, som ingen ejer, og skal derfor købe den
+GoToJail square,,Du er landet på "Gå i fængsel" og rykkes derfor i fængsel
+Chance square,,Du er landet på et chancefelt, og skal derfor trække et chancekort

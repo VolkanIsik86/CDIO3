@@ -1,8 +1,10 @@
 package domain.squares;
 
 
+import controllers.GUILogic;
 import domain.Board;
 import domain.Player;
+import services.TxtReader;
 
 // Property square is the square that can be owned and other players, who land on it, pays to the owner.
 public class PropertySquare extends Square {
@@ -11,8 +13,8 @@ public class PropertySquare extends Square {
     private int price;
     private Player owner = null;
     
-    public PropertySquare(String name, int index, Board board, int price, String color) {
-        super(name, index, board);
+    public PropertySquare(String name, int index, Board board, GUILogic guiLogic, TxtReader landedOnTxt, int price, String color) {
+        super(name, index, board, guiLogic, landedOnTxt);
         this.color = color;
         this.price = price;
     }
@@ -68,8 +70,8 @@ public class PropertySquare extends Square {
             
             //If player doesn't have the requested fonds
             else {
-                p.setBalance(0);
                 p.setLost(true);
+                p.setBalance(0);
             }
         }
         
