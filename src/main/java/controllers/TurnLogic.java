@@ -29,6 +29,13 @@ public class TurnLogic {
         Square nextLocation = board.nextLocation(player.getLocation(), die.getFaceValue());
         player.setLocation(nextLocation);
         
+        //Checks if player has landed on a chanceSquare
+        if (board.checkForChanceSquare(nextLocation)){
+            player.setChanceStatus(true);
+        } else {
+            player.setChanceStatus(false);
+        }
+        
         nextLocation.landedOn(player);
         
         //sætter spillerens pengebeholdning til at være den samme i GUI'en som i backenden.

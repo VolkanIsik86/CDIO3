@@ -10,16 +10,15 @@ import services.TxtReader;
 import java.util.Scanner;
 
 public class Game {
-
-
+   
    private GUILogic guiLogic;
    private Board board;
    private TurnLogic turnLogic;
    private PlayerList playerList;
    private String path = "src/main/java/services/";
    private String language;
-
-
+   
+   
     //todo ret antal startpoints
     private final int START_POINTS = 10;
     
@@ -29,8 +28,8 @@ public class Game {
     
         //Play a round
         String looser = "null";
+        
         do {
-            
             for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
                 
                 Player currentPlayer = playerList.getPlayer(i);
@@ -40,14 +39,13 @@ public class Game {
                 System.out.println("Spilleren havde: " + currentPlayer.getBalance() + " point");
                 
                 //todo skal det ændres?
-                Square oldLocation;
-                oldLocation = currentPlayer.getLocation();
+                Square oldLocation = currentPlayer.getLocation();
                 
                 int roll = turnLogic.takeTurn(currentPlayer);
                 System.out.println("Spiller slog: " + roll);
                 System.out.println("Spilleren har nu: " + currentPlayer.getBalance() + " point");
                 
-                guiLogic.update(currentPlayer, oldLocation, roll);
+                guiLogic.update(currentPlayer);
                 
                 if (currentPlayer.getLost() == true){
                     looser = currentPlayer.getName();
@@ -58,7 +56,6 @@ public class Game {
         } while(looser.equals("null"));
     
         getWinner();
-        
    }
    
    private void initializeGame(){
@@ -97,11 +94,10 @@ public class Game {
        }
 
        playerList.sortPlayersByAge();
+       playerList.setStartBalance();
        
-  
-       
-
    }
+   
    //todo uafgjort mellem spillere med ens point mangler at blive implementeret
    private Player getWinner(){
 
@@ -130,10 +126,7 @@ public class Game {
         game.playGame();
     }
 
-
-
-
-
+    
 
 //   public void setPlayer() {
 //       for (int i = 0; i < spillernavne.length; i++) {
@@ -163,6 +156,8 @@ public class Game {
 //        for (int index = 0; index < players.length; index++) {
 //            final String navn = readPlayerName(index);
 ////            players[index] = new Player(navn, startKapital);
+    
+    
         }
 
 

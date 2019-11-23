@@ -65,13 +65,13 @@ public class PlayerList {
     public void setStartBalance(){
         for (int i = 0; i < players.length; i++) {
 
-            if (getPlayers().equals(2)){
+            if (NumberOfPlayers() == 2){
                     getPlayer(i).setBalance(20);
             }
-            if (getPlayers().equals(3)){
+            if (NumberOfPlayers() == 3){
                 getPlayer(i).setBalance(18);
             }
-            if (getPlayers().equals(4)){
+            if (NumberOfPlayers() == 4){
                 getPlayer(i).setBalance(16);
             }
         }

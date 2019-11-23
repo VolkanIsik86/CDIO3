@@ -7,6 +7,7 @@ public class Board {
 
     private int SIZE;
     private Square[] squares;
+    int[] chanceSquareIndexes = {3,9,15,21};
 
     public Board(String path, String file){
         
@@ -44,9 +45,21 @@ public class Board {
         nextIndex = (currentLocation.getIndex() + roll) % SIZE;
         return squares[nextIndex];
     }
+    
+    public boolean checkForChanceSquare(Square square){
+        
+        for (int index : chanceSquareIndexes){
+            if(square.getIndex() == index){
+                return true;
+            }
+        }
+        
+        return false;
+        
+    }
 
     public Square getJail(){
-        return squares[5];
+        return squares[6];
     }
     
     public Square getStart() {

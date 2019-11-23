@@ -6,14 +6,18 @@ import domain.squares.Square;
 
 public class Player {
     
-    private String name;
-    private int age;
+    private GUILogic guiLogic;
     private Account account;
     private Piece piece;
+    
+    private String name;
+    private int age;
+   
     private boolean lost = false;
     private boolean jail = false;
-    private GUILogic guiLogic;
+    private boolean chanceStatus = false;
     private int lastRoll = 0;
+
     
     public Player(String name, int age, int balance, Piece piece, GUILogic guiLogic){
         this.name = name;
@@ -46,11 +50,20 @@ public class Player {
     }
     
     public void setLocation(Square newLocation){
+        
         piece.setLocation(newLocation);
         guiLogic.movePiece(this);
         
     }
-
+    
+    public void setChanceStatus(boolean status){
+        chanceStatus = status;
+    }
+    
+    public boolean getChanceStatus() {
+        return chanceStatus;
+    }
+    
     public boolean getLost() {
         return lost;
     }
