@@ -5,6 +5,7 @@ import domain.squares.Square;
 public class Piece {
     
     private Square location;
+    private Square lastLocation;
     private int type;
     private static int pieceType = 0;
     
@@ -23,7 +24,12 @@ public class Piece {
     }
     
     public void setLocation(Square newLocation){
+        lastLocation = location;
         location = newLocation;
+    }
+    
+    public Square getLastLocation(){
+        return lastLocation;
     }
 
 }

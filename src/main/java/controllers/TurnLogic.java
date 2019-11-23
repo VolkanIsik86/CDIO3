@@ -23,10 +23,12 @@ public class TurnLogic {
         
         die.roll();
         int roll = die.getFaceValue();
+        player.setLastRoll(roll);
         guiLogic.displayDie(roll);
 
         Square nextLocation = board.nextLocation(player.getLocation(), die.getFaceValue());
         player.setLocation(nextLocation);
+        
         nextLocation.landedOn(player);
         
         //sætter spillerens pengebeholdning til at være den samme i GUI'en som i backenden.

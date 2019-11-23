@@ -2,15 +2,18 @@ package domain;
 
 //Creates and maintains a list of players
 
+import controllers.GUILogic;
 import domain.squares.Square;
 
 public class PlayerList {
     
     Player[] players = new Player[0];
     Square startSquare;
+    GUILogic guiLogic;
     
-    public PlayerList(Square startSquare){
+    public PlayerList(Square startSquare, GUILogic guiLogic){
         this.startSquare = startSquare;
+        this.guiLogic = guiLogic;
     }
     
     public void addPlayer(String name, int age){
@@ -26,7 +29,7 @@ public class PlayerList {
         Piece piece = new Piece(startSquare);
         
         //Create and add new player to array
-        players[players.length-1] = new Player(name, age, 0, piece);
+        players[players.length-1] = new Player(name, age, 0, piece, guiLogic);
         
     }
     
@@ -74,8 +77,5 @@ public class PlayerList {
         }
 
     }
-
-
-
-
+    
 }

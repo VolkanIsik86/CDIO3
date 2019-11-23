@@ -1,5 +1,6 @@
 package domain;
 
+import controllers.GUILogic;
 import domain.squares.PropertySquare;
 import domain.squares.Square;
 
@@ -11,13 +12,19 @@ public class Player {
     private Piece piece;
     private boolean lost = false;
     private boolean jail = false;
+    private GUILogic guiLogic;
+    private int lastRoll = 0;
     
-    public Player(String name, int age, int balance, Piece piece){
+    public Player(String name, int age, int balance, Piece piece, GUILogic guiLogic){
         this.name = name;
         this.age = age;
         account = new Account(balance);
         this.piece = piece;
-
+        this.guiLogic = guiLogic;
+    }
+    
+    public void setLastRoll(int lastRoll) {
+        this.lastRoll = lastRoll;
     }
     
     public void setJail(boolean status){
@@ -40,6 +47,8 @@ public class Player {
     
     public void setLocation(Square newLocation){
         piece.setLocation(newLocation);
+        guiLogic.movePiece(this);
+        
     }
 
     public boolean getLost() {
@@ -78,17 +87,18 @@ public class Player {
         return name;
     }
     
-    public void setName(String name) {
-        this.name = name;
-    }
-    
     public int getAge() {
         return age;
     }
     
-    public void setAge(int age) {
-        this.age = age;
+    public Square getLastLocation(){
+        return piece.getLastLocation();
     }
+    
+    public int getLastRoll(){
+        return lastRoll;
+    }
+    
     
     @Override
     public String toString() {
