@@ -1,49 +1,57 @@
 package domain;
 
+import controllers.GUILogic;
 import domain.squares.*;
 import services.TxtReader;
 
 public class Board {
 
-    private int SIZE = 24;
+    private int SIZE;
     private Square[] squares;
+    private  ChanceDeck chanceDeck;
 
-    public Board(String path, String file){
+    public Board(TxtReader squareTxt, TxtReader landedOnTxt, TxtReader cardsTxt, GUILogic guiLogic){
     
-        squares = new Square[SIZE];
+        //todo slet nedenstående kommentar
+        //Chancefelterne skal bruge chancedækket i deres landOn, samtidig skal chancedækket bruge boardet, til at rykke spillerne
+        chanceDeck = new ChanceDeck(guiLogic, cardsTxt, this);
         
-        //Load square descriptions
-        TxtReader sDec = new TxtReader(path,file);
+        SIZE = squareTxt.getN_LINES();
+        squares = new Square[SIZE];
         
         //For all squares
         for (int i = 0; i < SIZE; i++) {
 
             //Extract corresponding square description
-            String[] oneLine = sDec.getLine(String.valueOf(i)).split("-");
+            String[] oneLine = squareTxt.getLine(String.valueOf(i)).split("-");
             
             //Create the proper square subclass and place in array
             if ("Regular".equalsIgnoreCase(oneLine[0])) {
-                squares[i] = new RegularSquare(oneLine[1], Integer.parseInt(oneLine[2]),this);
+                squares[i] = new RegularSquare(oneLine[1], Integer.parseInt(oneLine[2]),guiLogic, landedOnTxt);
+                
             } else if ("Property".equals(oneLine[0])) {
-                squares[i] = new PropertySquare(oneLine[1], Integer.parseInt(oneLine[2]),this, Integer.parseInt(oneLine[3]), oneLine[4]);
+                squares[i] = new PropertySquare(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, Integer.parseInt(oneLine[3]), oneLine[4]);
+                
             } else if ("Jail".equals(oneLine[0])) {
-                squares[i] = new GoToJailSquare(oneLine[1], Integer.parseInt(oneLine[2]), this);
+                squares[i] = new GoToJailSquare(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, this);
+                
             } else if ("Chance".equals(oneLine[0])) {
-                squares[i] = new ChanceSquare(oneLine[1], Integer.parseInt(oneLine[2]), this);
+                squares[i] = new ChanceSquare(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, chanceDeck);
             }
         }
     }
-
+    
     public Square getSquare(int index){
         return squares[index];
     }
     
-    public Square nextLocation(Square currentLocation, int roll){
+    public Square nextLocation(Player player, int roll){
+        
         int nextIndex;
-        nextIndex = (currentLocation.getIndex() + roll)%SIZE;
+        nextIndex = (player.getLocation().getIndex() + roll) % SIZE;
         return squares[nextIndex];
     }
-
+    
     public Square getJail(){
         return squares[6];
     }

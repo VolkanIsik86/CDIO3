@@ -1,0 +1,12 @@
+Regular square,,Du er landet på et neutralt felt, og der sker derfor ikke noget
+Owned by another property square,,Du er landet på en ejendom ejet af en anden spiller, og skal derfor betale husleje
+Owned by yourself property square,,Du er landet på en ejendom du allerede selv ejer, og skal derfor ikke foretage dig noget
+Not owned property square,,Du er landet på en ejendom, som ingen ejer, og skal derfor købe den
+GoToJail square,,Du er landet på "Gå i fængsel" og rykkes derfor i fængsel
+Chance square,,Du er landet på et chancefelt, og skal derfor trække et chancekort
+Does not have fonds for rent,,Du har desværre ikke råd til at betale huslejen, og spillet stopper derfor
+Does not have fonds to buy,,Du har desværre ikke råd til at købe ejendommen, og spillet er stopper derfor
+Does not have fonds to pay,,Du har desværre ikke råd til at købe betale denne udgift, og spillet er stopper derfor
+Press OK,,Tryk OK når du har læst chancekortet
+In jail pay now,,Sidst tur kom du i fængsel. Du skal derfor betale 1M for at komme ud denne tur
+End turn,,Din tur er slut, tryk OK for at fortsætte

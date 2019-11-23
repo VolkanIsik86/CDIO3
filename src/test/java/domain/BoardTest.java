@@ -1,20 +1,28 @@
 package domain;
 
+import controllers.GUILogic;
 import org.junit.Test;
+import services.TxtReader;
 
 import static org.junit.Assert.*;
 
 public class BoardTest {
     
-    Board board = new Board("src/main/java/services/","squareDescriptions");
+    String languagePath = "src/main/java/services/languagefiles/";
+    
+    TxtReader squareTxt = new TxtReader(languagePath,"squares_da");
+    TxtReader landedOnTxt = new TxtReader(languagePath,"landedOn_da");
+    TxtReader cardsTxt = new TxtReader(languagePath,"chanceCards_da");
+    
+    GUILogic guiLogic = new GUILogic(squareTxt);
+    
+    Board board = new Board(squareTxt, landedOnTxt, cardsTxt, guiLogic);
     
     // todo hurtig test, skal muligvis udbygges
     
     @Test
     public void getSquare() {
-        
         assertEquals("Chancen", board.getSquare(3).getName());
-        
     }
     
     @Test

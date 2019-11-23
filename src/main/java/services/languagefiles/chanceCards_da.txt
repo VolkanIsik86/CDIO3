@@ -1,0 +1,15 @@
+0,,Move-1-Du rykkes 1 felt frem
+1,,Move-2-Du rykkes 2 felter frem
+2,,Move-3-Du rykkes 3 felter frem
+3,,Move-4-Du rykkes 4 felter frem
+4,,Pay-1-Du skal betale 1M
+5,,Pay-1-Du skal betale 1M
+6,,Pay-2-Du skal betale 2M
+7,,Pay-2-Du skal betale 2M
+8,,Pay-3-Du skal betale 3M
+9,,Pay-3-Du skal betale 3M
+10,,Earn-1-Du tjener 1M
+11,,Earn-2-Du tjener 2M
+12,,Earn-3-Du tjener 3M
+13,,Earn-4-Du tjener 4M
+Does not have fonds to pay,,Du har desværre ikke råd til at betale dette beløb, og spillet stopper derfor

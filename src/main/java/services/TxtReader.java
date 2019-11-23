@@ -5,7 +5,7 @@ import java.io.*;
 public class TxtReader {
     
     private String[][] lines;
-    private int N_LINES = 0; //Er det korrekt at deete er en final???
+    private int N_LINES = 0;
     
     public TxtReader(String path, String fileName) {
         
@@ -40,6 +40,10 @@ public class TxtReader {
             e.printStackTrace();
         }
         
+    }
+    
+    public int getN_LINES(){
+        return N_LINES;
     }
     
     public String getLine(String key){

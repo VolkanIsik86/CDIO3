@@ -1,27 +1,40 @@
 package domain;
 
+import controllers.GUILogic;
 import domain.squares.PropertySquare;
 import domain.squares.Square;
 
 public class Player {
     
-    private String name;
-    private int age;
+    private GUILogic guiLogic;
     private Account account;
     private Piece piece;
+    
+    private String name;
+    private int age;
+   
     private boolean lost = false;
     private boolean jail = false;
+    private int lastRoll = 0;
     
-    public Player(String name, int age, int balance, Piece piece){
+    public Player(String name, int age, int balance, Piece piece, GUILogic guiLogic){
         this.name = name;
         this.age = age;
         account = new Account(balance);
         this.piece = piece;
-
+        this.guiLogic = guiLogic;
+    }
+    
+    public void setLastRoll(int lastRoll) {
+        this.lastRoll = lastRoll;
     }
     
     public void setJail(boolean status){
         jail = status;
+    }
+    
+    public boolean getJail(){
+        return jail;
     }
     
     public boolean attemptToPurchase(PropertySquare property){
@@ -38,10 +51,24 @@ public class Player {
             return true;
     }
     
+    public boolean equals(Player player){
+        
+        if (this.getName().equals(player.getName())){
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+    
     public void setLocation(Square newLocation){
         piece.setLocation(newLocation);
     }
-
+    
+    public boolean getChanceStatus() {
+        return piece.getChanceStatus();
+    }
+    
     public boolean getLost() {
         return lost;
     }
@@ -78,17 +105,18 @@ public class Player {
         return name;
     }
     
-    public void setName(String name) {
-        this.name = name;
-    }
-    
     public int getAge() {
         return age;
     }
     
-    public void setAge(int age) {
-        this.age = age;
+    public Square getLastLocation(){
+        return piece.getLastLocation();
     }
+    
+    public int getLastRoll(){
+        return lastRoll;
+    }
+    
     
     @Override
     public String toString() {

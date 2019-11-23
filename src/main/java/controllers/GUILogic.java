@@ -1,7 +1,6 @@
 package controllers;
 
 import domain.Player;
-import domain.squares.Square;
 import gui_fields.GUI_Car;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -14,8 +13,7 @@ import java.util.Random;
 
 
 public class GUILogic {
-    private String PATH = "src/main/java/services/";
-    private String FILE = "squareDescriptions";
+    
     private Color BROWN = new Color(153, 102, 0);
     private Color GOLD = new Color(255, 204, 51);
     private final int N_FIELDS = 24;
@@ -24,30 +22,31 @@ public class GUILogic {
     private GUI gui;
     private Game game;
     private String[] names = new String[0];
-    private GUI_Player[] players = new GUI_Player[0];
+    private GUI_Player[] guiPlayers = new GUI_Player[0];
     private int[] ages = new int [0];
-
-
-    public GUILogic(String language) {
-        makeBoard(language);
+    
+    
+    public GUILogic(TxtReader squaresTxt) {
+        makeBoard(squaresTxt);
         makeUsers();
     }
 
-    private GUI_Field[] makeBoard(String language) {
+    private GUI_Field[] makeBoard(TxtReader squaresTxt) {
         fields = new GUI_Field[N_FIELDS];
-        //læser fra fil
-        TxtReader juniorFields = new TxtReader(PATH, FILE+"_"+language);
-
+        
         //Løber igennem for hvert felt
         for (int i = 0; i < N_FIELDS; i++) {
             fields[i] = new GUI_Street();
 
             //opretter objekt
             GUI_Street street = new GUI_Street();
+            
             //generer et array for hver linje i .txt med strenge spredt ud over de forskellige indexer.
-            String[] juniorField = juniorFields.getLine("" + i).split("-");
+            String[] juniorField = squaresTxt.getLine("" + i).split("-");
+            
             //bestemmer titel på felt (index 1)
             street.setTitle(juniorField[1]);
+            
             //bestemmer farven
             switch (juniorField[4].charAt(0)) {
                 case 'r':
@@ -83,6 +82,7 @@ public class GUILogic {
 
             //bestemmer prisen
             street.setSubText(juniorField[3]);
+            
             //Hvis prisen er 0, fjernes teksten
             if (juniorField[3].equals("0"))
                 street.setSubText("");
@@ -95,8 +95,10 @@ public class GUILogic {
     }
 
     private void addPlayers(int numberofPlayers) {
+        
         //Gør det samme for antallet af spillere der er valgt
         for (int i = 0; i < numberofPlayers; i++) {
+            
             //Udvider listen over spillere med 1
             String[] temp = new String[names.length + 1];
             int[] tempAge = new int[ages.length+1];
@@ -105,13 +107,10 @@ public class GUILogic {
                 tempAge[j]=ages[j];
             }
             names = temp;
-
             ages = tempAge;
 
-
             //Beder spilleren indtaste et navn
-
-            String name = gui.getUserString("Enter name:");  //todo skal ændres til at fungere på alle sprog
+            String name = gui.getUserString("Enter name:"); //todo skal ændres til at fungere på alle sprog
 
                 for (String samename : names) {
                     boolean sameNameTest = true;
@@ -131,11 +130,10 @@ public class GUILogic {
             //Tilføjer spillerens navn til listen over navne
 
             names[i] = name;
-
-
+            
             int age = gui.getUserInteger("Enter age of "  + name + ":" , 5,150);
             ages[i] = age;
-
+            
             //Konstruere en tilfældig type af GUI-bil med tilfældig farver. (Inspireret af Læren Daniel Kolditz Rubin-Grøn)
             Random rng = new Random();
             // Farve objektet initaliseret med en konstruktør hvor RGB farverne defineret tilfældigt
@@ -155,51 +153,66 @@ public class GUILogic {
                 tempbalance = 16;
 
             GUI_Player player = new GUI_Player(name, tempbalance, car);
+
             //tilføjer spillerne til en spillerliste
-            GUI_Player[] temp2 = new GUI_Player[players.length + 1];
-            for (int j = 0; j < players.length; j++) {
-                temp2[j] = players[j];
+            GUI_Player[] temp2 = new GUI_Player[guiPlayers.length + 1];
+            for (int j = 0; j < guiPlayers.length; j++) {
+                temp2[j] = guiPlayers[j];
             }
-            players = temp2;
-            players[i] = player;
+            guiPlayers = temp2;
+            guiPlayers[i] = player;
+            
             //Tilføjer spilleren på brættet
             gui.addPlayer(player);
-            //Flytter spilleren til startfeltet
-            movePiece(player,0,0);
+            
+            //Placerer spilleren til startfeltet
+            fields[0].setCar(player, true);
         }
     }
-
+    
+    public String[] makeUsers() {
+        //todo skal ændres til at fungere på alle sprog1
+        String nrPlayers = gui.getUserSelection("Hvor mange spillere skal spille spillet?", "2","3","4");
+        int NumberOfPlayers = Integer.parseInt(nrPlayers);
+        
+        String names[] = new String[NumberOfPlayers];
+        addPlayers(NumberOfPlayers);
+        
+        return names;
+    }
+    
+    
     //todo når en spiller lander på "Go to jail" bliver spilleren som det er nu ikke fjernet fra feltet
-    public void movePiece(GUI_Player player, int currentField, int moves) {
+    public void movePiece(Player player, int moves) {
+        
+        int currentField = player.getLastLocation().getIndex();
+        GUI_Player guiPlayer = getGUIPlayer(player);
         
         int movesDone = 0; //Bruges til at holde styr på antal moves udført
         if (moves != 0) {
+            
             //Tjekker om piece position bliver større end board
             if (currentField + moves >= N_FIELDS) {
+                
                 //Kører resten af felterne igennem inden start
                 for (int i = 1; currentField + i < N_FIELDS; i++) {
-                    moveRest(player, currentField, i);
+                    moveRest(guiPlayer, currentField, i);
                     movesDone++;
                     sleep(DELAY);
                 }
-                currentField = passStart(player);
+                currentField = passStart(guiPlayer);
                 movesDone++;
                 sleep(DELAY);
             }
 
             //Kører flytning af piece, tjekker om der er moves tilbage
             for (int i = 0; i + movesDone < moves; i++) {
-                currentField = moveOnce(player, currentField);
+                currentField = moveOnce(guiPlayer, currentField);
                 sleep(DELAY);
             }
-            // Go to jail logikken
-            if(currentField == 18){
-
-                fields[currentField].setCar(player, false);
-                fields[6].setCar(player, true);
-            }
+            
         } else {
-            fields[0].setCar(player, true);
+            fields[0].setCar(guiPlayer, true);
         }
     }
 
@@ -223,62 +236,40 @@ public class GUILogic {
         fields[currentField].setCar(player, true);
         return currentField;
     }
-
+    
+    public void moveToJail(Player player){
+        
+        GUI_Player guiPlayer = getGUIPlayer(player);
+        
+        //Remove player from current field
+        fields[player.getLastLocation().getIndex()].setCar(guiPlayer,false);
+        
+        //Place player on jail
+        fields[6].setCar(guiPlayer,true);
+    }
+    
     public GUI_Field[] getFields() {
         return fields;
-    }
-
-    public void update(Player player, Square oldLocation, int roll){
-
-        GUI_Player gui_Player = getPlayer(player.getName());
-        movePiece(gui_Player,oldLocation.getIndex(),roll);
-        if (oldLocation.getIndex() + roll == 3 || oldLocation.getIndex() + roll == 9 || oldLocation.getIndex() + roll == 15 || oldLocation.getIndex() + roll == 21){
-            gui.displayChanceCard("Her en chance kort");
-        }
-
     }
 
     public GUI getGui() {
         return gui;
     }
-
-    public String getPATH() {
-        return PATH;
-    }
-
-    public String getFILE() {
-        return FILE;
-    }
     
-    public GUI_Player getPlayer(String playerName) {
-        boolean q = true;
-        GUI_Player dims = null;
-        //Undersøger hvilken GUI-spiller som spilleren der er kaldt passer sammen med ved at undersøge navnet.
-        for (GUI_Player player : players) {
-            if (q) {
-                if (player.getName().equals(playerName)) {
-                    dims = player;
-                    q = false;
-                } else {
-                    dims = null;
-                }
-
+    public GUI_Player getGUIPlayer(Player player) {
+        
+        String playerName = player.getName();
+        
+        //For all GUIPlayers
+        for (GUI_Player guiPlayer : guiPlayers) {
+            
+            //If names match
+            if (guiPlayer.getName().equals(playerName)) {
+                return guiPlayer;
             }
-
         }
 
-        return dims;
-    }
-    
-    public String[] makeUsers() {
-        //todo skal ændres til at fungere på alle sprog1
-        String nrPlayers = gui.getUserSelection("Hvor mange spillere skal spille spillet?", "2","3","4");
-        int NumberOfPlayers = Integer.parseInt(nrPlayers);
-
-        String names[] = new String[NumberOfPlayers];
-        addPlayers(NumberOfPlayers);
-
-        return names;
+        return null;
     }
     
     public void displayDie(int faceValue){
@@ -288,6 +279,11 @@ public class GUILogic {
         showMessage("lol, kast lige terningen");
         gui.setDie(faceValue);
     }
+    
+    public void showChanceCard(String txt){
+        gui.displayChanceCard(txt);
+    }
+    
     public String[] getPlayerNames(){
         return names;
     }
@@ -303,13 +299,17 @@ public class GUILogic {
 
     }
 
-    public void setPlayerBalance(GUI_Player player, int value){
-        player.setBalance(value);
+    public void setPlayerBalance(Player player){
+        
+        GUI_Player guiPlayer = getGUIPlayer(player);
+        guiPlayer.setBalance(player.getBalance());
     }
     
     public void showMessage(String message){
         gui.showMessage(message);
     }
+    
+   
 
 }
 

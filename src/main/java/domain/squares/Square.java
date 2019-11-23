@@ -1,7 +1,9 @@
 package domain.squares;
 
+import controllers.GUILogic;
 import domain.Board;
 import domain.Player;
+import services.TxtReader;
 
 //All squares that belongs to monopoly junior board inherits from this abstract superclass
 public abstract class Square {
@@ -9,11 +11,15 @@ public abstract class Square {
     private String name;
     private int index;
     protected Board board;
+    protected GUILogic guiLogic;
+    protected TxtReader landedOnTxt;
     
-    public Square(String name, int index, Board board) {
+    public Square(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt) {
         this.name = name;
         this.index = index;
         this.board = board;
+        this.guiLogic = guiLogic;
+        this.landedOnTxt = landedOnTxt;
     }
 
     public String getName() {

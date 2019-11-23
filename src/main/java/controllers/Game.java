@@ -1,94 +1,125 @@
 package controllers;
 
-import com.sun.media.jfxmedia.events.PlayerEvent;
 import domain.Board;
-import domain.*;
+import domain.ChanceDeck;
 import domain.Player;
 import domain.PlayerList;
-import domain.squares.Square;
 import services.TxtReader;
-import java.util.Scanner;
 
 public class Game {
-
-
+   
    private GUILogic guiLogic;
    private Board board;
+   private ChanceDeck chanceDeck;
    private TurnLogic turnLogic;
    private PlayerList playerList;
-   private String path = "src/main/java/services/";
+   private String looser = "null";
+   
+   private String languagePath = "src/main/java/services/languagefiles/";
    private String language;
-
-
+   private TxtReader landedOnTxt;
+   private TxtReader squaresTxt;
+   private TxtReader cardsTxt;
+   
+   
     //todo ret antal startpoints
     private final int START_POINTS = 10;
     
     public void playGame(){
     
         initializeGame();
-    
-        //Play a round
-        String looser = "null";
+        
         do {
-            
-            for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
-                
-                Player currentPlayer = playerList.getPlayer(i);
-                System.out.println("\nTager en tur for: " + currentPlayer.getName());
-                System.out.println("Spilleren stod på: " + currentPlayer.getLocation().getIndex());
-                System.out.println("Spilleren havde: " + currentPlayer.getBalance() + " point");
-                
-                Square oldLocation;
-                oldLocation = currentPlayer.getLocation();
-                
-                int roll = turnLogic.takeTurn(currentPlayer);
-                System.out.println("Spiller slog: " + roll);
-                System.out.println("Spilleren har nu: " + currentPlayer.getBalance() + " point");
-                
-                guiLogic.update(currentPlayer, oldLocation, roll);
-                
-                if (currentPlayer.getLost() == true){
-                    looser = currentPlayer.getName();
-                    break;
-                }
-            }
-            
+            playRound();
         } while(looser.equals("null"));
     
         getWinner();
+   }
+   
+   private void playRound(){
+       for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
         
+           Player currentPlayer = playerList.getPlayer(i);
         
+           //todo slet
+           System.out.println("\nTager en tur for: " + currentPlayer.getName());
+           System.out.println("Spilleren stod på: " + currentPlayer.getLocation().getIndex());
+           System.out.println("Spilleren havde: " + currentPlayer.getBalance() + " point");
+        
+           //If player is in jail
+           if (currentPlayer.getJail()){
+               
+               guiLogic.showMessage(landedOnTxt.getLine("In jail pay now"));
+               
+               if (currentPlayer.attemptToPay(1)){
+                   currentPlayer.withdraw(1);
+                   guiLogic.setPlayerBalance(currentPlayer);
+               } else {
+                   currentPlayer.setLost(true);
+                   currentPlayer.setBalance(0);
+                   guiLogic.showMessage(landedOnTxt.getLine("Does not have fonds to pay"));
+                   guiLogic.setPlayerBalance(currentPlayer);
+                   
+                   looser = currentPlayer.getName();
+                   break;
+               }
+           }
+           
+           turnLogic.takeTurn(currentPlayer);
+        
+           //todo slet
+           System.out.println("Spiller slog: " + currentPlayer.getLastRoll());
+           System.out.println("Spilleren har nu: " + currentPlayer.getBalance() + " point");
+
+           if (currentPlayer.getLost() == true){
+               looser = currentPlayer.getName();
+               break;
+           }
+       }
    }
    
    private void initializeGame(){
        initLanguage();
+       initGUILogic();
        initBoard();
-       initControllers();
+       initTurnLogic();
        initPlayerList();
    }
    
    private void initLanguage(){
+       
        LanguageLogic languageLogic = new LanguageLogic();
     
-       // Promts user to select language
+       //Promts user to select language
        language = languageLogic.selectLangauge();
+       
+       //Load txt files
+       landedOnTxt = new TxtReader(languagePath, "landedOn_" + language);
+       squaresTxt = new TxtReader(languagePath, "squares_" + language);
+       cardsTxt = new TxtReader(languagePath,"chanceCards_" + language);
+       
+   }
+   
+   private void initGUILogic(){
+       
+       //Includes the initialization of the GUI itself
+       guiLogic = new GUILogic(squaresTxt);
    }
    
    private void initBoard(){
-       board = new Board(path,"squareDescriptions_" + language);
+        
+        //Includes the initialization of the chance deck
+        board = new Board(squaresTxt, landedOnTxt, cardsTxt, guiLogic);
    }
    
-   private void initControllers(){
-       //Creates GuiLogic object which initializes the GUI itself in its constructor
-       guiLogic = new GUILogic(language);
-       
-       turnLogic = new TurnLogic(board,guiLogic);
+   private void initTurnLogic(){
+       turnLogic = new TurnLogic(board, guiLogic, landedOnTxt);
    }
    
    private void initPlayerList(){
        
        //Creates a playerList and adds the players from guiLogic
-       playerList = new PlayerList(board.getSquare(0));
+       playerList = new PlayerList(board.getSquare(0), guiLogic);
        String[] playerNames = guiLogic.getPlayerNames();
        int [] ageOfPlayer = guiLogic.getPlayerAges();
        for (int i = 0; i < playerNames.length; i++) {
@@ -98,10 +129,8 @@ public class Game {
        playerList.sortPlayersByAge();
        playerList.setStartBalance();
        
-  
-       
-
    }
+   
    //todo uafgjort mellem spillere med ens point mangler at blive implementeret
    private Player getWinner(){
 
@@ -123,27 +152,8 @@ public class Game {
        }
        return winner;
    }
-
-    
-    public static void main(String[] args) {
-        Game game = new Game();
-        game.playGame();
-    }
-
-
-
-
-
-
-//   public void setPlayer() {
-//       for (int i = 0; i < spillernavne.length; i++) {
-//
-//           //TODO player alder skal kunne defineres fra gui.
-//           playerList.addPlayer(spillernavne[i], 0, 20);
-//
-//       }
-//
-//   }
+   
+   
 
 //    public void createPlayers() {
 //        System.out.println("");
@@ -163,6 +173,8 @@ public class Game {
 //        for (int index = 0; index < players.length; index++) {
 //            final String navn = readPlayerName(index);
 ////            players[index] = new Player(navn, startKapital);
+    
+    
         }
 
 
