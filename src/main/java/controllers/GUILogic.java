@@ -24,7 +24,7 @@ public class GUILogic {
     private GUI gui;
     private Game game;
     private String[] names = new String[0];
-    private GUI_Player[] players = new GUI_Player[0];
+    private GUI_Player[] guiPlayers = new GUI_Player[0];
     private int[] ages = new int [0];
     
     
@@ -160,12 +160,12 @@ public class GUILogic {
             GUI_Player player = new GUI_Player(name, tempbalance, car);
 
             //tilføjer spillerne til en spillerliste
-            GUI_Player[] temp2 = new GUI_Player[players.length + 1];
-            for (int j = 0; j < players.length; j++) {
-                temp2[j] = players[j];
+            GUI_Player[] temp2 = new GUI_Player[guiPlayers.length + 1];
+            for (int j = 0; j < guiPlayers.length; j++) {
+                temp2[j] = guiPlayers[j];
             }
-            players = temp2;
-            players[i] = player;
+            guiPlayers = temp2;
+            guiPlayers[i] = player;
             
             //Tilføjer spilleren på brættet
             gui.addPlayer(player);
@@ -188,11 +188,11 @@ public class GUILogic {
     
     
     //todo når en spiller lander på "Go to jail" bliver spilleren som det er nu ikke fjernet fra feltet
-    public void movePiece(Player p) {
+    public void movePiece(Player player) {
         
-        int currentField = p.getLastLocation().getIndex();
-        int moves = p.getLastRoll();
-        GUI_Player player = getGUIPlayer(p);
+        int currentField = player.getLastLocation().getIndex();
+        int moves = player.getLastRoll();
+        GUI_Player guiPlayer = getGUIPlayer(player);
         
         int movesDone = 0; //Bruges til at holde styr på antal moves udført
         if (moves != 0) {
@@ -202,28 +202,28 @@ public class GUILogic {
                 
                 //Kører resten af felterne igennem inden start
                 for (int i = 1; currentField + i < N_FIELDS; i++) {
-                    moveRest(player, currentField, i);
+                    moveRest(guiPlayer, currentField, i);
                     movesDone++;
                     sleep(DELAY);
                 }
-                currentField = passStart(player);
+                currentField = passStart(guiPlayer);
                 movesDone++;
                 sleep(DELAY);
             }
 
             //Kører flytning af piece, tjekker om der er moves tilbage
             for (int i = 0; i + movesDone < moves; i++) {
-                currentField = moveOnce(player, currentField);
+                currentField = moveOnce(guiPlayer, currentField);
                 sleep(DELAY);
             }
             // Go to jail logikken
             if(currentField == 18){
 
-                fields[currentField].setCar(player, false);
-                fields[6].setCar(player, true);
+                fields[currentField].setCar(guiPlayer, false);
+                fields[6].setCar(guiPlayer, true);
             }
         } else {
-            fields[0].setCar(player, true);
+            fields[0].setCar(guiPlayer, true);
         }
     }
 
@@ -267,24 +267,18 @@ public class GUILogic {
     public GUI_Player getGUIPlayer(Player player) {
         
         String playerName = player.getName();
+        boolean notFound = true;
         
-        boolean q = true;
-        GUI_Player dims = null;
         //Undersøger hvilken GUI-spiller som spilleren der er kaldt passer sammen med ved at undersøge navnet.
-        for (GUI_Player guiPlayer : players) {
-            if (q) {
-                if (player.getName().equals(playerName)) {
-                    dims = guiPlayer;
-                    q = false;
-                } else {
-                    dims = null;
-                }
-
+        for (GUI_Player guiPlayer : guiPlayers) {
+            
+            //If names match
+            if (guiPlayer.getName().equals(playerName)) {
+                return guiPlayer;
             }
-
         }
 
-        return dims;
+        return null;
     }
     
     public void displayDie(int faceValue){
