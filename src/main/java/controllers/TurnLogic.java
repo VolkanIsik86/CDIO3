@@ -27,7 +27,7 @@ public class TurnLogic {
         //Calculate and move to next location
         Square nextLocation = board.nextLocation(player, die.getFaceValue());
         player.setLocation(nextLocation);
-        guiLogic.movePiece(player);
+        guiLogic.movePiece(player, player.getLastRoll());
         
         //Apply the square's effect to the player
         nextLocation.landedOn(player);

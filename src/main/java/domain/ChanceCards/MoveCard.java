@@ -22,7 +22,7 @@ public class MoveCard extends ChanceCard {
         Square nextLocation = board.nextLocation(player, moves);
         player.setLocation(nextLocation);
     
-        guiLogic.movePiece(player);
+        guiLogic.movePiece(player, moves);
         nextLocation.landedOn(player);
     }
     

@@ -183,10 +183,9 @@ public class GUILogic {
     
     
     //todo når en spiller lander på "Go to jail" bliver spilleren som det er nu ikke fjernet fra feltet
-    public void movePiece(Player player) {
+    public void movePiece(Player player, int moves) {
         
         int currentField = player.getLastLocation().getIndex();
-        int moves = player.getLastRoll();
         GUI_Player guiPlayer = getGUIPlayer(player);
         
         int movesDone = 0; //Bruges til at holde styr på antal moves udført
