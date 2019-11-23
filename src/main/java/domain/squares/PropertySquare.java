@@ -95,6 +95,7 @@ public class PropertySquare extends Square {
                 payRent(player);
                 earnRent();
                 guiLogic.setPlayerBalance(player);
+                guiLogic.setPlayerBalance(this.getOwner());
             }
     
             //If player doesn't have the requested fonds

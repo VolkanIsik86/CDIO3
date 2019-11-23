@@ -42,9 +42,9 @@ public class Game {
            System.out.println("Spilleren stod på: " + currentPlayer.getLocation().getIndex());
            System.out.println("Spilleren havde: " + currentPlayer.getBalance() + " point");
         
-           int roll = turnLogic.takeTurn(currentPlayer);
+           turnLogic.takeTurn(currentPlayer);
         
-           System.out.println("Spiller slog: " + roll);
+           System.out.println("Spiller slog: " + currentPlayer.getLastRoll());
            System.out.println("Spilleren har nu: " + currentPlayer.getBalance() + " point");
 
            if (currentPlayer.getLost() == true){

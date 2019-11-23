@@ -16,7 +16,7 @@ public class TurnLogic {
         this.guiLogic = guiLogic;
     }
     
-    public int takeTurn(Player player) {
+    public void takeTurn(Player player) {
         
         //Roll the die
         die.roll();
@@ -32,10 +32,5 @@ public class TurnLogic {
         //Apply the squares effect to the player
         nextLocation.landedOn(player);
         
-//        guiLogic.setPlayerBalance(player);
-        
-        // todo taketurn skal ikke returnere en int, men det skal fixes i Game og Gui logic først
-        return die.getFaceValue();
-    
     }
 }

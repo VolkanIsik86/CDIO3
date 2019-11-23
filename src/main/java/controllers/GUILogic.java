@@ -217,12 +217,6 @@ public class GUILogic {
                 sleep(DELAY);
             }
             
-            // Go to jail logikken
-            if(currentField == 18){
-
-                fields[currentField].setCar(guiPlayer, false);
-                fields[6].setCar(guiPlayer, true);
-            }
         } else {
             fields[0].setCar(guiPlayer, true);
         }
@@ -247,6 +241,18 @@ public class GUILogic {
         currentField = 0;
         fields[currentField].setCar(player, true);
         return currentField;
+    }
+    
+    public void moveToJail(Player player){
+        
+        GUI_Player guiPlayer = getGUIPlayer(player);
+        
+        //Remove player from current field
+        fields[player.getLastLocation().getIndex()].setCar(guiPlayer,false);
+        
+        //Place player on jail
+        fields[6].setCar(guiPlayer,true);
+        
     }
     
     public GUI_Field[] getFields() {
@@ -313,6 +319,8 @@ public class GUILogic {
     public void showMessage(String message){
         gui.showMessage(message);
     }
+    
+   
 
 }
 
