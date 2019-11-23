@@ -6,3 +6,4 @@ GoToJail square,,Du er landet på "Gå i fængsel" og rykkes derfor i fængsel
 Chance square,,Du er landet på et chancefelt, og skal derfor trække et chancekort
 Does not have fonds for rent,,Du har desværre ikke råd til at betale huslejen, og spillet stopper derfor
 Does not have fonds to buy,,Du har desværre ikke råd til at købe ejendommen, og spillet er stopper derfor
+Tryk OK,,Tryk OK når du har læst chancekortet

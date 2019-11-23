@@ -8,8 +8,8 @@ import services.TxtReader;
 //Start, fængsel, parkering squares
 public class RegularSquare extends Square {
 
-    public RegularSquare(String name, int index, Board board, GUILogic guiLogic, TxtReader landedOnTxt) {
-        super(name, index,board, guiLogic, landedOnTxt);
+    public RegularSquare(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt) {
+        super(name, index, guiLogic, landedOnTxt);
     }
 
     @Override

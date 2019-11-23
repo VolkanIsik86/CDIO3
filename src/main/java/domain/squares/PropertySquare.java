@@ -13,8 +13,8 @@ public class PropertySquare extends Square {
     private int price;
     private Player owner = null;
     
-    public PropertySquare(String name, int index, Board board, GUILogic guiLogic, TxtReader landedOnTxt, int price, String color) {
-        super(name, index, board, guiLogic, landedOnTxt);
+    public PropertySquare(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt, int price, String color) {
+        super(name, index, guiLogic, landedOnTxt);
         this.color = color;
         this.price = price;
     }

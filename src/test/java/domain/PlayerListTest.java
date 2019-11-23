@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class PlayerListTest {
     
-//    Board board = new Board("src/main/java/services/","squareDescriptions");
+//    Board board = new Board("src/main/java/services/","squares");
 //    PlayerList players = new PlayerList(board.getStart());
     
     @Test

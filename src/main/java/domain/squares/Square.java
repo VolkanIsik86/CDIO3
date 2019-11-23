@@ -14,7 +14,7 @@ public abstract class Square {
     protected GUILogic guiLogic;
     protected TxtReader landedOnTxt;
     
-    public Square(String name, int index, Board board, GUILogic guiLogic, TxtReader landedOnTxt) {
+    public Square(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt) {
         this.name = name;
         this.index = index;
         this.board = board;

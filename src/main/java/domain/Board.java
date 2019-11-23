@@ -8,8 +8,13 @@ public class Board {
 
     private int SIZE;
     private Square[] squares;
+    private  ChanceDeck chanceDeck;
 
-    public Board(TxtReader squareTxt, TxtReader landedOnTxt, GUILogic guiLogic){
+    public Board(TxtReader squareTxt, TxtReader landedOnTxt, TxtReader cardsTxt, GUILogic guiLogic){
+    
+        //todo slet nedenstående kommentar
+        //Chancefelterne skal bruge chancedækket i deres landOn, samtidig skal chancedækket bruge boardet, til at rykke spillerne
+        chanceDeck = new ChanceDeck(guiLogic, cardsTxt, this);
         
         SIZE = squareTxt.getN_LINES();
         squares = new Square[SIZE];
@@ -22,20 +27,20 @@ public class Board {
             
             //Create the proper square subclass and place in array
             if ("Regular".equalsIgnoreCase(oneLine[0])) {
-                squares[i] = new RegularSquare(oneLine[1], Integer.parseInt(oneLine[2]),this, guiLogic, landedOnTxt);
+                squares[i] = new RegularSquare(oneLine[1], Integer.parseInt(oneLine[2]),guiLogic, landedOnTxt);
                 
             } else if ("Property".equals(oneLine[0])) {
-                squares[i] = new PropertySquare(oneLine[1], Integer.parseInt(oneLine[2]),this, guiLogic, landedOnTxt, Integer.parseInt(oneLine[3]), oneLine[4]);
+                squares[i] = new PropertySquare(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, Integer.parseInt(oneLine[3]), oneLine[4]);
                 
             } else if ("Jail".equals(oneLine[0])) {
-                squares[i] = new GoToJailSquare(oneLine[1], Integer.parseInt(oneLine[2]), this, guiLogic, landedOnTxt);
+                squares[i] = new GoToJailSquare(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, this);
                 
             } else if ("Chance".equals(oneLine[0])) {
-                squares[i] = new ChanceSquare(oneLine[1], Integer.parseInt(oneLine[2]), this, guiLogic, landedOnTxt);
+                squares[i] = new ChanceSquare(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, this, chanceDeck);
             }
         }
     }
-
+    
     public Square getSquare(int index){
         return squares[index];
     }

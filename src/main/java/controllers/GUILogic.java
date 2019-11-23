@@ -14,8 +14,6 @@ import java.util.Random;
 
 public class GUILogic {
     
-    private String PATH = "src/main/java/services/languagefiles/";
-    private String FILE = "squareDescriptions";
     private Color BROWN = new Color(153, 102, 0);
     private Color GOLD = new Color(255, 204, 51);
     private final int N_FIELDS = 24;
@@ -28,17 +26,14 @@ public class GUILogic {
     private int[] ages = new int [0];
     
     
-    public GUILogic(String language) {
-        makeBoard(language);
+    public GUILogic(TxtReader squaresTxt) {
+        makeBoard(squaresTxt);
         makeUsers();
     }
 
-    private GUI_Field[] makeBoard(String language) {
+    private GUI_Field[] makeBoard(TxtReader squaresTxt) {
         fields = new GUI_Field[N_FIELDS];
         
-        //læser fra fil
-        TxtReader juniorFields = new TxtReader(PATH, FILE + "_" + language);
-
         //Løber igennem for hvert felt
         for (int i = 0; i < N_FIELDS; i++) {
             fields[i] = new GUI_Street();
@@ -47,7 +42,7 @@ public class GUILogic {
             GUI_Street street = new GUI_Street();
             
             //generer et array for hver linje i .txt med strenge spredt ud over de forskellige indexer.
-            String[] juniorField = juniorFields.getLine("" + i).split("-");
+            String[] juniorField = squaresTxt.getLine("" + i).split("-");
             
             //bestemmer titel på felt (index 1)
             street.setTitle(juniorField[1]);
@@ -252,7 +247,6 @@ public class GUILogic {
         
         //Place player on jail
         fields[6].setCar(guiPlayer,true);
-        
     }
     
     public GUI_Field[] getFields() {
@@ -261,14 +255,6 @@ public class GUILogic {
 
     public GUI getGui() {
         return gui;
-    }
-
-    public String getPATH() {
-        return PATH;
-    }
-
-    public String getFILE() {
-        return FILE;
     }
     
     public GUI_Player getGUIPlayer(Player player) {
@@ -293,6 +279,10 @@ public class GUILogic {
         //todo det skal også fremgå vis tur det er.
         showMessage("lol, kast lige terningen");
         gui.setDie(faceValue);
+    }
+    
+    public void showChanceCard(String txt){
+        gui.displayChanceCard(txt);
     }
     
     public String[] getPlayerNames(){

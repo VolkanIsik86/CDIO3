@@ -1,6 +1,7 @@
 package controllers;
 
 import domain.Board;
+import domain.ChanceDeck;
 import domain.Player;
 import domain.PlayerList;
 import services.TxtReader;
@@ -9,6 +10,7 @@ public class Game {
    
    private GUILogic guiLogic;
    private Board board;
+   private ChanceDeck chanceDeck;
    private TurnLogic turnLogic;
    private PlayerList playerList;
    private String looser = "null";
@@ -17,6 +19,7 @@ public class Game {
    private String language;
    private TxtReader landedOnTxt;
    private TxtReader squaresTxt;
+   private TxtReader cardsTxt;
    
    
     //todo ret antal startpoints
@@ -69,19 +72,23 @@ public class Game {
        //Promts user to select language
        language = languageLogic.selectLangauge();
        
+       //Load txt files
        landedOnTxt = new TxtReader(languagePath, "landedOn_" + language);
-       squaresTxt = new TxtReader(languagePath, "squareDescriptions_" + language);
-       
+       squaresTxt = new TxtReader(languagePath, "squares_" + language);
+       cardsTxt = new TxtReader(languagePath,"chanceCards_" + language);
        
    }
    
    private void initGUILogic(){
-       //Creates GuiLogic object which initializes the GUI itself in its constructor
-       guiLogic = new GUILogic(language);
+       
+       //Includes the initialization of the GUI itself
+       guiLogic = new GUILogic(squaresTxt);
    }
    
    private void initBoard(){
-       board = new Board(squaresTxt, landedOnTxt, guiLogic);
+        
+        //Includes the initialization of the chance deck
+        board = new Board(squaresTxt, landedOnTxt, cardsTxt, guiLogic);
    }
    
    private void initTurnLogic(){
@@ -124,15 +131,8 @@ public class Game {
        }
        return winner;
    }
-
-    
-    public static void main(String[] args) {
-        Game game = new Game();
-        game.playGame();
-    }
-
-    
-
+   
+   
 //   public void setPlayer() {
 //       for (int i = 0; i < spillernavne.length; i++) {
 //

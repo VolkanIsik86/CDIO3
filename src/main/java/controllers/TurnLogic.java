@@ -29,7 +29,7 @@ public class TurnLogic {
         player.setLocation(nextLocation);
         guiLogic.movePiece(player);
         
-        //Apply the squares effect to the player
+        //Apply the square's effect to the player
         nextLocation.landedOn(player);
         
     }

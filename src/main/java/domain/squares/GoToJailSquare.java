@@ -4,12 +4,16 @@ import controllers.GUILogic;
 import domain.Board;
 import domain.Player;
 import services.TxtReader;
-//This square moves player to jail
 
+//This square moves player to jail
 public class GoToJailSquare extends Square {
     
-    public GoToJailSquare(String name, int index, Board board, GUILogic guiLogic, TxtReader landedOnTxt) {
-        super(name, index, board, guiLogic, landedOnTxt);
+    private Board board;
+    
+    public GoToJailSquare(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt,  Board board) {
+        super(name, index, guiLogic, landedOnTxt);
+        this.board = board;
+        
     }
 
     // Moves player to jail.
