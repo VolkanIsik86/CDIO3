@@ -12,7 +12,6 @@ import java.util.Random;
 // Chance holds chance cards that affect player randomly
 public class ChanceSquare extends Square {
     
-    private Board board;
     private ChanceDeck chanceDeck;
     
     //Constructor

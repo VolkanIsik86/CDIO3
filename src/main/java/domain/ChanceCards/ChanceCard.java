@@ -5,7 +5,6 @@ package domain.ChanceCards;
 import controllers.GUILogic;
 import domain.ChanceDeck;
 import domain.Player;
-import services.TxtReader;
 
 public abstract class ChanceCard {
     
@@ -19,7 +18,6 @@ public abstract class ChanceCard {
         this.description = description;
         this.guiLogic = guiLogic;
         this.chanceDeck = chanceDeck;
-        
     }
 
     public String getDescription(){
@@ -29,7 +27,6 @@ public abstract class ChanceCard {
     public String getType() {
         return type;
     }
-    
     
     public abstract void applyEffect(Player p);
     

@@ -17,7 +17,6 @@ public abstract class Square {
     public Square(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt) {
         this.name = name;
         this.index = index;
-        this.board = board;
         this.guiLogic = guiLogic;
         this.landedOnTxt = landedOnTxt;
     }
@@ -28,14 +27,6 @@ public abstract class Square {
 
     public int getIndex() {
         return index;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
     }
     
     // landedOn is the key method of squares.

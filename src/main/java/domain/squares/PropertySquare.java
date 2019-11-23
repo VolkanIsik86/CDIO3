@@ -2,7 +2,6 @@ package domain.squares;
 
 
 import controllers.GUILogic;
-import domain.Board;
 import domain.Player;
 import services.TxtReader;
 

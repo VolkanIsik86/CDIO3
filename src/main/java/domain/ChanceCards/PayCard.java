@@ -3,7 +3,6 @@ package domain.ChanceCards;
 import controllers.GUILogic;
 import domain.ChanceDeck;
 import domain.Player;
-import gui_main.GUI;
 import services.TxtReader;
 
 public class PayCard extends ChanceCard {

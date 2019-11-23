@@ -20,7 +20,6 @@ public class GUILogic {
     private final int DELAY = 200;
     private GUI_Field[] fields;
     private GUI gui;
-    private Game game;
     private String[] names = new String[0];
     private GUI_Player[] guiPlayers = new GUI_Player[0];
     private int[] ages = new int [0];

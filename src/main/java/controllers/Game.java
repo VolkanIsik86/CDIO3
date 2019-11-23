@@ -10,7 +10,6 @@ public class Game {
    
    private GUILogic guiLogic;
    private Board board;
-   private ChanceDeck chanceDeck;
    private TurnLogic turnLogic;
    private PlayerList playerList;
    private String looser = "null";

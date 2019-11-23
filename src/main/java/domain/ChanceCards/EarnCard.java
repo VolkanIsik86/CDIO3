@@ -3,7 +3,6 @@ package domain.ChanceCards;
 import controllers.GUILogic;
 import domain.ChanceDeck;
 import domain.Player;
-import services.TxtReader;
 
 public class EarnCard extends ChanceCard{
     

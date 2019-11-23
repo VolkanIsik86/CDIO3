@@ -8,5 +8,5 @@ Does not have fonds for rent,,Du har desværre ikke råd til at betale huslejen,
 Does not have fonds to buy,,Du har desværre ikke råd til at købe ejendommen, og spillet er stopper derfor
 Does not have fonds to pay,,Du har desværre ikke råd til at købe betale denne udgift, og spillet er stopper derfor
 Press OK,,Tryk OK når du har læst chancekortet
-In jail pay now,,Sidst tur kom du i fængsel. Du skal derfor betale 1M for at komme ud denne tur
+In jail pay now,,Sidste tur kom du i fængsel. Du skal derfor betale 1M for at komme ud denne tur
 End turn,,Din tur er slut, tryk OK for at fortsætte

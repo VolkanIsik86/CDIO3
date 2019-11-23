@@ -5,7 +5,6 @@ import domain.Board;
 import domain.ChanceDeck;
 import domain.Player;
 import domain.squares.Square;
-import services.TxtReader;
 
 public class MoveCard extends ChanceCard {
     
