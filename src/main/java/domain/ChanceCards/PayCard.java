@@ -9,10 +9,12 @@ import services.TxtReader;
 public class PayCard extends ChanceCard {
     
     int amount;
+    TxtReader cardsTxt;
     
-    public PayCard(String type, String description, GUILogic guiLogic, TxtReader cardsTxt, ChanceDeck chanceDeck, int amount) {
-        super(type, description, guiLogic, cardsTxt, chanceDeck);
+    public PayCard(String type, String description, GUILogic guiLogic, ChanceDeck chanceDeck, int amount, TxtReader cardsTxt) {
+        super(type, description, guiLogic, chanceDeck);
         this.amount = amount;
+        this.cardsTxt = cardsTxt;
     }
     
     public void applyEffect(Player player){

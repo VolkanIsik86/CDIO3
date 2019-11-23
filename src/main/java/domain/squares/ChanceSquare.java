@@ -12,15 +12,12 @@ import java.util.Random;
 // Chance holds chance cards that affect player randomly
 public class ChanceSquare extends Square {
     
-    private final int N_CHANCECARDS = 4;
-    private ChanceCard[] chanceCards = new ChanceCard[N_CHANCECARDS];
     private Board board;
     private ChanceDeck chanceDeck;
     
     //Constructor
-    public ChanceSquare(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt, Board board, ChanceDeck chanceDeck) {
+    public ChanceSquare(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt, ChanceDeck chanceDeck) {
         super(name, index, guiLogic, landedOnTxt);
-        this.board = board;
         this.chanceDeck = chanceDeck;
     }
 
@@ -30,7 +27,7 @@ public class ChanceSquare extends Square {
         guiLogic.showMessage(landedOnTxt.getLine("Chance square"));
         ChanceCard pulledCard = chanceDeck.pullRandomChanceCard();
         guiLogic.showChanceCard(pulledCard.getDescription());
-        guiLogic.showMessage(landedOnTxt.getLine("Tryk OK"));
+        guiLogic.showMessage(landedOnTxt.getLine("Press OK"));
         pulledCard.applyEffect(player);
         
     }

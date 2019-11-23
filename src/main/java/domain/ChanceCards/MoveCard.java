@@ -12,8 +12,8 @@ public class MoveCard extends ChanceCard {
     private int moves;
     private Board board;
     
-    public MoveCard(String type, String description, GUILogic guiLogic, TxtReader cardsTxt, ChanceDeck chanceDeck, int moves, Board board) {
-        super(type, description, guiLogic, cardsTxt, chanceDeck);
+    public MoveCard(String type, String description, GUILogic guiLogic, ChanceDeck chanceDeck, int moves, Board board) {
+        super(type, description, guiLogic, chanceDeck);
         this.moves = moves;
         this.board = board;
     }

@@ -36,7 +36,7 @@ public class Board {
                 squares[i] = new GoToJailSquare(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, this);
                 
             } else if ("Chance".equals(oneLine[0])) {
-                squares[i] = new ChanceSquare(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, this, chanceDeck);
+                squares[i] = new ChanceSquare(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, chanceDeck);
             }
         }
     }

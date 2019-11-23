@@ -41,12 +41,33 @@ public class Game {
         
            Player currentPlayer = playerList.getPlayer(i);
         
+           //todo slet
            System.out.println("\nTager en tur for: " + currentPlayer.getName());
            System.out.println("Spilleren stod på: " + currentPlayer.getLocation().getIndex());
            System.out.println("Spilleren havde: " + currentPlayer.getBalance() + " point");
         
+           //If player is in jail
+           if (currentPlayer.getJail()){
+               
+               guiLogic.showMessage(landedOnTxt.getLine("In jail pay now"));
+               
+               if (currentPlayer.attemptToPay(1)){
+                   currentPlayer.withdraw(1);
+                   guiLogic.setPlayerBalance(currentPlayer);
+               } else {
+                   currentPlayer.setLost(true);
+                   currentPlayer.setBalance(0);
+                   guiLogic.showMessage(landedOnTxt.getLine("Does not have fonds to pay"));
+                   guiLogic.setPlayerBalance(currentPlayer);
+                   
+                   looser = currentPlayer.getName();
+                   break;
+               }
+           }
+           
            turnLogic.takeTurn(currentPlayer);
         
+           //todo slet
            System.out.println("Spiller slog: " + currentPlayer.getLastRoll());
            System.out.println("Spilleren har nu: " + currentPlayer.getBalance() + " point");
 
@@ -92,7 +113,7 @@ public class Game {
    }
    
    private void initTurnLogic(){
-       turnLogic = new TurnLogic(board,guiLogic);
+       turnLogic = new TurnLogic(board, guiLogic, landedOnTxt);
    }
    
    private void initPlayerList(){
@@ -133,15 +154,6 @@ public class Game {
    }
    
    
-//   public void setPlayer() {
-//       for (int i = 0; i < spillernavne.length; i++) {
-//
-//           //TODO player alder skal kunne defineres fra gui.
-//           playerList.addPlayer(spillernavne[i], 0, 20);
-//
-//       }
-//
-//   }
 
 //    public void createPlayers() {
 //        System.out.println("");

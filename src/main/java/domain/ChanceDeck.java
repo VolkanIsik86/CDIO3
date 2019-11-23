@@ -30,13 +30,13 @@ public class ChanceDeck {
     
             //Creates the proper card subclass and places it in array
             if ("Earn".equalsIgnoreCase(oneLine[0])) {
-                chanceCards[i] = new EarnCard(oneLine[0], oneLine[2], guiLogic, cardsTxt, this, Integer.parseInt(oneLine[1]));
+                chanceCards[i] = new EarnCard(oneLine[0], oneLine[2], guiLogic, this, Integer.parseInt(oneLine[1]));
                 
             } else if ("Move".equals(oneLine[0])) {
-                chanceCards[i] = new MoveCard(oneLine[0], oneLine[2], guiLogic, cardsTxt, this, Integer.parseInt(oneLine[1]), board);
+                chanceCards[i] = new MoveCard(oneLine[0], oneLine[2], guiLogic, this, Integer.parseInt(oneLine[1]), board);
                 
             } else if ("Pay".equals(oneLine[0])) {
-                chanceCards[i] = new PayCard(oneLine[0], oneLine[2], guiLogic, cardsTxt, this, Integer.parseInt(oneLine[1]));
+                chanceCards[i] = new PayCard(oneLine[0], oneLine[2], guiLogic, this, Integer.parseInt(oneLine[1]), cardsTxt);
     
             }
     

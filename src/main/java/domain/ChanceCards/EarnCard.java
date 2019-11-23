@@ -9,8 +9,8 @@ public class EarnCard extends ChanceCard{
     
     int amount;
     
-    public EarnCard(String type, String description, GUILogic guiLogic, TxtReader cardsTxt, ChanceDeck chanceDeck, int amount) {
-        super(type, description, guiLogic, cardsTxt, chanceDeck);
+    public EarnCard(String type, String description, GUILogic guiLogic, ChanceDeck chanceDeck, int amount) {
+        super(type, description, guiLogic, chanceDeck);
         this.amount = amount;
     }
     

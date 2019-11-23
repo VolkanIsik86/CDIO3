@@ -33,6 +33,10 @@ public class Player {
         jail = status;
     }
     
+    public boolean getJail(){
+        return jail;
+    }
+    
     public boolean attemptToPurchase(PropertySquare property){
         if (property.getPrice() > this.getBalance())
             return false;
