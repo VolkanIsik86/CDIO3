@@ -31,8 +31,10 @@ public class Game {
         do {
             playRound();
         } while(looser.equals("null"));
-    
-        getWinner();
+
+        //Announces the winner of the game with HTML formatting.
+        String coolwinner ="<font size=\"4\" color=\"red\">" + "Vinderen er:" +"</font>" + "<br>" + "<font size=\"6\" color=\"blue\">" + getWinner().getName() + "</font>";
+        guiLogic.getGui().displayChanceCard(coolwinner);
    }
    
    private void playRound(){
