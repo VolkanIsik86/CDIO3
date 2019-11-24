@@ -33,7 +33,8 @@ public class Game {
         } while(looser.equals("null"));
 
         //Announces the winner of the game with HTML formatting.
-        String coolwinner ="<font size=\"4\" color=\"red\">" + "Vinderen er:" +"</font>" + "<br>" + "<font size=\"6\" color=\"blue\">" + getWinner().getName() + "</font>";
+        String coolwinner ="<table width=\"173\" cellspacing=\"10\" bgcolor=\"#000000\"><tr><td align=\"center\">"+"<font color=\"white\" size=\"7\">Hurra!!!</font>"+"</td></tr>"+"<tr><td align=\"center\">"+"<font size=\"6\" color=\"red\">" + "Vinderen er:" +"</font>"+"</td></tr>" + "<tr><td align=\"center\">" + "<font size=\"10\" color=\"yellow\">" + getWinner().getName() + "</font>"+"</td></tr></table>";
+
         guiLogic.getGui().displayChanceCard(coolwinner);
    }
    
