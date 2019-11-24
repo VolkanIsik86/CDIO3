@@ -8,6 +8,7 @@ import gui_fields.GUI_Street;
 import gui_main.GUI;
 import services.TxtReader;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
@@ -23,6 +24,8 @@ public class GUILogic {
     private String[] names = new String[0];
     private GUI_Player[] guiPlayers = new GUI_Player[0];
     private int[] ages = new int [0];
+    private TxtReader informationTxt;
+
     
     
     public GUILogic(TxtReader squaresTxt) {
@@ -109,9 +112,10 @@ public class GUILogic {
             ages = tempAge;
 
             //Beder spilleren indtaste et navn
-            String name = gui.getUserString("Enter name:"); //todo skal ændres til at fungere på alle sprog
+            //todo skal ændres til at fungere på alle sprog
+            String name = gui.getUserString("Enter names");
 
-                for (String samename : names) {
+            for (String samename : names) {
                     boolean sameNameTest = true;
                     while (sameNameTest) {
                     if (name.equals(samename)) {

@@ -19,7 +19,7 @@ public class Game {
    private TxtReader landedOnTxt;
    private TxtReader squaresTxt;
    private TxtReader cardsTxt;
-   
+    private TxtReader InformationTxt;
    
     //todo ret antal startpoints
     private final int START_POINTS = 10;
@@ -99,7 +99,7 @@ public class Game {
        landedOnTxt = new TxtReader(languagePath, "landedOn_" + language);
        squaresTxt = new TxtReader(languagePath, "squares_" + language);
        cardsTxt = new TxtReader(languagePath,"chanceCards_" + language);
-       
+       InformationTxt = new TxtReader(languagePath,"Information" + language);
    }
    
    private void initGUILogic(){
