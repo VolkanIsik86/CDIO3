@@ -23,12 +23,11 @@ public class GUILogic {
     private String[] names = new String[0];
     private GUI_Player[] guiPlayers = new GUI_Player[0];
     private int[] ages = new int [0];
-    Color red = new Color(255,0,0);
-    Color blue = new Color(0,0,255);
-    Color white = new Color(255,255,255);
-    Color green = new Color(28,126,0);
-    Color[] carcolor = {red,blue,white,green};
-
+    private Color red = new Color(255,0,0);
+    private Color blue = new Color(0,0,255);
+    private Color white = new Color(255,255,255);
+    private Color green = new Color(28,126,0);
+    private Color[] carcolor = {red,blue,white,green};
     
     
     public GUILogic(TxtReader squaresTxt) {
