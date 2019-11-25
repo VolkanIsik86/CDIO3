@@ -14,8 +14,10 @@ public class EarnCard extends ChanceCard{
     }
     
     public void applyEffect(Player player){
+
         player.deposit(amount);
         guiLogic.setPlayerBalance(player);
     }
     
 }
+
