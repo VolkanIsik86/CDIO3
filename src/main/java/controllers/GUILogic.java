@@ -220,6 +220,7 @@ public class GUILogic {
                     sleep(DELAY);
                 }
                 currentField = passStart(guiPlayer);
+                passedStart(player);
                 movesDone++;
                 sleep(DELAY);
             }
@@ -233,6 +234,11 @@ public class GUILogic {
         } else {
             fields[0].setCar(guiPlayer, true);
         }
+    }
+
+    private void passedStart(Player player){
+        player.deposit(2);
+        setPlayerBalance(player);
     }
 
     /**
