@@ -12,14 +12,13 @@ import java.util.Random;
 
 public class ChanceDeck {
     
-    private final int N_CARDS;
+    private final int N_CARDS = 14;
     private ChanceCard[] chanceCards;
     private Random rnd = new Random();
     
     //Creates all the Chance cards and adds them to an array
     public ChanceDeck(GUILogic guiLogic, TxtReader cardsTxt, Board board) {
         
-        N_CARDS = cardsTxt.getN_LINES();
         chanceCards = new ChanceCard[N_CARDS];
     
         //For all cards

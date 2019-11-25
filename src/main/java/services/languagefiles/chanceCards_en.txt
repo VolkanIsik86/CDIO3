@@ -1,0 +1,15 @@
+0,,Move-1-You move 1 square forward
+1,,Move-2-You move 2 squares forward
+2,,Move-3-You move 3 squares forward
+3,,Move-4-You move 4 squares forward
+4,,Pay-1-You pay 1M
+5,,Pay-1-You pay 1M
+6,,Pay-2-You pay 2M
+7,,Pay-2-You pay 2M
+8,,Pay-3-You pay 3M
+9,,Pay-3-You pay 3M
+10,,Earn-1-You earn 1M
+11,,Earn-2-You earn 2M
+12,,Earn-3-You earn 3M
+13,,Earn-4-You earn 4M
+Does not have fonds to pay,,You do not have the funds to pay, the game ends
