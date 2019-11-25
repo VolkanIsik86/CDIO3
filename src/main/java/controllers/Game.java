@@ -100,7 +100,6 @@ public class Game {
        landedOnTxt = new TxtReader(languagePath, "landedOn_" + language);
        squaresTxt = new TxtReader(languagePath, "squares_" + language);
        cardsTxt = new TxtReader(languagePath,"chanceCards_" + language);
-       
    }
    
    private void initGUILogic(){
