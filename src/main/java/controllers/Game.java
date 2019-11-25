@@ -19,6 +19,7 @@ public class Game {
    private TxtReader landedOnTxt;
    private TxtReader squaresTxt;
    private TxtReader cardsTxt;
+   private TxtReader winnerTxt;
    
    
     //todo ret antal startpoints
@@ -33,7 +34,7 @@ public class Game {
         } while(looser.equals("null"));
 
         //Announces the winner of the game with HTML formatting.
-        String coolwinner ="<table width=\"173\" cellspacing=\"10\" bgcolor=\"#000000\"><tr><td align=\"center\">"+"<font color=\"white\" size=\"7\">Hurra!!!</font>"+"</td></tr>"+"<tr><td align=\"center\">"+"<font size=\"6\" color=\"red\">" + "Vinderen er:" +"</font>"+"</td></tr>" + "<tr><td align=\"center\">" + "<font size=\"10\" color=\"yellow\">" + getWinner().getName() + "</font>"+"</td></tr></table>";
+        String coolwinner ="<table width=\"173\" cellspacing=\"10\" bgcolor=\"#000000\"><tr><td align=\"center\">"+"<font color=\"white\" size=\"7\">" + winnerTxt.getLine("1") +"</font>"+"</td></tr>"+"<tr><td align=\"center\">"+"<font size=\"6\" color=\"red\">" + winnerTxt.getLine("2") +"</font>"+"</td></tr>" + "<tr><td align=\"center\">" + "<font size=\"10\" color=\"yellow\">" + getWinner().getName() + "</font>"+"</td></tr></table>";
 
         guiLogic.getGui().displayChanceCard(coolwinner);
    }
@@ -100,7 +101,8 @@ public class Game {
        landedOnTxt = new TxtReader(languagePath, "landedOn_" + language);
        squaresTxt = new TxtReader(languagePath, "squares_" + language);
        cardsTxt = new TxtReader(languagePath,"chanceCards_" + language);
-       
+       winnerTxt = new TxtReader(languagePath,"winner_"+ language);
+
    }
    
    private void initGUILogic(){
