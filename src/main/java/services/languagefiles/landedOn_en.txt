@@ -1,12 +1,12 @@
-Regular square,,Du er landet på et neutralt felt, og der sker derfor ikke noget
-Owned by another property square,,Du er landet på en ejendom ejet af en anden spiller, og skal derfor betale husleje
-Owned by yourself property square,,Du er landet på en ejendom du allerede selv ejer, og skal derfor ikke foretage dig noget
-Not owned property square,,Du er landet på en ejendom, som ingen ejer, og skal derfor købe den
-GoToJail square,,Du er landet på "Gå i fængsel" og rykkes derfor i fængsel
-Chance square,,Du er landet på et chancefelt, og skal derfor trække et chancekort
-Does not have fonds for rent,,Du har desværre ikke råd til at betale huslejen, og spillet stopper derfor
-Does not have fonds to buy,,Du har desværre ikke råd til at købe ejendommen, og spillet er stopper derfor
-Does not have fonds to pay,,Du har desværre ikke råd til at købe betale denne udgift, og spillet er stopper derfor
-Press OK,,Tryk OK når du har læst chancekortet
-In jail pay now,,Sidste tur kom du i fængsel. Du skal derfor betale 1M for at komme ud denne tur
-End turn,,Din tur er slut, tryk OK for at fortsætte
+Regular square,,You landed on a regular square, nothings happens
+Owned by another property square,,You landed on an owned property, you must pay rent
+Owned by yourself property square,,You landed on your own property, nothing happens
+Not owned property square,,You landed on an unowned property, you must purchase it
+GoToJail square,,You have landed on "Go to jail", you are therefore moved to jail
+Chance square,,You have landed on a chance square, you must draw a chance card
+Does not have fonds for rent,,You do not have the funds to pay rent, the game ends
+Does not have fonds to buy,,You do not have the funds to purchase the property, the game ends
+Does not have fonds to pay,,You do not have the funds to pay this expense, the game ends
+Press OK,,Press OK when you have read the card
+In jail pay now,,The previous turn you went to jail. You must pay 1M to get out this turn
+End turn,,Your turn is over, press OK to end your turn
