@@ -275,11 +275,10 @@ public class GUILogic {
         return null;
     }
     
-    public void displayDie(int faceValue){
+    public void displayDie(int faceValue, String name){
         
         //todo Skal hente den rigtige sætning afhængig af sprog
-        //todo det skal også fremgå vis tur det er.
-        showMessage("lol, kast lige terningen");
+        showMessage("Det er " + name + "s tur, tryk ok for at kaste terningen");
         gui.setDie(faceValue);
     }
     
@@ -317,9 +316,7 @@ public class GUILogic {
 }
 
 // todo GUI skal vise det felt man lander på i midten
-// todo opdatere spillernes point
 // todo skal ændre på feltfarverne når man ejer det
-// todo implementeres en OK menu før spillet slår med terningerne
 // todo chancekort
 // todo kraftigt overveje vores .update funktion
 

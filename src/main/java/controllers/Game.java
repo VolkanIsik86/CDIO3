@@ -56,6 +56,7 @@ public class Game {
                if (currentPlayer.attemptToPay(1)){
                    currentPlayer.withdraw(1);
                    guiLogic.setPlayerBalance(currentPlayer);
+                   currentPlayer.setJail(false);
                } else {
                    currentPlayer.setLost(true);
                    currentPlayer.setBalance(0);
