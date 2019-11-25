@@ -23,6 +23,12 @@ public class GUILogic {
     private String[] names = new String[0];
     private GUI_Player[] guiPlayers = new GUI_Player[0];
     private int[] ages = new int [0];
+    Color red = new Color(255,0,0);
+    Color blue = new Color(0,0,255);
+    Color white = new Color(255,255,255);
+    Color green = new Color(28,126,0);
+    Color[] carcolor = {red,blue,white,green};
+
     
     
     public GUILogic(TxtReader squaresTxt) {
@@ -134,10 +140,11 @@ public class GUILogic {
             ages[i] = age;
             
             //Konstruere en tilfældig type af GUI-bil med tilfældig farver. (Inspireret af Læren Daniel Kolditz Rubin-Grøn)
-            Random rng = new Random();
+
             // Farve objektet initaliseret med en konstruktør hvor RGB farverne defineret tilfældigt
-            Color tempcolor = new Color(rng.nextInt(255),rng.nextInt(255),rng.nextInt(255));
-            GUI_Car car = new GUI_Car(tempcolor,tempcolor, GUI_Car.Type.values()[i%4], GUI_Car.Pattern.HORIZONTAL_DUAL_COLOR);
+                GUI_Car car = new GUI_Car(carcolor[i], carcolor[i], GUI_Car.Type.values()[i], GUI_Car.Pattern.values()[i]);
+
+
 
             //Konstruere en spiller med den tilfældige bil og et navn
 
@@ -249,6 +256,9 @@ public class GUILogic {
     
     public GUI_Field[] getFields() {
         return fields;
+    }
+    public void setForeGroundColor(Player player){
+        fields[player.getLocation().getIndex()].setForeGroundColor(carcolor[player.getType()]);
     }
 
     public GUI getGui() {
