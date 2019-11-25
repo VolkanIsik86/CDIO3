@@ -72,6 +72,7 @@ public class PropertySquare extends Square {
             //If player has the requested fonds
             if (player.attemptToPurchase(this)){
                 purchase(player);
+                guiLogic.setForeGroundColor(player);
                 guiLogic.setPlayerBalance(player);
             }
             
