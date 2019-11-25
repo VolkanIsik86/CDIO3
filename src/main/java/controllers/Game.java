@@ -20,7 +20,7 @@ public class Game {
    private TxtReader squaresTxt;
    private TxtReader cardsTxt;
    private TxtReader winnerTxt;
-   
+
    
     //todo ret antal startpoints
     private final int START_POINTS = 10;
