@@ -30,8 +30,8 @@ public class GUILogic {
     private Color[] carcolor = {red,blue,white,green};
     private TxtReader guiTxt;
 
-    
-    
+
+
     public GUILogic(TxtReader squaresTxt, TxtReader guiTxt) {
         this.guiTxt = guiTxt;
         makeBoard(squaresTxt);
@@ -125,13 +125,13 @@ public class GUILogic {
             ages = tempAge;
 
             //Asks player to write their name.
-            String name = gui.getUserString(guiTxt.getLine("Enter name")); //todo skal ændres til at fungere på alle sprog
+            String name = gui.getUserString("Enter name"); //todo skal ændres til at fungere på alle sprog
 
                 for (String samename : names) {
                     boolean sameNameTest = true;
                     while (sameNameTest) {
                     if (name.equals(samename)) {
-                        name = gui.getUserString(guiTxt.getLine("Already in use"));
+                        name = gui.getUserString("name is already in use, type another name:");
 
                     }
                     else
@@ -143,7 +143,22 @@ public class GUILogic {
             //Crates an array of player names.
 
             names[i] = name;
-            
+            boolean ageIsInt = true;
+            int age = 0;
+            do {
+                try {
+                    age = Integer.parseInt(gui.getUserString("Enter age of " + name + ":"));
+                    if (age >= 5 && age <= 150) {
+                        ageIsInt = true;
+                    }
+                    else{
+                        ageIsInt = false;
+                    }
+                } catch (NumberFormatException e) {
+                    ageIsInt = false;
+                }
+            } while (!ageIsInt);
+
             int age = gui.getUserInteger(guiTxt.getLine("Age") + " " + name  , 5,150);
             ages[i] = age;
             
@@ -186,6 +201,7 @@ public class GUILogic {
 
     /**
      * Define and creates players for the game and uses addPlayer method number of players.
+     *
      * @return Names array og every player that initialized for the game.
      */
     public String[] makeUsers() {
@@ -202,6 +218,7 @@ public class GUILogic {
 
     /**
      * Moves players figure around the board.
+     *
      * @param player Figure of this player will be moved.
      * @param moves Count of fields that figure moves(face value of dice).
      */
@@ -223,6 +240,7 @@ public class GUILogic {
                     sleep(DELAY);
                 }
                 currentField = passStart(guiPlayer);
+                passedStart(player);
                 movesDone++;
                 sleep(DELAY);
             }
@@ -238,6 +256,11 @@ public class GUILogic {
         }
     }
 
+    private void passedStart(Player player) {
+        player.deposit(2);
+        setPlayerBalance(player);
+    }
+
     /**
      * Moves player to the end field of the board.
      * @param player Player figure needs to be moved.
@@ -251,6 +274,7 @@ public class GUILogic {
 
     /**
      * Moves players figure. Remove figure from old location to new location.
+     *
      * @param player Player figure needs to be moved.
      * @param field  Field number that figure stands on.
      * @return Field that players last position
@@ -264,6 +288,7 @@ public class GUILogic {
 
     /**
      * Places players figure to start point.
+     *
      * @param player Player figure needs to be moved.
      * @return Field that players last position
      */
@@ -343,7 +368,7 @@ public class GUILogic {
     public void displayDie(int faceValue, String name){
         
         //todo Skal hente den rigtige sætning afhængig af sprog
-        showMessage( guiTxt.getLine("it is")+ " " + name + guiTxt.getLine("throw dice"));
+        showMessage("Det er " + name + "s tur, tryk ok for at kaste terningen");
         gui.setDie(faceValue);
     }
 
