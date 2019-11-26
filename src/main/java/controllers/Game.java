@@ -20,6 +20,7 @@ public class Game {
    private TxtReader squaresTxt;
    private TxtReader cardsTxt;
    private TxtReader winnerTxt;
+   private TxtReader guiTxt;
 
     
     public void playGame(){
@@ -98,7 +99,7 @@ public class Game {
        squaresTxt = new TxtReader(languagePath, "squares_" + language);
        cardsTxt = new TxtReader(languagePath,"chanceCards_" + language);
        winnerTxt = new TxtReader(languagePath,"winner_"+ language);
-
+        guiTxt = new TxtReader(languagePath,"guitext_"+ language);
    }
    
    private void initGUILogic(){

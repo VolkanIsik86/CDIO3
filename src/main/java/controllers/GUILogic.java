@@ -122,7 +122,7 @@ public class GUILogic {
             ages = tempAge;
 
             //Asks player to write their name.
-            String name = gui.getUserString("Enter name:"); //todo skal ændres til at fungere på alle sprog
+            String name = gui.getUserString("Enter name"); //todo skal ændres til at fungere på alle sprog
 
                 for (String samename : names) {
                     boolean sameNameTest = true;
