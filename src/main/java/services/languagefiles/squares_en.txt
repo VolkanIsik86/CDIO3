@@ -1,12 +1,12 @@
 0,,Regular-Start-0-0-red
 1,,Property-Burger bar-1-1-Brown
-2,,Property-Pizzeria-2-1-Brown
+2,,Property-Pizza Hut-2-1-Brown
 3,,Chance-Chance-3-0-white
 4,,Property-Candy store-4-1-cyan
 5,,Property-Ice bar-5-1-cyan
 6,,Regular-Visiting-6-0-white
 7,,Property-The Museum-7-2-pink
-8,,Property-Biblioteket-8-2-pink
+8,,Property-Library-8-2-pink
 9,,Chance-Chance-9-0-white
 10,,Property-Skater park-10-2-gold
 11,,Property-The pool-11-2-gold
@@ -15,7 +15,7 @@
 14,,Property-The cinema-14-3-red
 15,,Chance-Chance-15-0-white
 16,,Property-The toy store-16-3-yellow
-17,,Property-The Veterinary Clinic-17-3-yellow
+17,,Property-The Clinic-17-3-yellow
 18,,Jail-Go to jail-18-0-white
 19,,Property-Bowling alley-19-4-Green
 20,,Property-Zoo-20-4-Green
