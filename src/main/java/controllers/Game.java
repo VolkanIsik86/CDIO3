@@ -19,10 +19,9 @@ public class Game {
    private TxtReader landedOnTxt;
    private TxtReader squaresTxt;
    private TxtReader cardsTxt;
-    private TxtReader InformationTxt;
-   
-    //todo ret antal startpoints
-    private final int START_POINTS = 10;
+   private TxtReader winnerTxt;
+   private TxtReader guiTxt;
+
     
     public void playGame(){
     
@@ -33,8 +32,7 @@ public class Game {
         } while(looser.equals("null"));
 
         //Announces the winner of the game with HTML formatting.
-        String coolwinner ="<table width=\"173\" cellspacing=\"10\" bgcolor=\"#000000\"><tr><td align=\"center\">"+"<font color=\"white\" size=\"7\">Hurra!!!</font>"+"</td></tr>"+"<tr><td align=\"center\">"+"<font size=\"6\" color=\"red\">" + "Vinderen er:" +"</font>"+"</td></tr>" + "<tr><td align=\"center\">" + "<font size=\"10\" color=\"yellow\">" + getWinner().getName() + "</font>"+"</td></tr></table>";
-
+        String coolwinner ="<table width=\"173\" cellspacing=\"11\" bgcolor=\"#000000\"><tr><td align=\"center\">"+"<font color=\"white\" size=\"6\">" + winnerTxt.getLine("1") +"</font>"+"</td></tr>"+"<tr><td align=\"center\">"+"\n"+"<font size=\"5\" color=\"red\">" + winnerTxt.getLine("2") +"</font>"+"</td></tr>" + "<tr><td align=\"center\">" +"\n"+ "<font size=\"6\" color=\"yellow\">" + getWinner().getName() + "</font>"+"</td></tr></table>";
         guiLogic.getGui().displayChanceCard(coolwinner);
    }
    
@@ -100,7 +98,8 @@ public class Game {
        landedOnTxt = new TxtReader(languagePath, "landedOn_" + language);
        squaresTxt = new TxtReader(languagePath, "squares_" + language);
        cardsTxt = new TxtReader(languagePath,"chanceCards_" + language);
-       InformationTxt = new TxtReader(languagePath,"Information" + language);
+       winnerTxt = new TxtReader(languagePath,"winner_"+ language);
+        guiTxt = new TxtReader(languagePath,"guitext_"+ language);
    }
    
    private void initGUILogic(){
@@ -139,6 +138,9 @@ public class Game {
 
        Player winner = playerList.getPlayer(0);
 
+       //todo skal slettes inden aflevering
+       System.out.println("Vinderen er: "+winner);
+
        for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
            Player currentPlayer = playerList.getPlayer(i);
            if (currentPlayer.getLost()){
@@ -155,29 +157,8 @@ public class Game {
        }
        return winner;
    }
-   
-   
 
-//    public void createPlayers() {
-//        System.out.println("");
-//
-//        //Point bliver bestemt efter antal spillere
-//        if (players.equals(2)){
-//            startKapital = 20;
-//        }
-//        if (players.equals(3)){
-//            startKapital = 18;
-//        }
-//        if (players.equals(4)){
-//            startKapital = 16;
-//        }
-//
-//        //Array af spillere laves
-//        for (int index = 0; index < players.length; index++) {
-//            final String navn = readPlayerName(index);
-////            players[index] = new Player(navn, startKapital);
-    
-    
+
         }
 
 
