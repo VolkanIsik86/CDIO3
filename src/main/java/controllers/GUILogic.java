@@ -125,13 +125,13 @@ public class GUILogic {
             ages = tempAge;
 
             //Asks player to write their name.
-            String name = gui.getUserString("Enter name"); //todo skal ændres til at fungere på alle sprog
+            String name = gui.getUserString(guiTxt.getLine("Enter name")); //todo skal ændres til at fungere på alle sprog
 
                 for (String samename : names) {
                     boolean sameNameTest = true;
                     while (sameNameTest) {
                     if (name.equals(samename)) {
-                        name = gui.getUserString("name is already in use, type another name:");
+                        name = gui.getUserString(guiTxt.getLine("Already in use"));
 
                     }
                     else
@@ -147,7 +147,7 @@ public class GUILogic {
             int age = 0;
             do {
                 try {
-                    age = Integer.parseInt(gui.getUserString("Enter age of " + name + ":"));
+                    age = Integer.parseInt(gui.getUserString(guiTxt.getLine("Age") + " " + name ));
                     if (age >= 5 && age <= 150) {
                         ageIsInt = true;
                     }
@@ -159,7 +159,7 @@ public class GUILogic {
                 }
             } while (!ageIsInt);
 
-            int age = gui.getUserInteger(guiTxt.getLine("Age") + " " + name  , 5,150);
+
             ages[i] = age;
             
             //Constructs figures for the players that can move on the game board. (Inspired From The teacher Daniel Kolditz Rubin-Grøn in class demonstration.)
@@ -368,7 +368,7 @@ public class GUILogic {
     public void displayDie(int faceValue, String name){
         
         //todo Skal hente den rigtige sætning afhængig af sprog
-        showMessage("Det er " + name + "s tur, tryk ok for at kaste terningen");
+        showMessage(guiTxt.getLine("it is") + " " + name + guiTxt.getLine("throw dice"));
         gui.setDie(faceValue);
     }
 
