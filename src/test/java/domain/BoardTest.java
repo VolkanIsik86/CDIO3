@@ -13,8 +13,9 @@ public class BoardTest {
     TxtReader squareTxt = new TxtReader(languagePath,"squares_da");
     TxtReader landedOnTxt = new TxtReader(languagePath,"landedOn_da");
     TxtReader cardsTxt = new TxtReader(languagePath,"chanceCards_da");
-    
-    GUILogic guiLogic = new GUILogic(squareTxt);
+    TxtReader guiTxt = new TxtReader(languagePath, "guitext_da");
+
+    GUILogic guiLogic = new GUILogic(squareTxt,guiTxt);
     
     Board board = new Board(squareTxt, landedOnTxt, cardsTxt, guiLogic);
     

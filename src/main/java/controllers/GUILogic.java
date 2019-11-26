@@ -28,10 +28,12 @@ public class GUILogic {
     private Color white = new Color(255,255,255);
     private Color green = new Color(28,126,0);
     private Color[] carcolor = {red,blue,white,green};
+    private TxtReader guiTxt;
 
     
     
-    public GUILogic(TxtReader squaresTxt) {
+    public GUILogic(TxtReader squaresTxt, TxtReader guiTxt) {
+        this.guiTxt = guiTxt;
         makeBoard(squaresTxt);
         makeUsers();
     }
@@ -123,13 +125,13 @@ public class GUILogic {
             ages = tempAge;
 
             //Asks player to write their name.
-            String name = gui.getUserString("Enter name"); //todo skal ændres til at fungere på alle sprog
+            String name = gui.getUserString(guiTxt.getLine("Enter name")); //todo skal ændres til at fungere på alle sprog
 
                 for (String samename : names) {
                     boolean sameNameTest = true;
                     while (sameNameTest) {
                     if (name.equals(samename)) {
-                        name = gui.getUserString("name is already in use, type another name:");
+                        name = gui.getUserString(guiTxt.getLine("Already in use"));
 
                     }
                     else
@@ -142,7 +144,7 @@ public class GUILogic {
 
             names[i] = name;
             
-            int age = gui.getUserInteger("Enter age of "  + name + ":" , 5,150);
+            int age = gui.getUserInteger(guiTxt.getLine("Age") + " " + name  , 5,150);
             ages[i] = age;
             
             //Constructs figures for the players that can move on the game board. (Inspired From The teacher Daniel Kolditz Rubin-Grøn in class demonstration.)
@@ -188,7 +190,7 @@ public class GUILogic {
      */
     public String[] makeUsers() {
         //todo skal ændres til at fungere på alle sprog1
-        String nrPlayers = gui.getUserSelection("Hvor mange spillere skal spille spillet?", "2","3","4");
+        String nrPlayers = gui.getUserSelection(guiTxt.getLine("player numbers"), "2","3","4");
         int NumberOfPlayers = Integer.parseInt(nrPlayers);
         
         String names[] = new String[NumberOfPlayers];
@@ -341,7 +343,7 @@ public class GUILogic {
     public void displayDie(int faceValue, String name){
         
         //todo Skal hente den rigtige sætning afhængig af sprog
-        showMessage("Det er " + name + "s tur, tryk ok for at kaste terningen");
+        showMessage( guiTxt.getLine("it is")+ " " + name + guiTxt.getLine("throw dice"));
         gui.setDie(faceValue);
     }
 

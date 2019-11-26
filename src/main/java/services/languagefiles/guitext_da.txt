@@ -1,6 +1,6 @@
-0,,Skriv Navn
-1,,Navnet er allerede i brug, skriv et andet:
-2,,Skriv alder på
-3,,Hvor mange spillere skal spille spillet?
-4,,Det er
-5,,s tur, tryk ok for at kaste terningen
+Enter name,,Skriv Navn
+Already in use,,Navnet er allerede i brug, skriv et andet:
+Age,,Skriv alder på:
+player numbers,,Hvor mange spillere skal spille spillet?
+it is,,Det er
+throw dice,,s tur, tryk OK for at kaste terningen
