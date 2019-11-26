@@ -5,3 +5,4 @@ player numbers,,Hvor mange spillere skal spille spillet?
 it is,,Det er
 throw dice,,s tur, tryk OK for at kaste terningen
 length,,Navn er ikke gyldigt (Mellem 2 til 8 karakterer)
+Play again,,Spil igen ?

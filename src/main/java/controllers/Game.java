@@ -7,34 +7,48 @@ import domain.PlayerList;
 import services.TxtReader;
 
 public class Game {
-   
-   private GUILogic guiLogic;
-   private Board board;
-   private TurnLogic turnLogic;
-   private PlayerList playerList;
-   private String looser = "null";
-   
-   private String languagePath = "src/main/java/services/languagefiles/";
-   private String language;
-   private TxtReader landedOnTxt;
-   private TxtReader squaresTxt;
-   private TxtReader cardsTxt;
-   private TxtReader winnerTxt;
-   private TxtReader guiTxt;
 
-    
-    public void playGame(){
-    
-        initializeGame();
-        
-        do {
-            playRound();
-        } while(looser.equals("null"));
+    private GUILogic guiLogic;
+    private Board board;
+    private TurnLogic turnLogic;
+    private PlayerList playerList;
+    private String looser = "null";
 
-        //Announces the winner of the game with HTML formatting.
-        String coolwinner ="<table width=\"173\" cellspacing=\"11\" bgcolor=\"#000000\"><tr><td align=\"center\">"+"<font color=\"white\" size=\"6\">" + winnerTxt.getLine("1") +"</font>"+"</td></tr>"+"<tr><td align=\"center\">"+"\n"+"<font size=\"5\" color=\"red\">" + winnerTxt.getLine("2") +"</font>"+"</td></tr>" + "<tr><td align=\"center\">" +"\n"+ "<font size=\"6\" color=\"yellow\">" + getWinner().getName() + "</font>"+"</td></tr></table>";
-        guiLogic.getGui().displayChanceCard(coolwinner);
-   }
+    private String languagePath = "src/main/java/services/languagefiles/";
+    private String language;
+    private TxtReader landedOnTxt;
+    private TxtReader squaresTxt;
+    private TxtReader cardsTxt;
+    private TxtReader winnerTxt;
+    private TxtReader guiTxt;
+    boolean play = true;
+
+
+    public void playGame() {
+
+        while(play) {
+
+            initializeGame();
+
+            do {
+                playRound();
+            } while (looser.equals("null"));
+
+            //Announces the winner of the game with HTML formatting.
+            String coolwinner = "<table width=\"173\" cellspacing=\"11\" bgcolor=\"#000000\"><tr><td align=\"center\">" + "<font color=\"white\" size=\"6\">" + winnerTxt.getLine("1") + "</font>" + "</td></tr>" + "<tr><td align=\"center\">" + "\n" + "<font size=\"5\" color=\"red\">" + winnerTxt.getLine("2") + "</font>" + "</td></tr>" + "<tr><td align=\"center\">" + "\n" + "<font size=\"6\" color=\"yellow\">" + getWinner().getName() + "</font>" + "</td></tr></table>";
+            guiLogic.getGui().displayChanceCard(coolwinner);
+
+            String playagain = guiLogic.getGui().getUserSelection(guiTxt.getLine("Play again"), "Yes","No");
+            if (playagain.equals("No")) {
+                play = false;
+                guiLogic.getGui().close();
+            }
+            guiLogic.getGui().displayChanceCard(" ");
+            guiLogic.getGui().close();
+            looser = "null";
+        }
+    }
+
    
    private void playRound(){
        for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
