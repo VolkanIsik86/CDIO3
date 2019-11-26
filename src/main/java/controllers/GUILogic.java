@@ -327,8 +327,8 @@ public class GUILogic {
      * Changes Font color of a field.
      * @param player New owner of the field.
      */
-    public void setForeGroundColor(Player player){
-        fields[player.getLocation().getIndex()].setForeGroundColor(carcolor[player.getType()]);
+    public void setSquareOwner(Player player, int price){
+        fields[player.getLocation().getIndex()].setSubText(player.getName() + "-" + price);
     }
 
     /**
