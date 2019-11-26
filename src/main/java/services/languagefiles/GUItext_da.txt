@@ -1,0 +1,6 @@
+Skriv Navn
+Navnet er allerede i brug, skriv et andet:
+Skriv alder på
+Hvor mange spillere skal spille spillet?
+Det er
+s tur, tryk ok for at kaste terningen

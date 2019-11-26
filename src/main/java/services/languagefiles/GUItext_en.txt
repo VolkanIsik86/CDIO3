@@ -1,0 +1,6 @@
+Enter name
+name is already in use, type another name:
+Enter age on
+How many players
+It is
+´s turn, press ok to throw the dice
