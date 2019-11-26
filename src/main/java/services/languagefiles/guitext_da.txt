@@ -1,6 +1,7 @@
-Enter name,,Skriv Navn
+Enter name,,Skriv Navn (Mellem 2 til 8 karakterer)
 Already in use,,Navnet er allerede i brug, skriv et andet:
-Age,,Skriv alder på:
+Age,,Skriv alder på (Minimum 5)
 player numbers,,Hvor mange spillere skal spille spillet?
 it is,,Det er
 throw dice,,s tur, tryk OK for at kaste terningen
+length,,Navn er ikke gyldigt (Mellem 2 til 8 karakterer)
