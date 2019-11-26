@@ -21,9 +21,6 @@ public class Game {
    private TxtReader cardsTxt;
    private TxtReader winnerTxt;
 
-   
-    //todo ret antal startpoints
-    private final int START_POINTS = 10;
     
     public void playGame(){
     
@@ -140,6 +137,9 @@ public class Game {
 
        Player winner = playerList.getPlayer(0);
 
+       //todo skal slettes inden aflevering
+       System.out.println("Vinderen er: "+winner);
+
        for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
            Player currentPlayer = playerList.getPlayer(i);
            if (currentPlayer.getLost()){
@@ -156,29 +156,8 @@ public class Game {
        }
        return winner;
    }
-   
-   
 
-//    public void createPlayers() {
-//        System.out.println("");
-//
-//        //Point bliver bestemt efter antal spillere
-//        if (players.equals(2)){
-//            startKapital = 20;
-//        }
-//        if (players.equals(3)){
-//            startKapital = 18;
-//        }
-//        if (players.equals(4)){
-//            startKapital = 16;
-//        }
-//
-//        //Array af spillere laves
-//        for (int index = 0; index < players.length; index++) {
-//            final String navn = readPlayerName(index);
-////            players[index] = new Player(navn, startKapital);
-    
-    
+
         }
 
 
