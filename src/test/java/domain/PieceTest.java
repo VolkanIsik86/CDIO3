@@ -15,7 +15,8 @@ public class PieceTest {
         
         TxtReader squaresTxt = new TxtReader("src/main/java/services/languagefiles/", "squares_da");
         TxtReader landedOnTxt = new TxtReader("src/main/java/services/languagefiles/", "landedOn_da");
-        GUILogic guiLogic = new GUILogic(squaresTxt);
+        TxtReader guiTxt = new TxtReader("src/main/java/services/languagefiles/", "guitext_da");
+        GUILogic guiLogic = new GUILogic(squaresTxt, guiTxt);
         RegularSquare square = new RegularSquare("Test",0, guiLogic, landedOnTxt);
         
         Piece test = new Piece(square);

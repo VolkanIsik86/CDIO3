@@ -34,4 +34,5 @@ public class LanguageLogic {
         lang = language.LanguageLogic();
         return lang;
     }
+
 }
