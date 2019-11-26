@@ -28,6 +28,7 @@ public class GUILogic {
     private Color white = new Color(255,255,255);
     private Color green = new Color(28,126,0);
     private Color[] carcolor = {red,blue,white,green};
+
     
     
     public GUILogic(TxtReader squaresTxt) {
