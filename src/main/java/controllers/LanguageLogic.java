@@ -17,10 +17,8 @@ public class LanguageLogic {
                 null);
         if (choice == JOptionPane.YES_OPTION) {
             language = "en";
-            System.out.println("English");
         } else if(choice == JOptionPane.NO_OPTION){
             language = "da";
-            System.out.println("Dansk");
         }
         else{
             System.exit(0);

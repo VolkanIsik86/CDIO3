@@ -45,6 +45,7 @@ public class PlayerList {
         return players;
     }
     // Hentet inspiration fra geeksforgeeks.org/insertion-sort/
+    
     public void sortPlayersByAge(){
 
         for (int i = 0; i < players.length ; i++) {

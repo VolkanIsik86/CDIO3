@@ -10,7 +10,7 @@ public class PropertySquare extends Square {
     
     private String color;
     private int price;
-    private Player owner = null;
+    private Player owner;
     
     public PropertySquare(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt, int price, String color) {
         super(name, index, guiLogic, landedOnTxt);
@@ -59,7 +59,8 @@ public class PropertySquare extends Square {
     
     public void landedOn(Player player) {
         
-        if (this.equals(player)){
+        
+        if (this.getOwner() != null && this.getOwner().equals(player)){
             guiLogic.showMessage(landedOnTxt.getLine("Owned by yourself property square"));
             return;
         }

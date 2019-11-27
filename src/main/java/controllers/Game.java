@@ -21,8 +21,7 @@ public class Game {
    private TxtReader cardsTxt;
    private TxtReader winnerTxt;
    private TxtReader guiTxt;
-
-    
+   
     public void playGame(){
     
         initializeGame();
