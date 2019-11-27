@@ -4,14 +4,14 @@ import domain.*;
 import domain.squares.*;
 import gui_fields.GUI_Player;
 import services.TxtReader;
-
+import test.DieStub;
 
 public class TurnLogic {
     
-    private Die die = new Die();
     private Board board;
     private GUILogic guiLogic;
     private TxtReader landedOnTxt;
+    private Die die = new Die();
     
     public TurnLogic(Board board, GUILogic guiLogic, TxtReader landedOnTxt) {
         this.board = board;
