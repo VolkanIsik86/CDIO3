@@ -35,8 +35,14 @@ public class Game {
             } while (looser.equals("null"));
 
             //Announces the winner of the game with HTML formatting.
-            String coolwinner = "<table width=\"173\" cellspacing=\"11\" bgcolor=\"#000000\"><tr><td align=\"center\">" + "<font color=\"white\" size=\"6\">" + winnerTxt.getLine("1") + "</font>" + "</td></tr>" + "<tr><td align=\"center\">" + "\n" + "<font size=\"5\" color=\"red\">" + winnerTxt.getLine("2") + "</font>" + "</td></tr>" + "<tr><td align=\"center\">" + "\n" + "<font size=\"6\" color=\"yellow\">" + getWinner().getName() + "</font>" + "</td></tr></table>";
-            guiLogic.getGui().displayChanceCard(coolwinner);
+            if(playerList.getWinner() == null){
+                String coolwinner = "<table width=\"173\" cellspacing=\"17\" bgcolor=\"#000000\"><tr><td>\n</td></tr><tr><td align=\"center\">" + "<font color=\"white\" size=\"6" + "" + "\">" + winnerTxt.getLine("3") + "</font>" + "</td></tr>"+"<tr><td>\n</td></tr>" + "</table>";
+                guiLogic.getGui().displayChanceCard(coolwinner);
+            }
+            else {
+                String coolwinner = "<table width=\"173\" cellspacing=\"11\" bgcolor=\"#000000\"><tr><td align=\"center\">" + "<font color=\"white\" size=\"6\">" + winnerTxt.getLine("1") + "</font>" + "</td></tr>" + "<tr><td align=\"center\">" + "\n" + "<font size=\"5\" color=\"red\">" + winnerTxt.getLine("2") + "</font>" + "</td></tr>" + "<tr><td align=\"center\">" + "\n" + "<font size=\"6\" color=\"yellow\">" + playerList.getWinner().getName() + "</font>" + "</td></tr></table>";
+                guiLogic.getGui().displayChanceCard(coolwinner);
+            }
 
             String playagain = guiLogic.getGui().getUserSelection(guiTxt.getLine("Play again"), "Yes","No");
             if (playagain.equals("No")) {
@@ -146,33 +152,6 @@ public class Game {
        playerList.setStartBalance();
        
    }
-   
-   //todo uafgjort mellem spillere med ens point mangler at blive implementeret
-   private Player getWinner(){
-
-       Player winner = playerList.getPlayer(0);
-
-       //todo skal slettes inden aflevering
-       System.out.println("Vinderen er: "+winner);
-
-       for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
-           Player currentPlayer = playerList.getPlayer(i);
-           if (currentPlayer.getLost()){
-               int maxScore = playerList.getPlayer(0).getBalance();
-               for (int k = 1; k < playerList.NumberOfPlayers(); k++) {
-                   if (playerList.getPlayer(k).getBalance()>maxScore){
-                       winner = playerList.getPlayer(k);
-                   }
-
-               }
-
-           }
-
-       }
-       return winner;
-   }
-
-
-        }
+}
 
 

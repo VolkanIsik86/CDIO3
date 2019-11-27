@@ -44,7 +44,7 @@ public class PlayerList {
     public Player [] getPlayers(){
         return players;
     }
-    // Hentet inspiration fra geeksforgeeks.org/insertion-sort/
+    // Hentet inspiration fra geeksforgeeks.org/insertion-sort/ insertion sort algoritme.
     public void sortPlayersByAge(){
 
         for (int i = 0; i < players.length ; i++) {
@@ -58,6 +58,36 @@ public class PlayerList {
             players[j+1] = key;
         }
     }
+    public void sortPlayersByPoint(){
+        for (int i = 0; i < players.length ; i++) {
+            Player key = players[i];
+            int j = i-1;
+
+            while (j>=0 && players[j].getBalance() > key.getBalance()){
+                players[j+1] = players[j];
+                j=j-1;
+            }
+            players[j+1] = key;
+        }
+    }
+
+    /**
+     * Sorts player list and returns highest scored player
+     * @return returns winner
+     */
+    public Player getWinner(){
+
+        sortPlayersByPoint();
+
+        Player winner = this.getPlayer(this.NumberOfPlayers()-1);
+
+        if (winner.getBalance()==this.getPlayer(this.NumberOfPlayers()-2).getBalance()){
+            winner = null;
+        }
+
+        return winner;
+    }
+
     //BALANCE skal sættes efter antal spillere
     //2 spillere giver balance på 20M
     //3 spillere giver blance på 18M
