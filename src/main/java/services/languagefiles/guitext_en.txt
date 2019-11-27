@@ -1,6 +1,7 @@
-Enter name,,Enter name
+Enter name,,Enter name (Between 2 to 8 characters)
 Already in use,,name is already in use, type another name:
-Age,,Enter age on:
+Age,,Enter age on (Minimum 5)
 player numbers,,How many players?
 it is,,It is
 throw dice,,´s turn, press OK to throw the dice
+length,,Name length is not valid (Between 2 to 8 characters)
