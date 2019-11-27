@@ -1,11 +1,11 @@
 package domain;
 
 import controllers.GUILogic;
-import domain.ChanceCards.ChanceCard;
-import domain.ChanceCards.EarnCard;
+import domain.chanceCards.ChanceCard;
+import domain.chanceCards.EarnCard;
 
-import domain.ChanceCards.MoveCard;
-import domain.ChanceCards.PayCard;
+import domain.chanceCards.MoveCard;
+import domain.chanceCards.PayCard;
 import services.TxtReader;
 
 import java.util.Random;

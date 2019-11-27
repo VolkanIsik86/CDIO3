@@ -1,13 +1,10 @@
 package domain.squares;
 
 import controllers.GUILogic;
-import domain.Board;
-import domain.ChanceCards.ChanceCard;
+import domain.chanceCards.ChanceCard;
 import domain.ChanceDeck;
 import domain.Player;
 import services.TxtReader;
-
-import java.util.Random;
 
 // Chance holds chance cards that affect player randomly
 public class ChanceSquare extends Square {

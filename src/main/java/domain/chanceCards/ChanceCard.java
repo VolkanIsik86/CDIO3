@@ -1,4 +1,4 @@
-package domain.ChanceCards;
+package domain.chanceCards;
 
 //Chance card that has point and move modifier.
 

@@ -17,7 +17,7 @@ public class GUILogic {
     private Color BROWN = new Color(153, 102, 0);
     private Color GOLD = new Color(255, 204, 51);
     private final int N_FIELDS = 24;
-    private final int DELAY = 200;
+    private final int DELAY = 20;
     private GUI_Street[] fields;
     private GUI gui;
     private String[] names = new String[0];

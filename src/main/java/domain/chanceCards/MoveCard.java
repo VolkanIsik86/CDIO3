@@ -1,4 +1,4 @@
-package domain.ChanceCards;
+package domain.chanceCards;
 
 import controllers.GUILogic;
 import domain.Board;
