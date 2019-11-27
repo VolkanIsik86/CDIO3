@@ -18,17 +18,14 @@ public class GUILogic {
     private Color GOLD = new Color(255, 204, 51);
     private final int N_FIELDS = 24;
     private final int DELAY = 200;
-    private GUI_Field[] fields;
+    private GUI_Street[] fields;
     private GUI gui;
     private String[] names = new String[0];
     private GUI_Player[] guiPlayers = new GUI_Player[0];
     private int[] ages = new int [0];
-    private Color red = new Color(255,0,0);
-    private Color blue = new Color(0,0,255);
-    private Color white = new Color(255,255,255);
-    private Color green = new Color(28,126,0);
-    private Color[] carcolor = {red,blue,white,green};
+    private Color[] carcolor = {Color.RED,Color.BLUE,Color.WHITE,Color.GREEN};
     private TxtReader guiTxt;
+
 
 
 
@@ -43,8 +40,8 @@ public class GUILogic {
      * @param squaresTxt Defines square names and costs with language depended Txtreader.
      * @return Array with fields that game board consist of.
      */
-    private GUI_Field[] makeBoard(TxtReader squaresTxt) {
-        fields = new GUI_Field[N_FIELDS];
+    private GUI_Street[] makeBoard(TxtReader squaresTxt) {
+        fields = new GUI_Street[N_FIELDS];
        // Løbe igennem for hvert felt
         for (int i = 0; i < N_FIELDS; i++) {
             fields[i] = new GUI_Street();
@@ -332,6 +329,8 @@ public class GUILogic {
      */
     public void setSquareOwner(Player player, int price){
         fields[player.getLocation().getIndex()].setSubText(player.getName() + "-" + price);
+        Color playercolor = getGUIPlayer(player).getCar().getPrimaryColor();
+        fields[player.getLocation().getIndex()].setBorder(playercolor);
     }
 
     /**
