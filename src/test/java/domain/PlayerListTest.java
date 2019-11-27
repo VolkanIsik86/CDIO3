@@ -96,6 +96,14 @@ public class PlayerListTest {
 
         assertEquals(expected,actual);
 
+        testlist.getPlayer(0).setBalance(20);
+        testlist.getPlayer(1).setBalance(20);
+
+        Player expectedDraw = null;
+        Player actualDraw = testlist.getWinner();
+        assertEquals(expectedDraw,actualDraw);
+
+
     }
 
 
