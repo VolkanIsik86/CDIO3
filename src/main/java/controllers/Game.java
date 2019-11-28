@@ -4,14 +4,12 @@ import domain.Board;
 import domain.Player;
 import domain.PlayerList;
 import services.TxtReader;
-import test.GUILogicStub;
-import test.TurnLogicStub;
 
 public class Game {
 
-    private GUILogicStub guiLogic = new GUILogicStub();
+    private GUILogic guiLogic = new GUILogic();
     private Board board = new Board();
-    private TurnLogicStub turnLogic = new TurnLogicStub();
+    private TurnLogic turnLogic = new TurnLogic();
     private PlayerList playerList;
     
     private boolean playAgain = true;

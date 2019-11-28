@@ -6,12 +6,12 @@ public class DieStub {
     
     private final int N_SIDES = 6;
     private int dieValue = 0;
-    
+
     //backendvsgui: {1, 1, 2, 4, 1, 4, 4, 3, 9, 11, 18, 1, 1, 1}
     //1. PropertySquare.landedOn(): {1, 1, 23, 16, 1, 7, 13, 13, 8}
     //2. PropertySquare.landedOn(): {1, 1, 23, 16, 1, 7, 13, 13, 2, 1}
     private int[] rolls = {1, 1, 23, 16, 1, 7, 13, 13, 2, 1};
-    
+
     private int counter = 0;
     
     public int  getFaceValue(){

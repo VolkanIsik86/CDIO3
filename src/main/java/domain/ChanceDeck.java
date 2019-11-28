@@ -7,7 +7,6 @@ import domain.chanceCards.EarnCard;
 import domain.chanceCards.MoveCard;
 import domain.chanceCards.PayCard;
 import services.TxtReader;
-import test.MoveCardStub;
 
 import java.util.Random;
 
@@ -33,7 +32,7 @@ public class ChanceDeck {
                 chanceCards[i] = new EarnCard(oneLine[0], oneLine[2], guiLogic, this, Integer.parseInt(oneLine[1]));
                 
             } else if ("Move".equals(oneLine[0])) {
-                chanceCards[i] = new MoveCardStub(oneLine[0], oneLine[2], guiLogic, this, Integer.parseInt(oneLine[1]), board);
+                chanceCards[i] = new MoveCard(oneLine[0], oneLine[2], guiLogic, this, Integer.parseInt(oneLine[1]), board);
                 
             } else if ("Pay".equals(oneLine[0])) {
                 chanceCards[i] = new PayCard(oneLine[0], oneLine[2], guiLogic, this, Integer.parseInt(oneLine[1]), cardsTxt);
