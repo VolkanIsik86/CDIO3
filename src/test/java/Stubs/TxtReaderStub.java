@@ -1,4 +1,4 @@
-package domain;
+package Stubs;
 
 import services.TxtReader;
 import services.TxtReaderTest;

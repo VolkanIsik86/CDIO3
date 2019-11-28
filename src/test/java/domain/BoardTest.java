@@ -1,10 +1,11 @@
 package domain;
 
-import controllers.GUILogic;
+import Stubs.GUILogicStub;
+import Stubs.PieceStub;
+import Stubs.PlayerStub;
+import Stubs.TxtReaderStub;
 import domain.squares.*;
-import domain.squares.Square;
 import org.junit.Test;
-import services.TxtReader;
 
 import static org.junit.Assert.*;
 

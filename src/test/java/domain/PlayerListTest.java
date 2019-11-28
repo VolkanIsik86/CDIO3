@@ -1,5 +1,6 @@
 package domain;
 
+import Stubs.StubSquare;
 import controllers.GUILogic;
 import org.junit.Test;
 

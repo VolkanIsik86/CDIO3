@@ -1,6 +1,7 @@
-package domain;
+package Stubs;
 
 import controllers.GUILogic;
+import domain.Player;
 import domain.squares.Square;
 import services.TxtReader;
 

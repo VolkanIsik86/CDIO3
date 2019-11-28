@@ -1,4 +1,4 @@
-package domain;
+package Stubs;
 
 import controllers.GUILogic;
 import gui_fields.GUI_Street;
