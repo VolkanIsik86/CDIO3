@@ -4,12 +4,13 @@ import domain.Board;
 import domain.Player;
 import domain.PlayerList;
 import services.TxtReader;
+import test.TurnLogicStub;
 
 public class Game {
 
     private GUILogic guiLogic = new GUILogic();
     private Board board = new Board();
-    private TurnLogic turnLogic = new TurnLogic();
+    private TurnLogicStub turnLogic = new TurnLogicStub();
     private PlayerList playerList;
     
     private boolean playAgain = true;
@@ -99,11 +100,6 @@ public class Game {
        for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
         
            Player currentPlayer = playerList.getPlayer(i);
-        
-           //todo slet
-           System.out.println("\nTager en tur for: " + currentPlayer.getName());
-           System.out.println("Spilleren stod på: " + currentPlayer.getLocation().getIndex());
-           System.out.println("Spilleren havde: " + currentPlayer.getBalance() + " point");
         
            //If player is in jail
            if (currentPlayer.getJail()){

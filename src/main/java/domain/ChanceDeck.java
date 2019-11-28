@@ -12,8 +12,8 @@ import java.util.Random;
 
 public class ChanceDeck {
     
-    private final int N_CARDS = 14;
-    private ChanceCard[] chanceCards;
+    protected final int N_CARDS = 14;
+    protected ChanceCard[] chanceCards;
     private Random rnd = new Random();
     
     //Creates all the Chance cards and adds them to an array

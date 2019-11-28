@@ -1,82 +1,36 @@
-package domain.squares;
-
+package test;
 
 import controllers.GUILogic;
 import domain.Player;
+import domain.squares.PropertySquare;
 import services.TxtReader;
 
-// Property square is the square that can be owned and other players, who land on it, pays to the owner.
-public class PropertySquare extends Square {
+public class PropertySquareStub extends PropertySquare {
     
-    private String color;
-    protected int price;
-    protected Player owner;
-    
-    public PropertySquare(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt, int price, String color) {
-        super(name, index, guiLogic, landedOnTxt);
-        this.color = color;
-        this.price = price;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public Player getOwner() {
-        return owner;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public void setOwner(Player owner) {
-        this.owner = owner;
+    public PropertySquareStub(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt, int price, String color){
+        super(name, index, guiLogic, landedOnTxt, price, color);
     }
     
-    //Pay rent logic: withdraws balance from player
-    protected void payRent(Player p){
-        p.withdraw(this.getPrice());
-    }
-
-    // get rent logic: Adds points to the owner of this square.
-    protected void earnRent(){
-        owner.deposit(this.getPrice());
-    }
-    
-    protected void purchase(Player p){
-        this.setOwner(p);
-        payRent(p);
-    }
-    
-    public void landedOn(Player player) {
-        
+    @Override
+    public void landedOn(Player player){
         
         if (this.getOwner() != null && this.getOwner().equals(player)){
             guiLogic.showMessage(landedOnTxt.getLine("Owned by yourself property square"));
             return;
         }
-        
-        //If property is not owned
-        if (owner == null) {
     
+        //If property is not owned
+        if (owner == null){
+        
             guiLogic.showMessage(landedOnTxt.getLine("Not owned property square"));
-            
+        
             //If player has the requested fonds
             if (player.attemptToPurchase(this)){
                 purchase(player);
                 guiLogic.setSquareOwner(player,this.getPrice());
                 guiLogic.setPlayerBalance(player);
             }
-            
+        
             //If player doesn't have the requested fonds
             else {
                 player.setLost(true);
@@ -85,12 +39,12 @@ public class PropertySquare extends Square {
                 guiLogic.setPlayerBalance(player);
             }
         }
-        
+    
         //If property is owned
         else{
-            
+        
             guiLogic.showMessage(landedOnTxt.getLine("Owned by another property square"));
-    
+        
             //If player has the requested fonds
             if (player.attemptToPay(this.getPrice())){
                 payRent(player);
@@ -98,7 +52,7 @@ public class PropertySquare extends Square {
                 guiLogic.setPlayerBalance(player);
                 guiLogic.setPlayerBalance(this.getOwner());
             }
-    
+        
             //If player doesn't have the requested fonds
             else {
                 player.setLost(true);
@@ -106,7 +60,8 @@ public class PropertySquare extends Square {
                 guiLogic.showMessage(landedOnTxt.getLine("Does not have fonds for rent"));
                 guiLogic.setPlayerBalance(player);
             }
-            
+        
         }
     }
+    
 }
