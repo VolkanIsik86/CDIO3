@@ -8,7 +8,7 @@
 7,,Pay-2-Du skal betale 2M
 8,,Pay-3-Du skal betale 3M
 9,,Pay-3-Du skal betale 3M
-10,,Earn-1-Du tjener 1M
+10,,Pay-3-Du skal betale 3M
 11,,Earn-2-Du tjener 2M
 12,,Earn-3-Du tjener 3M
 13,,Earn-4-Du tjener 4M

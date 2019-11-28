@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+//Testing the correctness and fairness of the die
 
 public class DieTest {
     

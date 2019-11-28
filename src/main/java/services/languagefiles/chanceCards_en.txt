@@ -8,7 +8,7 @@
 7,,Pay-2-You pay 2M
 8,,Pay-3-You pay 3M
 9,,Pay-3-You pay 3M
-10,,Earn-1-You earn 1M
+10,,Pay-3-You pay 3M
 11,,Earn-2-You earn 2M
 12,,Earn-3-You earn 3M
 13,,Earn-4-You earn 4M
