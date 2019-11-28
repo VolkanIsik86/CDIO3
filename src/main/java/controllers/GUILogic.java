@@ -11,7 +11,6 @@ import services.TxtReader;
 import java.awt.*;
 import java.util.Random;
 
-
 public class GUILogic {
     
     private Color BROWN = new Color(153, 102, 0);
@@ -96,8 +95,6 @@ public class GUILogic {
         }
         gui = new GUI(fields);
         return fields;
-
-
     }
 
     /**
