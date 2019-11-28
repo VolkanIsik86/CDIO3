@@ -3,20 +3,17 @@ package domain;
 import controllers.GUILogic;
 import domain.squares.*;
 import services.TxtReader;
-import test.ChanceDeckStub;
-import test.ChanceSquareStub;
-import test.PropertySquareStub;
 
 public class Board {
 
     private int SIZE;
     private Square[] squares;
-    private ChanceDeckStub chanceDeck;
+    private ChanceDeck chanceDeck;
     
     public void makeBoard(TxtReader squareTxt, TxtReader landedOnTxt, TxtReader cardsTxt, GUILogic guiLogic){
         
         //Chancefelterne skal bruge chancedækket i deres landOn, samtidig skal chancedækket bruge boardet, til at rykke spillerne
-        chanceDeck = new ChanceDeckStub(guiLogic, cardsTxt, this);
+        chanceDeck = new ChanceDeck(guiLogic, cardsTxt, this);
     
         SIZE = squareTxt.getN_LINES();
         squares = new Square[SIZE];
@@ -32,13 +29,13 @@ public class Board {
                 squares[i] = new RegularSquare(oneLine[1], Integer.parseInt(oneLine[2]),guiLogic, landedOnTxt);
             
             } else if ("Property".equals(oneLine[0])) {
-                squares[i] = new PropertySquareStub(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, Integer.parseInt(oneLine[3]), oneLine[4]);
+                squares[i] = new PropertySquare(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, Integer.parseInt(oneLine[3]), oneLine[4]);
             
             } else if ("Jail".equals(oneLine[0])) {
                 squares[i] = new GoToJailSquare(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, this);
             
             } else if ("Chance".equals(oneLine[0])) {
-                squares[i] = new ChanceSquareStub(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, chanceDeck);
+                squares[i] = new ChanceSquare(oneLine[1], Integer.parseInt(oneLine[2]), guiLogic, landedOnTxt, chanceDeck);
             }
         }
     }

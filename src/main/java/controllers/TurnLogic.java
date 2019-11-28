@@ -2,16 +2,14 @@ package controllers;
 
 import domain.*;
 import domain.squares.*;
-import gui_fields.GUI_Player;
 import services.TxtReader;
-import test.DieStub;
 
 public class TurnLogic {
     
     protected Board board;
     protected GUILogic guiLogic;
     protected TxtReader landedOnTxt;
-    protected DieStub die = new DieStub();
+    protected Die die = new Die();
     
     public void init(Board board, GUILogic guiLogic, TxtReader landedOnTxt){
         this.board = board;
