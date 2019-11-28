@@ -6,6 +6,10 @@ import gui_fields.GUI_Player;
 
 public class GUILogicStub extends GUILogic {
     
+    public GUILogicStub(){
+        STARTBALANCE = 5;
+    }
+    
     @Override
     public String[] makeUsers() {
         //todo skal ændres til at fungere på alle sprog1
@@ -79,24 +83,10 @@ public class GUILogicStub extends GUILogic {
             ages[i] = age;
         
             //Constructs figures for the players that can move on the game board. (Inspired From The teacher Daniel Kolditz Rubin-Grøn in class demonstration.)
-        
             GUI_Car car = new GUI_Car(carcolor[i], carcolor[i], GUI_Car.Type.values()[i], GUI_Car.Pattern.values()[i]);
             
-        
-            //Predefine player balance at the start of the game
-        
-            int tempbalance = 0;
-            if (numberofPlayers==2){
-                tempbalance = 20;
-            }
-            else if (numberofPlayers==3){
-                tempbalance = 18;
-            }
-            else
-                tempbalance = 16;
-        
             // Constructs a player.
-            GUI_Player player = new GUI_Player(name, tempbalance, car);
+            GUI_Player player = new GUI_Player(name, STARTBALANCE, car);
         
             //Adds player to Player array.
             GUI_Player[] temp2 = new GUI_Player[guiPlayers.length + 1];

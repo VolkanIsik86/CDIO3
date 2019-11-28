@@ -7,25 +7,26 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PlayerListTest {
-    Square testSquare;
-    GUILogic guiLogic;
-    PlayerList testlist = new PlayerList(testSquare,guiLogic);
-
+    
+    private Square testSquare;
+    private GUILogic guiLogic;
+    private PlayerList testlist = new PlayerList(testSquare,guiLogic);
+    private final int STARTBALANCE = 20;
+    
     @Test
     public void addPlayer() {
 
-        testlist.addPlayer("test",99);
+        testlist.addPlayer("test",99, STARTBALANCE);
         String expectedName = "test";
         int expectedAge = 99;
         assertEquals(Player.class,testlist.getPlayer(0).getClass());
         assertEquals(expectedName,testlist.getPlayer(0).getName());
         assertEquals(expectedAge,testlist.getPlayer(0).getAge());
     }
-
-
+    
     @Test
     public void numberOfPlayers() {
-        testlist.addPlayer("test",99);
+        testlist.addPlayer("test",99, STARTBALANCE);
         int actual = testlist.NumberOfPlayers();
         int expected = 1;
         assertEquals(expected,actual);
@@ -34,11 +35,11 @@ public class PlayerListTest {
 
     @Test
     public void sortPlayersByAge() {
-        testlist.addPlayer("test",7);
-        testlist.addPlayer("test1",8);
-        testlist.addPlayer("test2",5);
-        testlist.addPlayer("test3",4);
-        testlist.addPlayer("test4",9);
+        testlist.addPlayer("test",7, STARTBALANCE);
+        testlist.addPlayer("test1",8, STARTBALANCE);
+        testlist.addPlayer("test2",5, STARTBALANCE);
+        testlist.addPlayer("test3",4,STARTBALANCE);
+        testlist.addPlayer("test4",9,STARTBALANCE);
         testlist.sortPlayersByAge();
         int[] ages = new int[5];
         for (int i = 0; i < testlist.NumberOfPlayers() ; i++){
@@ -51,23 +52,14 @@ public class PlayerListTest {
         assertEquals(true,ages[ages.length-2]<ages[ages.length-1]);
 
     }
-    @Test
-    public void setStartBalance() {
-        testlist.addPlayer("test",7);
-        testlist.addPlayer("test1",8);
-        testlist.setStartBalance();
-        int expected = 20;
-        assertEquals(expected,testlist.getPlayer(0).getBalance());
-        assertEquals(expected,testlist.getPlayer(1).getBalance());
-    }
 
     @Test
     public void sortPlayersByPoint() {
-        testlist.addPlayer("test",7);
-        testlist.addPlayer("test1",8);
-        testlist.addPlayer("test2",5);
-        testlist.addPlayer("test3",4);
-        testlist.addPlayer("test4",9);
+        testlist.addPlayer("test",7,STARTBALANCE);
+        testlist.addPlayer("test1",8,STARTBALANCE);
+        testlist.addPlayer("test2",5,STARTBALANCE);
+        testlist.addPlayer("test3",4,STARTBALANCE);
+        testlist.addPlayer("test4",9,STARTBALANCE);
         for (int i = 0; i < testlist.NumberOfPlayers() ; i++) {
             testlist.getPlayer(i).setBalance(i);
         }
@@ -86,8 +78,8 @@ public class PlayerListTest {
 
     @Test
     public void getWinner() {
-        testlist.addPlayer("test",7);
-        testlist.addPlayer("test1",8);
+        testlist.addPlayer("test",7,STARTBALANCE);
+        testlist.addPlayer("test1",8,STARTBALANCE);
 
         testlist.getPlayer(0).setBalance(20);
         testlist.getPlayer(1).setBalance(18);

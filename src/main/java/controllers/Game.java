@@ -195,11 +195,10 @@ public class Game {
        String[] playerNames = guiLogic.getPlayerNames();
        int [] ageOfPlayer = guiLogic.getPlayerAges();
        for (int i = 0; i < playerNames.length; i++) {
-           playerList.addPlayer(playerNames[i],ageOfPlayer[i]);
+           playerList.addPlayer(playerNames[i],ageOfPlayer[i], guiLogic.getSTARTBALANCE());
        }
 
        playerList.sortPlayersByAge();
-       playerList.setStartBalance();
        
    }
 }

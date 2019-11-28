@@ -18,6 +18,7 @@ public class GUILogic {
     private Color GOLD = new Color(255, 204, 51);
     private final int N_FIELDS = 24;
     private final int DELAY = 20;
+    protected int STARTBALANCE = 0;
     protected GUI_Street[] fields;
     protected GUI gui;
     protected String[] names = new String[0];
@@ -160,25 +161,20 @@ public class GUILogic {
             ages[i] = age;
             
             //Constructs figures for the players that can move on the game board. (Inspired From The teacher Daniel Kolditz Rubin-Grøn in class demonstration.)
-
-                GUI_Car car = new GUI_Car(carcolor[i], carcolor[i], GUI_Car.Type.values()[i], GUI_Car.Pattern.values()[i]);
-
-
-
+            GUI_Car car = new GUI_Car(carcolor[i], carcolor[i], GUI_Car.Type.values()[i], GUI_Car.Pattern.values()[i]);
+            
             //Predefine player balance at the start of the game
-
-            int tempbalance = 0;
             if (numberofPlayers==2){
-                tempbalance = 20;
+                STARTBALANCE = 20;
             }
             else if (numberofPlayers==3){
-                tempbalance = 18;
+                STARTBALANCE = 18;
             }
             else
-                tempbalance = 16;
+                STARTBALANCE = 16;
 
             // Constructs a player.
-            GUI_Player player = new GUI_Player(name, tempbalance, car);
+            GUI_Player player = new GUI_Player(name, STARTBALANCE, car);
 
             //Adds player to Player array.
             GUI_Player[] temp2 = new GUI_Player[guiPlayers.length + 1];
@@ -426,6 +422,10 @@ public class GUILogic {
     
     public void close(){
         gui.close();
+    }
+    
+    public int getSTARTBALANCE(){
+        return STARTBALANCE;
     }
     
    

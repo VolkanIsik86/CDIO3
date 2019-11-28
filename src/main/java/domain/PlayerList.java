@@ -16,7 +16,7 @@ public class PlayerList {
         this.guiLogic = guiLogic;
     }
     
-    public void addPlayer(String name, int age){
+    public void addPlayer(String name, int age, int startBalance){
         
         // Increase size of player-array by 1
         Player[] temp = new Player[players.length+1];
@@ -29,7 +29,7 @@ public class PlayerList {
         Piece piece = new Piece(startSquare);
         
         //Create and add new player to array
-        players[players.length-1] = new Player(name, age, 0, piece, guiLogic);
+        players[players.length-1] = new Player(name, age, startBalance, piece, guiLogic);
         
     }
     
@@ -86,26 +86,6 @@ public class PlayerList {
         }
 
         return winner;
-    }
-
-    //BALANCE skal sættes efter antal spillere
-    //2 spillere giver balance på 20M
-    //3 spillere giver blance på 18M
-    //4 spillere giver blance på 16M
-    public void setStartBalance(){
-        for (int i = 0; i < players.length; i++) {
-
-            if (NumberOfPlayers() == 2){
-                    getPlayer(i).setBalance(20);
-            }
-            if (NumberOfPlayers() == 3){
-                getPlayer(i).setBalance(18);
-            }
-            if (NumberOfPlayers() == 4){
-                getPlayer(i).setBalance(16);
-            }
-        }
-
     }
     
 }
