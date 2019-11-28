@@ -43,16 +43,16 @@ public class PropertySquare extends Square {
     }
     
     //Pay rent logic: withdraws balance from player
-    private void payRent(Player p){
+    void payRent(Player p){
         p.withdraw(this.getPrice());
     }
 
     // get rent logic: Adds points to the owner of this square.
-    private  void earnRent(){
+    void earnRent(){
         owner.deposit(this.getPrice());
     }
     
-    private void purchase(Player p){
+    void purchase(Player p){
         this.setOwner(p);
         payRent(p);
     }

@@ -17,7 +17,7 @@ public class BoardTest {
     private TxtReader cardsTxt = new TxtReader();
     private TxtReader guiTxt = new TxtReader();
 
-    private GUILogic guiLogic = new GUILogic();
+    private GUILogic guiLogic;
     private Board board = new Board();
     
     private Player player;
@@ -35,7 +35,7 @@ public class BoardTest {
         guiTxt.openFile(languagePath, "guitext_da");
         guiTxt.readLines();
         
-        guiLogic.init(squareTxt,guiTxt);
+
         board.makeBoard(squareTxt, landedOnTxt, cardsTxt, guiLogic);
         
         player = new Player("Mikkel", 23, 20, new Piece(board.getStart()), guiLogic);
