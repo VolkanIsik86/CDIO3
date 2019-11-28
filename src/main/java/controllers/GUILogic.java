@@ -25,11 +25,8 @@ public class GUILogic {
     private int[] ages = new int [0];
     private Color[] carcolor = {Color.RED,Color.BLUE,Color.WHITE,Color.GREEN};
     private TxtReader guiTxt;
-
-
-
-
-    public GUILogic(TxtReader squaresTxt, TxtReader guiTxt) {
+    
+    public void init(TxtReader squaresTxt, TxtReader guiTxt){
         this.guiTxt = guiTxt;
         makeBoard(squaresTxt);
         makeUsers();
@@ -427,14 +424,17 @@ public class GUILogic {
         gui.showMessage(message);
     }
     
+    public void close(){
+        gui.close();
+    }
+    
    
 
 }
 
-// todo GUI skal vise det felt man lander på i midten
-// todo skal ændre på feltfarverne når man ejer det
-// todo chancekort
-// todo kraftigt overveje vores .update funktion
+
+
+
 
 
 

@@ -11,9 +11,9 @@ public class TurnLogic {
     private Board board;
     private GUILogic guiLogic;
     private TxtReader landedOnTxt;
-    private DieStub die = new DieStub();
+    private Die die = new Die();
     
-    public TurnLogic(Board board, GUILogic guiLogic, TxtReader landedOnTxt) {
+    public void init(Board board, GUILogic guiLogic, TxtReader landedOnTxt){
         this.board = board;
         this.guiLogic = guiLogic;
         this.landedOnTxt = landedOnTxt;

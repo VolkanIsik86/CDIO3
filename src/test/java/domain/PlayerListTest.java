@@ -1,12 +1,13 @@
 package domain;
 
 import controllers.GUILogic;
+import domain.squares.Square;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class PlayerListTest {
-    StubSquare testSquare;
+    Square testSquare;
     GUILogic guiLogic;
     PlayerList testlist = new PlayerList(testSquare,guiLogic);
 

@@ -2,25 +2,26 @@ package domain;
 
 import controllers.GUILogic;
 import domain.squares.RegularSquare;
-import domain.squares.Square;
 import org.junit.Test;
 import services.TxtReader;
 
 import static org.junit.Assert.*;
 
+//Testing the static numbering of new pieces
+
 public class PieceTest {
     
+    private RegularSquare square = new RegularSquare("TestSquare", 1, new GUILogic(), new TxtReader());
+    private Piece testPiece1 = new Piece(square);
+    private Piece testPiece2 = new Piece(square);
+    private Piece testPiece3 = new Piece(square);
+
     @Test
     public void getType() {
-        
-        TxtReader squaresTxt = new TxtReader("src/main/java/services/languagefiles/", "squares_da");
-        TxtReader landedOnTxt = new TxtReader("src/main/java/services/languagefiles/", "landedOn_da");
-        TxtReader guiTxt = new TxtReader("src/main/java/services/languagefiles/", "guitext_da");
-        GUILogic guiLogic = new GUILogic(squaresTxt, guiTxt);
-        RegularSquare square = new RegularSquare("Test",0, guiLogic, landedOnTxt);
-        
-        Piece test = new Piece(square);
-        
-        
+        assertEquals(0,testPiece1.getType());
+        assertEquals(1,testPiece2.getType());
+        assertEquals(2,testPiece3.getType());
+
+
     }
 }

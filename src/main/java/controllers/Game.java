@@ -1,17 +1,18 @@
 package controllers;
 
 import domain.Board;
-import domain.ChanceDeck;
 import domain.Player;
 import domain.PlayerList;
 import services.TxtReader;
 
 public class Game {
 
-    private GUILogic guiLogic;
-    private Board board;
-    private TurnLogic turnLogic;
+    private GUILogic guiLogic = new GUILogic();
+    private Board board = new Board();
+    private TurnLogic turnLogic = new TurnLogic();
     private PlayerList playerList;
+    
+    private boolean playAgain = true;
     private String looser = "null";
 
     private String languagePath = "src/main/java/services/languagefiles/";
@@ -21,42 +22,80 @@ public class Game {
     private TxtReader cardsTxt;
     private TxtReader winnerTxt;
     private TxtReader guiTxt;
-    boolean play = true;
-
-
+   
+    
     public void playGame() {
 
-        while(play) {
+        while(playAgain) {
 
             initializeGame();
 
             do {
                 playRound();
             } while (looser.equals("null"));
+            
+            announceWinner();
 
-            //Announces the winner of the game with HTML formatting.
-            if(playerList.getWinner() == null){
-                String coolwinner = "<table width=\"173\" cellspacing=\"17\" bgcolor=\"#000000\"><tr><td>\n</td></tr><tr><td align=\"center\">" + "<font color=\"white\" size=\"6" + "" + "\">" + winnerTxt.getLine("3") + "</font>" + "</td></tr>"+"<tr><td>\n</td></tr>" + "</table>";
-                guiLogic.getGui().displayChanceCard(coolwinner);
-            }
-            else {
-                String coolwinner = "<table width=\"173\" cellspacing=\"11\" bgcolor=\"#000000\"><tr><td align=\"center\">" + "<font color=\"white\" size=\"6\">" + winnerTxt.getLine("1") + "</font>" + "</td></tr>" + "<tr><td align=\"center\">" + "\n" + "<font size=\"5\" color=\"red\">" + winnerTxt.getLine("2") + "</font>" + "</td></tr>" + "<tr><td align=\"center\">" + "\n" + "<font size=\"6\" color=\"yellow\">" + playerList.getWinner().getName() + "</font>" + "</td></tr></table>";
-                guiLogic.getGui().displayChanceCard(coolwinner);
-            }
-
-            String playagain = guiLogic.getGui().getUserSelection(guiTxt.getLine("Play again"), "Yes","No");
-            if (playagain.equals("No")) {
-                play = false;
-                guiLogic.getGui().close();
-            }
-            guiLogic.getGui().displayChanceCard(" ");
-            guiLogic.getGui().close();
-            looser = "null";
+            playAgain();
+            
         }
     }
-
-   
-   private void playRound(){
+    
+    private void announceWinner(){
+        //If it's a draw
+        if(playerList.getWinner() == null){
+            String coolwinner =
+                
+                    "<table width=\"173\" cellspacing=\"17\" bgcolor=\"#000000\"><tr><td>\n</td></tr><tr><td align=\"center\">" +
+                            "<font color=\"white\" size=\"6" +
+                            "" +
+                            "\">" +
+                            winnerTxt.getLine("3") +
+                            "</font>" +
+                            "</td></tr>" +
+                            "<tr><td>\n</td></tr>" +
+                            "</table>";
+        
+            guiLogic.getGui().displayChanceCard(coolwinner);
+        }
+    
+        //Else if not a draw
+        else {
+            String coolwinner =
+                
+                    "<table width=\"173\" cellspacing=\"11\" bgcolor=\"#000000\"><tr><td align=\"center\">" +
+                            "<font color=\"white\" size=\"6\">" + winnerTxt.getLine("1") +
+                            "</font>" +
+                            "</td></tr>" +
+                            "<tr><td align=\"center\">" +
+                            "\n" +
+                            "<font size=\"5\" color=\"red\">" +
+                            winnerTxt.getLine("2") +
+                            "</font>" +
+                            "</td></tr>" +
+                            "<tr><td align=\"center\">" +
+                            "\n" +
+                            "<font size=\"6\" color=\"yellow\">" +
+                            playerList.getWinner().getName() +
+                            "</font>" +
+                            "</td></tr></table>";
+        
+            guiLogic.getGui().displayChanceCard(coolwinner);
+        }
+    }
+    
+    private void playAgain(){
+        String playagain = guiLogic.getGui().getUserSelection(guiTxt.getLine("Play again"), "Yes","No");
+        if (playagain.equals("No")) {
+            playAgain = false;
+            guiLogic.close();
+        }
+        guiLogic.getGui().displayChanceCard(" ");
+        guiLogic.getGui().close();
+        looser = "null";
+    }
+    
+    private void playRound(){
        for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
         
            Player currentPlayer = playerList.getPlayer(i);
@@ -100,6 +139,10 @@ public class Game {
    }
    
    private void initializeGame(){
+    
+       looser = "null";
+       playAgain = true;
+       
        initLanguage();
        initGUILogic();
        initBoard();
@@ -115,27 +158,42 @@ public class Game {
        language = languageLogic.selectLangauge();
        
        //Load txt files
-       landedOnTxt = new TxtReader(languagePath, "landedOn_" + language);
-       squaresTxt = new TxtReader(languagePath, "squares_" + language);
-       cardsTxt = new TxtReader(languagePath,"chanceCards_" + language);
-       winnerTxt = new TxtReader(languagePath,"winner_"+ language);
-        guiTxt = new TxtReader(languagePath,"guitext_"+ language);
+       landedOnTxt = new TxtReader();
+       landedOnTxt.openFile(languagePath, "landedOn_" + language);
+       landedOnTxt.readLines();
+       
+       squaresTxt = new TxtReader();
+       squaresTxt.openFile(languagePath, "squares_" + language);
+       squaresTxt.readLines();
+       
+       cardsTxt = new TxtReader();
+       cardsTxt.openFile(languagePath,"chanceCards_" + language);
+       cardsTxt.readLines();
+       
+       winnerTxt = new TxtReader();
+       winnerTxt.openFile(languagePath,"winner_"+ language);
+       winnerTxt.readLines();
+       
+       guiTxt = new TxtReader();
+       guiTxt.openFile(languagePath,"guitext_"+ language);
+       guiTxt.readLines();
+       
    }
    
    private void initGUILogic(){
        
        //Includes the initialization of the GUI itself
-       guiLogic = new GUILogic(squaresTxt, guiTxt);
+       guiLogic.init(squaresTxt, guiTxt);
    }
    
    private void initBoard(){
         
         //Includes the initialization of the chance deck
-        board = new Board(squaresTxt, landedOnTxt, cardsTxt, guiLogic);
+        board.makeBoard(squaresTxt, landedOnTxt, cardsTxt, guiLogic);
    }
    
    private void initTurnLogic(){
-       turnLogic = new TurnLogic(board, guiLogic, landedOnTxt);
+       turnLogic.init(board, guiLogic, landedOnTxt);
    }
    
    private void initPlayerList(){

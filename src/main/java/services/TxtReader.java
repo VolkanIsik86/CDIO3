@@ -6,40 +6,48 @@ public class TxtReader {
     
     private String[][] lines;
     private int N_LINES = 0;
+    File file;
+    BufferedReader br;
     
-    public TxtReader(String path, String fileName) {
+    public void openFile(String path, String fileName){
         
-        BufferedReader txtReader;
-        
-        try {
-            //Create reader object
-            File file = new File(path + fileName + ".txt");
-            txtReader = new BufferedReader(new FileReader(file));
+        try{
+            file = new File(path + fileName + ".txt");
+            br = new BufferedReader(new FileReader(file));
             
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void readLines(){
+        
+        try{
+    
             //Count number of lines
-            String currentLine = txtReader.readLine();
+            String currentLine = br.readLine();
             while (currentLine != null) {
                 N_LINES++;
-                currentLine = txtReader.readLine();
+                currentLine = br.readLine();
             }
-            
+    
             //Reset reader
-            txtReader = new BufferedReader(new FileReader(file));
+            br = new BufferedReader(new FileReader(file));
             
             //Add lines to 2D array
             lines = new String[N_LINES][2];
             for (int i = 0; i < N_LINES; i++) {
-                String[] oneLine = txtReader.readLine().split(",,");
+                String[] oneLine = br.readLine().split(",,");
                 for (int j = 0; j < 2; j++) {
                     lines[i][j] = oneLine[j];
                 }
             }
-            txtReader.close();
             
-        } catch (IOException e) {
+            br.close();
+            
+        } catch (IOException e){
             e.printStackTrace();
         }
-        
     }
     
     public int getN_LINES(){

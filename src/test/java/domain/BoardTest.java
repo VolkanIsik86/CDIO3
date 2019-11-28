@@ -6,54 +6,68 @@ import services.TxtReader;
 
 import static org.junit.Assert.*;
 
+//Testes kun positivt, da brugeren ikke skal interegere direkte med objektet
+
 public class BoardTest {
     
-    String languagePath = "src/main/java/services/languagefiles/";
+    private String languagePath = "src/main/java/services/languagefiles/";
     
-    TxtReader squareTxt = new TxtReader(languagePath,"squares_da");
-    TxtReader landedOnTxt = new TxtReader(languagePath,"landedOn_da");
-    TxtReader cardsTxt = new TxtReader(languagePath,"chanceCards_da");
-    TxtReader guiTxt = new TxtReader(languagePath, "guitext_da");
+    private TxtReader squareTxt = new TxtReader();
+    private TxtReader landedOnTxt = new TxtReader();
+    private TxtReader cardsTxt = new TxtReader();
+    private TxtReader guiTxt = new TxtReader();
 
-    GUILogic guiLogic = new GUILogic(squareTxt,guiTxt);
+    private GUILogic guiLogic = new GUILogic();
+    private Board board = new Board();
     
-    Board board = new Board(squareTxt, landedOnTxt, cardsTxt, guiLogic);
+    private Player player;
     
-    // todo hurtig test, skal muligvis udbygges
+    public BoardTest(){
+        squareTxt.openFile(languagePath,"squares_da");
+        squareTxt.readLines();
+        
+        landedOnTxt.openFile(languagePath,"landedOn_da");
+        landedOnTxt.readLines();
+        
+        cardsTxt.openFile(languagePath,"chanceCards_da");
+        cardsTxt.readLines();
+        
+        guiTxt.openFile(languagePath, "guitext_da");
+        guiTxt.readLines();
+        
+        guiLogic.init(squareTxt,guiTxt);
+        board.makeBoard(squareTxt, landedOnTxt, cardsTxt, guiLogic);
+        
+        player = new Player("Mikkel", 23, 20, new Piece(board.getStart()), guiLogic);
+        
+    }
     
     @Test
     public void getSquare() {
         assertEquals("Chancen", board.getSquare(3).getName());
+        assertEquals(3, board.getSquare(3).getIndex());
+        
+        assertEquals("Start", board.getSquare(0).getName());
+        assertEquals(0, board.getSquare(0).getIndex());
+        
+        assertEquals("Skaterparken",board.getSquare(10).getName());
+        assertEquals(10, board.getSquare(10).getIndex());
+        
+        assertEquals("Strandpromenaden",board.getSquare(23).getName());
+        assertEquals(23, board.getSquare(23).getIndex());
     }
     
     @Test
     public void nextLocation() {
-    
-//        squares = new Square[size];
-//        squares[0] = new RegularSquare("Go_Square",0);
-//        squares[1] = new PropertySquare("Burgerbaren",1,"brown",1);
-//        squares[2] = new PropertySquare("Pizzahuset",2,"brown",1);
-//        squares[3] = new ChanceSquare("Chance",3);
-//        squares[4] = new PropertySquare("Slikbutik",4,"blue",1);
-//        squares[5] = new PropertySquare("Iskiosken",5,"blue",1);
-//        squares[6] = new RegularSquare("Fængsel",6);
-//        squares[7] = new PropertySquare("Museet",7,"purple",2);
-//        squares[8] = new PropertySquare("Biblioteket",8,"purple",2);
-//        squares[9] = new ChanceSquare("Chance",9);
-//        squares[10] = new PropertySquare("Skaterparken",10,"yellow",2);
-//        squares[11] = new PropertySquare("Swimmingpoolen",11,"yellow",2);
-//        squares[12] = new RegularSquare("Parkering",12);
-//        squares[13] = new PropertySquare("Spillehallen",13,"red",3);
-//        squares[14] = new PropertySquare("Biografen",14,"red",3);
-//        squares[15] = new RegularSquare("Chance",15);
-//        squares[16] = new PropertySquare("Lejetøjsbutiken",16,"yellow",3);
-//        squares[17] = new PropertySquare("Dyrehandlen",17,"yellow",3);
-//        squares[18] = new GoToJailSquare("Gå til Fængsel",18);
-//        squares[19] = new PropertySquare("Bowlinghallen",19,"green",4);
-//        squares[20] = new PropertySquare("Zoo",20,"green",4);
-//        squares[21] = new ChanceSquare("Chance",21);
-//        squares[22] = new PropertySquare("Vandlandet",22,"darkblue",5);
-//        squares[23] = new PropertySquare("Stranpromoneden",23,"darkblue",5);
-    
+        assertEquals(4, board.nextLocation(player, 4).getIndex());
+        
+        player.setLocation(board.getSquare(4));
+        assertEquals(9, board.nextLocation(player, 5).getIndex());
+        
+        player.setLocation(board.getSquare(23));
+        assertEquals(1, board.nextLocation(player,2).getIndex());
+        
+        
+        
     }
 }

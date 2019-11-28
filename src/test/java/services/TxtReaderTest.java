@@ -4,12 +4,20 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+//Testes kun positivt, da brugeren ikke skal interegere direkte med objektet
+
 public class TxtReaderTest {
     
-    TxtReader txt = new TxtReader("src/test/java/services/","testText");
+    private TxtReader txt = new TxtReader();
+    
+    public TxtReaderTest(){
+        txt.openFile("src/test/java/services/","testText");
+        txt.readLines();
+    }
     
     @Test
     public void getLine() {
+        
         assertEquals(6,txt.getN_LINES());
         assertEquals("Tekst1",txt.getLine("key"));
         assertEquals("Tekst med mellemrum",txt.getLine("key2"));
