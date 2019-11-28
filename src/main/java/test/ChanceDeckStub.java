@@ -17,7 +17,7 @@ public class ChanceDeckStub extends ChanceDeck {
     
     @Override
     public ChanceCard pullRandomChanceCard(){
-        return chanceCards[counter++];
+        return chanceCards[pullSequence[counter++]];
     }
     
 }

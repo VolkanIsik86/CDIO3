@@ -18,13 +18,13 @@ public class GUILogic {
     private Color GOLD = new Color(255, 204, 51);
     private final int N_FIELDS = 24;
     private final int DELAY = 20;
-    private GUI_Street[] fields;
-    private GUI gui;
-    private String[] names = new String[0];
-    private GUI_Player[] guiPlayers = new GUI_Player[0];
-    private int[] ages = new int [0];
-    private Color[] carcolor = {Color.RED,Color.BLUE,Color.WHITE,Color.GREEN};
-    private TxtReader guiTxt;
+    protected GUI_Street[] fields;
+    protected GUI gui;
+    protected String[] names = new String[0];
+    protected GUI_Player[] guiPlayers = new GUI_Player[0];
+    protected int[] ages = new int [0];
+    protected Color[] carcolor = {Color.RED,Color.BLUE,Color.WHITE,Color.GREEN};
+    protected TxtReader guiTxt;
     
     public void init(TxtReader squaresTxt, TxtReader guiTxt){
         this.guiTxt = guiTxt;
@@ -103,7 +103,7 @@ public class GUILogic {
      * Adds player to the Graphical User Interface (GUI).
      * @param numberofPlayers Adds quantity of player into the GUI.
      */
-    private void addPlayers(int numberofPlayers) {
+    protected void addPlayers(int numberofPlayers) {
         
         //Does the same for all player that is added into the game.
         for (int i = 0; i < numberofPlayers; i++) {

@@ -8,8 +8,8 @@ import domain.squares.Square;
 
 public class MoveCard extends ChanceCard {
     
-    private int moves;
-    private Board board;
+    protected int moves;
+    protected Board board;
     
     public MoveCard(String type, String description, GUILogic guiLogic, ChanceDeck chanceDeck, int moves, Board board) {
         super(type, description, guiLogic, chanceDeck);

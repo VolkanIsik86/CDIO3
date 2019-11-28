@@ -35,7 +35,6 @@ public class BoardTest {
         guiTxt.openFile(languagePath, "guitext_da");
         guiTxt.readLines();
         
-
         board.makeBoard(squareTxt, landedOnTxt, cardsTxt, guiLogic);
         
         player = new Player("Mikkel", 23, 20, new Piece(board.getStart()), guiLogic);

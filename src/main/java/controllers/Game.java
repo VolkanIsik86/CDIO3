@@ -4,11 +4,12 @@ import domain.Board;
 import domain.Player;
 import domain.PlayerList;
 import services.TxtReader;
+import test.GUILogicStub;
 import test.TurnLogicStub;
 
 public class Game {
 
-    private GUILogic guiLogic = new GUILogic();
+    private GUILogicStub guiLogic = new GUILogicStub();
     private Board board = new Board();
     private TurnLogicStub turnLogic = new TurnLogicStub();
     private PlayerList playerList;
@@ -122,11 +123,7 @@ public class Game {
            }
            
            turnLogic.takeTurn(currentPlayer);
-        
-           //todo slet
-           System.out.println("Spiller slog: " + currentPlayer.getLastRoll());
-           System.out.println("Spilleren har nu: " + currentPlayer.getBalance() + " point");
-
+           
            if (currentPlayer.getLost() == true){
                looser = currentPlayer.getName();
                break;
