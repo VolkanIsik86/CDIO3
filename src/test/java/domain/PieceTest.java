@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 public class PieceTest {
     
     private RegularSquare square = new RegularSquare("TestSquare", 1, new GUILogic(), new TxtReader());
+    
     private Piece testPiece1 = new Piece(square);
     private Piece testPiece2 = new Piece(square);
     private Piece testPiece3 = new Piece(square);
