@@ -6,3 +6,5 @@ it is,,It is
 throw dice,,´s turn, press OK to throw the dice
 length,,Name length is not valid (between 2 to 8 characters)
 Play again,,Play again ?
+Yes,,Yes
+No,,No
