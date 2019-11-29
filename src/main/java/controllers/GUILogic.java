@@ -304,14 +304,7 @@ public class GUILogic {
         //Place player on jail
         fields[6].setCar(guiPlayer,true);
     }
-
-    /**
-     * Fields of the game can be interacted from here.
-     * @return Array of field that is initialized
-     */
-    public GUI_Field[] getFields() {
-        return fields;
-    }
+    
 
     /**
      * Changes Font color of a field.
