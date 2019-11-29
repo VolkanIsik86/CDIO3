@@ -2,14 +2,12 @@ package controllers;
 
 import domain.Player;
 import gui_fields.GUI_Car;
-import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_fields.GUI_Street;
 import gui_main.GUI;
 import services.TxtReader;
-
 import java.awt.*;
-import java.util.Random;
+
 
 public class GUILogic {
     
@@ -304,7 +302,7 @@ public class GUILogic {
         //Place player on jail
         fields[6].setCar(guiPlayer,true);
     }
-    
+
 
     /**
      * Changes Font color of a field.
