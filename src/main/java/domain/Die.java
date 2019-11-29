@@ -6,12 +6,7 @@ public class Die {
 
     private int dieValue = 0;
     private final Random rnd = new Random();
-    
-    // Sætter antal øjne
-    public void setFaceValue(int value) {
-        this.dieValue = value;
-    }
-    
+
     public int  getFaceValue(){
         return this.dieValue;
     }

@@ -16,7 +16,7 @@ public class Player {
     private boolean jail = false;
     private int lastRoll = 0;
     
-    public Player(String name, int age, int balance, Piece piece, GUILogic guiLogic){
+    public Player(String name, int age, int balance, Piece piece){
         this.name = name;
         this.age = age;
         account = new Account(balance);
@@ -52,11 +52,7 @@ public class Player {
     public void setLocation(Square newLocation){
         piece.setLocation(newLocation);
     }
-    
-    public boolean getChanceStatus() {
-        return piece.getChanceStatus();
-    }
-    
+
     public boolean getLost() {
         return lost;
     }
@@ -68,11 +64,7 @@ public class Player {
     public Square getLocation(){
         return piece.getLocation();
     }
-    
-    public int getType(){
-        return piece.getType();
-    }
-    
+
     public int getBalance(){
         return account.getBalance();
     }

@@ -11,13 +11,11 @@ public abstract class ChanceCard {
     private final String type;
     private final String description;
     protected final GUILogic guiLogic;
-    private final ChanceDeck chanceDeck;
 
     ChanceCard(String type, String description, GUILogic guiLogic, ChanceDeck chanceDeck) {
         this.type = type;
         this.description = description;
         this.guiLogic = guiLogic;
-        this.chanceDeck = chanceDeck;
     }
 
     public String getDescription(){

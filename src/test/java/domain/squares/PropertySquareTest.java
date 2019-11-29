@@ -15,7 +15,7 @@ public class PropertySquareTest {
     private String languagePath = "src/main/java/services/languagefiles/";
     private TxtReader landedOnTxt;
     private final Piece testPiece = new Piece(testSquare[0]);
-    private final Player test = new Player("Test",99,20,testPiece,guiLogic);
+    private final Player test = new Player("Test",99,20,testPiece);
 
    public PropertySquareTest(){
        testSquare[0] = new PropertySquare("Test1",0,guiLogic,landedOnTxt,2,"yellow");
@@ -54,8 +54,7 @@ public class PropertySquareTest {
     public void getOwner() {
 
        testSquare[0].setOwner(test);
-       Player expected = test;
-       assertEquals(expected,testSquare[0].getOwner());
+        assertEquals(test,testSquare[0].getOwner());
 
        Player expected2 = null;
        assertEquals(expected2,testSquare[1].getOwner());
@@ -97,10 +96,9 @@ public class PropertySquareTest {
     @Test
     public void purchase(){
        testSquare[0].purchase(test);
-       Player expectedOwner = test;
-       int expectedBalance = 18;
+        int expectedBalance = 18;
 
-       assertEquals(expectedOwner,testSquare[0].getOwner());
+       assertEquals(test,testSquare[0].getOwner());
        assertEquals(expectedBalance,test.getBalance());
 
     }

@@ -35,7 +35,7 @@ public class BoardTest {
         
         board.makeBoard(squareTxt, landedOnTxt, cardsTxt, guiLogic);
         
-        player = new Player("Mikkel", 23, 20, new Piece(board.getStart()), guiLogic);
+        player = new Player("Mikkel", 23, 20, new Piece(board.getStart()));
     }
     
     @Test

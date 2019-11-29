@@ -29,7 +29,7 @@ public class PlayerList {
         Piece piece = new Piece(startSquare);
         
         //Create and add new player to array
-        players[players.length-1] = new Player(name, age, startBalance, piece, guiLogic);
+        players[players.length-1] = new Player(name, age, startBalance, piece);
         
     }
     
@@ -40,10 +40,7 @@ public class PlayerList {
     public int NumberOfPlayers(){
         return players.length;
     }
-    //Returnerer player array
-    public Player [] getPlayers(){
-        return players;
-    }
+
     // Hentet inspiration fra geeksforgeeks.org/insertion-sort/ insertion sort algoritme.
     public void sortPlayersByAge(){
 

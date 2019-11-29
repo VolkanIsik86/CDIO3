@@ -18,11 +18,7 @@ public class Piece {
         //Every new piece gets a unique number
         pieceType++;
     }
-    
-    public boolean getChanceStatus() {
-        return chanceStatus;
-    }
-    
+
     public int getType() {
         return type;
     }
