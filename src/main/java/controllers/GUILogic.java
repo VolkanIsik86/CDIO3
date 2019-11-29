@@ -2,14 +2,12 @@ package controllers;
 
 import domain.Player;
 import gui_fields.GUI_Car;
-import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_fields.GUI_Street;
 import gui_main.GUI;
 import services.TxtReader;
-
 import java.awt.*;
-import java.util.Random;
+
 
 public class GUILogic {
     
@@ -305,13 +303,6 @@ public class GUILogic {
         fields[6].setCar(guiPlayer,true);
     }
 
-    /**
-     * Fields of the game can be interacted from here.
-     * @return Array of field that is initialized
-     */
-    public GUI_Field[] getFields() {
-        return fields;
-    }
 
     /**
      * Changes Font color of a field.

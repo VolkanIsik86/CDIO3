@@ -129,7 +129,7 @@ public class Game {
         LanguageLogic languageLogic = new LanguageLogic();
 
         //Promts user to select language
-        language = languageLogic.selectLangauge();
+        language = languageLogic.selectLanguage();
 
         //Load txt files
         landedOnTxt = new TxtReader();

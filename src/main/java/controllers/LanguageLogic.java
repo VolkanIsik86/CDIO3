@@ -26,7 +26,7 @@ public class LanguageLogic {
         return language;
     }
 
-    public String selectLangauge() {
+    public String selectLanguage() {
         LanguageLogic language = new LanguageLogic();
         String lang = "";
         lang = language.LanguageLogic();
