@@ -208,7 +208,7 @@ public class GUILogic {
         if (moves != 0) {
             
             //Controls figure position + move and board length.
-            int DELAY = 20;
+            int DELAY = 200;
             if (currentField + moves >= N_FIELDS) {
                 
                 //Runs fields until the start point.
