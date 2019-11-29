@@ -6,15 +6,20 @@ import gui_fields.GUI_Player;
 
 public class GUILogicStub extends GUILogic {
     
+    private int NumberOfPlayers;
+    private String[] nameArr;
+    private int[] ageArr;
+    
     public GUILogicStub(){
         STARTBALANCE = 5;
+        NumberOfPlayers = 2;
+        String[] nameArr = {"Mikkel", "Volkan"};
+        ageArr = new int[]{6, 7};
     }
     
     @Override
     public String[] makeUsers() {
         //todo skal ændres til at fungere på alle sprog1
-        
-        int NumberOfPlayers = 2;
         
         String names[] = new String[NumberOfPlayers];
         addPlayers(NumberOfPlayers);
@@ -24,9 +29,6 @@ public class GUILogicStub extends GUILogic {
     
     @Override
     protected void addPlayers(int numberofPlayers) {
-    
-        String[] nameArr = {"Mikkel", "Volkan"};
-        int[] ageArr = {6,7};
         
         //Does the same for all player that is added into the game.
         for (int i = 0; i < numberofPlayers; i++) {
