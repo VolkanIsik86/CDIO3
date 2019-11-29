@@ -2,8 +2,8 @@ package controllers;
 
 import javax.swing.*;
 
-public class LanguageLogic {
-    public String LanguageLogic() {
+class LanguageLogic {
+    private String languageLogic() {
         Object[] options1 = {"English",
                 "Dansk"};
         String language = "";
@@ -17,18 +17,20 @@ public class LanguageLogic {
                 null);
         if (choice == JOptionPane.YES_OPTION) {
             language = "en";
-            System.out.println("Enlgish");
-        } else {
+        } else if(choice == JOptionPane.NO_OPTION){
             language = "da";
-            System.out.println("Dansk");
+        }
+        else{
+            System.exit(0);
         }
         return language;
     }
 
-    public String selectLangauge() {
+    public String selectLanguage() {
         LanguageLogic language = new LanguageLogic();
-        String lang = "";
-        lang = language.LanguageLogic();
+        String lang;
+        lang = language.languageLogic();
         return lang;
     }
+
 }

@@ -2,38 +2,38 @@ package controllers;
 
 import domain.*;
 import domain.squares.*;
-import gui_fields.GUI_Player;
-
+import services.TxtReader;
 
 public class TurnLogic {
     
-    private Die die = new Die();
-    private Board board;
-    private GUILogic guiLogic;
+    protected Board board;
+    protected GUILogic guiLogic;
+    protected TxtReader landedOnTxt;
+    protected final Die die = new Die();
     
-    public TurnLogic(Board board, GUILogic guiLogic)
-    {
+    public void init(Board board, GUILogic guiLogic, TxtReader landedOnTxt){
         this.board = board;
         this.guiLogic = guiLogic;
+        this.landedOnTxt = landedOnTxt;
     }
     
-    public int takeTurn(Player player) {
+    public void takeTurn(Player player) {
     
-        GUI_Player guiPlayer = guiLogic.getPlayer(player.getName());
-        
+        //Roll the die
         die.roll();
         int roll = die.getFaceValue();
-        guiLogic.displayDie(roll);
-
-        Square nextLocation = board.nextLocation(player.getLocation(), die.getFaceValue());
-        player.setLocation(nextLocation);
-        nextLocation.landedOn(player);
-        
-        //sætter spillerens pengebeholdning til at være den samme i GUI-Logikken som i spil-logikken.
-        guiLogic.setPlayerBalance(guiPlayer,player.getBalance());
-        
-        // todo taketurn skal ikke returnere en int, men det skal fixes i Game og Gui logic først
-        return die.getFaceValue();
+        player.setLastRoll(roll);
+        guiLogic.displayDie(roll, player.getName());
     
+        //Calculate and move to next location
+        Square nextLocation = board.nextLocation(player, die.getFaceValue());
+        player.setLocation(nextLocation);
+        guiLogic.movePiece(player, player.getLastRoll());
+    
+        //Apply the square's effect to the player
+        nextLocation.landedOn(player);
+    
+        guiLogic.showMessage(landedOnTxt.getLine("End turn"));
+        
     }
 }

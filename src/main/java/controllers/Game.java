@@ -1,167 +1,188 @@
 package controllers;
 
-import com.sun.media.jfxmedia.events.PlayerEvent;
 import domain.Board;
-import domain.*;
 import domain.Player;
 import domain.PlayerList;
-import domain.squares.Square;
 import services.TxtReader;
-import java.util.Scanner;
 
 public class Game {
 
+    private GUILogic guiLogic = new GUILogic();
+    private final Board board = new Board();
+    private final TurnLogic turnLogic = new TurnLogic();
+    private PlayerList playerList;
 
-   private GUILogic guiLogic;
-   private Board board;
-   private TurnLogic turnLogic;
-   private PlayerList playerList;
-   private String path = "src/main/java/services/";
-   private String language;
+    private String looser = "null";
+    private TxtReader landedOnTxt;
+    private TxtReader squaresTxt;
+    private TxtReader cardsTxt;
+    private TxtReader winnerTxt;
+    private TxtReader guiTxt;
 
+    public void playGame() {
 
-    //todo ret antal startpoints
-    private final int START_POINTS = 10;
-    
-    public void playGame(){
-    
         initializeGame();
-    
-        //Play a round
-        String looser = "null";
+
         do {
-            
-            for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
-                
-                Player currentPlayer = playerList.getPlayer(i);
-                System.out.println("\nTager en tur for: " + currentPlayer.getName());
-                System.out.println("Spilleren stod på: " + currentPlayer.getLocation().getIndex());
-                System.out.println("Spilleren havde: " + currentPlayer.getBalance() + " point");
-                
-                Square oldLocation;
-                oldLocation = currentPlayer.getLocation();
-                
-                int roll = turnLogic.takeTurn(currentPlayer);
-                System.out.println("Spiller slog: " + roll);
-                System.out.println("Spilleren har nu: " + currentPlayer.getBalance() + " point");
-                
-                guiLogic.update(currentPlayer, oldLocation, roll);
-                
-                if (currentPlayer.getLost() == true){
+            playRound();
+        } while (looser.equals("null"));
+
+        announceWinner();
+
+        guiLogic.showMessage(guiTxt.getLine("Close"));
+        guiLogic.close();
+
+    }
+
+    private void announceWinner() {
+        //If it's a draw
+        if (playerList.getWinner() == null) {
+            String coolWinner =
+
+                    "<table width=\"173\" cellspacing=\"17\" bgcolor=\"#000000\"><tr><td>\n</td></tr><tr><td align=\"center\">" +
+                            "<font color=\"white\" size=\"6" +
+                            "" +
+                            "\">" +
+                            winnerTxt.getLine("3") +
+                            "</font>" +
+                            "</td></tr>" +
+                            "<tr><td>\n</td></tr>" +
+                            "</table>";
+
+            guiLogic.getGui().displayChanceCard(coolWinner);
+        }
+
+        //Else if not a draw
+        else {
+            String coolwinner =
+
+                    "<table width=\"173\" cellspacing=\"11\" bgcolor=\"#000000\"><tr><td align=\"center\">" +
+                            "<font color=\"white\" size=\"6\">" + winnerTxt.getLine("1") +
+                            "</font>" +
+                            "</td></tr>" +
+                            "<tr><td align=\"center\">" +
+                            "\n" +
+                            "<font size=\"5\" color=\"red\">" +
+                            winnerTxt.getLine("2") +
+                            "</font>" +
+                            "</td></tr>" +
+                            "<tr><td align=\"center\">" +
+                            "\n" +
+                            "<font size=\"6\" color=\"yellow\">" +
+                            playerList.getWinner().getName() +
+                            "</font>" +
+                            "</td></tr></table>";
+
+            guiLogic.getGui().displayChanceCard(coolwinner);
+        }
+    }
+
+    private void playRound() {
+        for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
+
+            Player currentPlayer = playerList.getPlayer(i);
+
+            //If player is in jail
+            if (currentPlayer.getJail()) {
+
+                guiLogic.showMessage(landedOnTxt.getLine("In jail pay now"));
+
+                if (currentPlayer.attemptToPay(1)) {
+                    currentPlayer.withdraw(1);
+                    guiLogic.setPlayerBalance(currentPlayer);
+                    currentPlayer.setJail(false);
+                } else {
+                    currentPlayer.setLost(true);
+                    currentPlayer.setBalance(0);
+                    guiLogic.showMessage(landedOnTxt.getLine("Does not have fonds to pay"));
+                    guiLogic.setPlayerBalance(currentPlayer);
+
                     looser = currentPlayer.getName();
                     break;
                 }
             }
-            
-        } while(looser.equals("null"));
-    
-        getWinner();
-        
-        
+
+            turnLogic.takeTurn(currentPlayer);
+
+            if (currentPlayer.getLost()) {
+                looser = currentPlayer.getName();
+                break;
+            }
+        }
+    }
+
+    private void initializeGame() {
+
+        looser = "null";
+
+        initLanguage();
+        initGUILogic();
+        initBoard();
+        initTurnLogic();
+        initPlayerList();
+    }
+
+    private void initLanguage() {
+
+        LanguageLogic languageLogic = new LanguageLogic();
+
+        //Promts user to select language
+        String language = languageLogic.selectLanguage();
+
+        //Load txt files
+        landedOnTxt = new TxtReader();
+        String languagePath = "src/main/java/services/languagefiles/";
+        landedOnTxt.openFile(languagePath, "landedOn_" + language);
+        landedOnTxt.readLines();
+
+        squaresTxt = new TxtReader();
+        squaresTxt.openFile(languagePath, "squares_" + language);
+        squaresTxt.readLines();
+
+        cardsTxt = new TxtReader();
+        cardsTxt.openFile(languagePath, "chanceCards_" + language);
+        cardsTxt.readLines();
+
+        winnerTxt = new TxtReader();
+        winnerTxt.openFile(languagePath, "winner_" + language);
+        winnerTxt.readLines();
+
+        guiTxt = new TxtReader();
+        guiTxt.openFile(languagePath, "guitext_" + language);
+        guiTxt.readLines();
+
+    }
+
+    private void initGUILogic() {
+
+        //Includes the initialization of the GUI itself
+        guiLogic = new GUILogic();
+        guiLogic.init(squaresTxt, guiTxt);
+    }
+
+    private void initBoard() {
+
+        //Includes the initialization of the chance deck
+        board.makeBoard(squaresTxt, landedOnTxt, cardsTxt, guiLogic);
    }
    
-   private void initializeGame(){
-       initLanguage();
-       initBoard();
-       initControllers();
-       initPlayerList();
-   }
-   
-   private void initLanguage(){
-       LanguageLogic languageLogic = new LanguageLogic();
-    
-       // Promts user to select language
-       language = languageLogic.selectLangauge();
-   }
-   
-   private void initBoard(){
-       board = new Board(path,"squareDescriptions_" + language);
-   }
-   
-   private void initControllers(){
-       //Creates GuiLogic object which initializes the GUI itself in its constructor
-       guiLogic = new GUILogic(language);
-       
-       turnLogic = new TurnLogic(board,guiLogic);
+   private void initTurnLogic(){
+       turnLogic.init(board, guiLogic, landedOnTxt);
    }
    
    private void initPlayerList(){
        
        //Creates a playerList and adds the players from guiLogic
-       playerList = new PlayerList(board.getSquare(0));
+       playerList = new PlayerList(board.getSquare(0), guiLogic);
        String[] playerNames = guiLogic.getPlayerNames();
        int [] ageOfPlayer = guiLogic.getPlayerAges();
        for (int i = 0; i < playerNames.length; i++) {
-           playerList.addPlayer(playerNames[i],ageOfPlayer[i],20);
+           playerList.addPlayer(playerNames[i],ageOfPlayer[i], guiLogic.getSTARTBALANCE());
        }
 
        playerList.sortPlayersByAge();
        
-  
-       
-
    }
-   //todo uafgjort mellem spillere med ens point mangler at blive implementeret
-   private Player getWinner(){
-
-       Player winner = playerList.getPlayer(0);
-
-       for (int i = 0; i < playerList.NumberOfPlayers(); i++) {
-           Player currentPlayer = playerList.getPlayer(i);
-           if (currentPlayer.getLost()){
-               int maxScore = playerList.getPlayer(0).getBalance();
-               for (int k = 1; k < playerList.NumberOfPlayers(); k++) {
-                   if (playerList.getPlayer(k).getBalance()>maxScore){
-                       winner = playerList.getPlayer(k);
-                   }
-
-               }
-
-           }
-
-       }
-       return winner;
-   }
-
-    
-    public static void main(String[] args) {
-        Game game = new Game();
-        game.playGame();
-    }
-
-
-
-
-
-
-//   public void setPlayer() {
-//       for (int i = 0; i < spillernavne.length; i++) {
-//
-//           //TODO player alder skal kunne defineres fra gui.
-//           playerList.addPlayer(spillernavne[i], 0, 20);
-//
-//       }
-//
-//   }
-
-//    public void createPlayers() {
-//        System.out.println("");
-//
-//        //Point bliver bestemt efter antal spillere
-//        if (players.equals(2)){
-//            startKapital = 20;
-//        }
-//        if (players.equals(3)){
-//            startKapital = 18;
-//        }
-//        if (players.equals(4)){
-//            startKapital = 16;
-//        }
-//
-//        //Array af spillere laves
-//        for (int index = 0; index < players.length; index++) {
-//            final String navn = readPlayerName(index);
-////            players[index] = new Player(navn, startKapital);
-        }
+}
 
 

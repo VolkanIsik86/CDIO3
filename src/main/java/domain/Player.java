@@ -1,41 +1,52 @@
 package domain;
 
+import controllers.GUILogic;
 import domain.squares.PropertySquare;
 import domain.squares.Square;
 
 public class Player {
+
+    private final Account account;
+    private final Piece piece;
     
-    private String name;
-    private int age;
-    private Account account;
-    private Piece piece;
+    private final String name;
+    private final int age;
+   
     private boolean lost = false;
     private boolean jail = false;
+    private int lastRoll = 0;
     
     public Player(String name, int age, int balance, Piece piece){
         this.name = name;
         this.age = age;
         account = new Account(balance);
         this.piece = piece;
-
+    }
+    
+    public void setLastRoll(int lastRoll) {
+        this.lastRoll = lastRoll;
     }
     
     public void setJail(boolean status){
         jail = status;
     }
     
+    public boolean getJail(){
+        return jail;
+    }
+    
     public boolean attemptToPurchase(PropertySquare property){
-        if (property.getPrice() > this.getBalance())
-            return false;
-        else
-            return true;
+        return property.getPrice() <= this.getBalance();
     }
     
     public boolean attemptToPay(int amount){
-        if (amount > this.getBalance())
-            return false;
-        else
-            return true;
+        return amount <= this.getBalance();
+    }
+    
+    public boolean equals(Player player){
+
+        return this.getName().equals(player.getName());
+        
     }
     
     public void setLocation(Square newLocation){
@@ -53,11 +64,7 @@ public class Player {
     public Square getLocation(){
         return piece.getLocation();
     }
-    
-    public int getType(){
-        return piece.getType();
-    }
-    
+
     public int getBalance(){
         return account.getBalance();
     }
@@ -78,17 +85,18 @@ public class Player {
         return name;
     }
     
-    public void setName(String name) {
-        this.name = name;
-    }
-    
     public int getAge() {
         return age;
     }
     
-    public void setAge(int age) {
-        this.age = age;
+    public Square getLastLocation(){
+        return piece.getLastLocation();
     }
+    
+    public int getLastRoll(){
+        return lastRoll;
+    }
+    
     
     @Override
     public String toString() {
