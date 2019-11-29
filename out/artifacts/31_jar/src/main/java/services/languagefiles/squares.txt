@@ -1,0 +1,24 @@
+0,,Regular-Start-0-0-red
+1,,Property-Burgerbaren-1-1-Brown
+2,,Property-Pizzeria-2-1-Brown
+3,,Chance-Chancen-3-0-white
+4,,Property-Slikbutikken-4-1-cyan
+5,,Property-Iskiosken-5-1-cyan
+6,,Regular-På besøg-6-0-white
+7,,Property-Museet-7-2-pink
+8,,Property-Biblioteket-8-2-pink
+9,,Chance-Chancen-9-0-white
+10,,Property-Skaterparken-10-2-gold
+11,,Property-Swimmingpoolen-11-2-gold
+12,,Regular-Gratis parkering-12-0-white
+13,,Property-Spillehallen-13-3-red
+14,,Property-Biografen-14-3-red
+15,,Chance-Chancen-15-0-white
+16,,Property-Legetøjsbutikken-16-3-yellow
+17,,Property-Dyrehandlen-17-3-yellow
+18,,Jail-Gå I fængsel-18-0-white
+19,,Property-Bowlinghallen-19-4-Green
+20,,Property-Zoo-20-4-Green
+21,,Chance-Chance-21-0-white
+22,,Property-Vandlandet-22-5-blue
+23,,Property-Strandpromenaden-23-5-blue

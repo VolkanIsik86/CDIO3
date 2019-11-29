@@ -1,0 +1,12 @@
+Regular square,,You landed on a regular square, nothings happens
+Owned by another property square,,You landed on an owned property, you must pay rent
+Owned by yourself property square,,You landed on your own property, nothing happens
+Not owned property square,,You landed on an unowned property, you must purchase it
+GoToJail square,,You have landed on "Go to jail", you are therefore moved to jail
+Chance square,,You have landed on a chance square, you must draw a chance card
+Does not have fonds for rent,,You do not have the funds to pay rent, the game ends
+Does not have fonds to buy,,You do not have the funds to purchase the property, the game ends
+Does not have fonds to pay,,You do not have the funds to pay this expense, the game ends
+Press OK,,Press OK when you have read the card
+In jail pay now,,The previous turn you went to jail. You must pay 1M to get out this turn
+End turn,,Your turn is over, press OK to end your turn
