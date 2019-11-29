@@ -6,15 +6,12 @@ import gui_fields.GUI_Player;
 
 public class GUILogicStub extends GUILogic {
     
-    private int NumberOfPlayers;
-    private String[] nameArr;
-    private int[] ageArr;
+    private int NumberOfPlayers = 2;
+    private String[] nameArr = {"Mikkel", "Volkan"};
+    private int[] ageArr = new int[]{6, 7};
     
     public GUILogicStub(){
         STARTBALANCE = 5;
-        NumberOfPlayers = 2;
-        String[] nameArr = {"Mikkel", "Volkan"};
-        ageArr = new int[]{6, 7};
     }
     
     @Override
