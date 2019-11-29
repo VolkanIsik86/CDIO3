@@ -127,7 +127,6 @@ public class GUILogic {
                     while (sameNameTest) {
                     if (name.equals(samename)) {
                         name = gui.getUserString(guiTxt.getLine("Already in use"));
-
                     }
                     else
                         sameNameTest = false;
@@ -138,7 +137,7 @@ public class GUILogic {
             //Crates an array of player names.
 
             names[i] = name;
-            boolean ageIsInt = true;
+            boolean ageIsInt;
             int age = 0;
             do {
                 try {
@@ -297,6 +296,7 @@ public class GUILogic {
     public void moveToJail(Player player){
         
         GUI_Player guiPlayer = getGUIPlayer(player);
+
         
         //Remove player from current field
         fields[player.getLastLocation().getIndex()].setCar(guiPlayer,false);
@@ -425,7 +425,6 @@ public class GUILogic {
         return STARTBALANCE;
     }
     
-   
 
 }
 
