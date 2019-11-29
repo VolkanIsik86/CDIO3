@@ -7,8 +7,8 @@ import services.TxtReader;
 
 public class PayCard extends ChanceCard {
     
-    int amount;
-    TxtReader cardsTxt;
+    private final int amount;
+    private final TxtReader cardsTxt;
     
     public PayCard(String type, String description, GUILogic guiLogic, ChanceDeck chanceDeck, int amount, TxtReader cardsTxt) {
         super(type, description, guiLogic, chanceDeck);

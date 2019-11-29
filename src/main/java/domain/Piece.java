@@ -8,7 +8,7 @@ public class Piece {
     private Square location;
     private Square lastLocation;
     private boolean chanceStatus = false;
-    private int type;
+    private final int type;
     private static int pieceType = 0;
     
     public Piece (Square location){
@@ -34,11 +34,7 @@ public class Piece {
     public void setLocation(Square newLocation){
         
         //Check if new location is a chanceSquare
-        if (newLocation instanceof ChanceSquare){
-            chanceStatus = true;
-        } else {
-            chanceStatus = false;
-        }
+        chanceStatus = newLocation instanceof ChanceSquare;
         
         lastLocation = location;
         location = newLocation;

@@ -6,7 +6,7 @@ import domain.Player;
 
 public class EarnCard extends ChanceCard{
     
-    int amount;
+    private final int amount;
     
     public EarnCard(String type, String description, GUILogic guiLogic, ChanceDeck chanceDeck, int amount) {
         super(type, description, guiLogic, chanceDeck);

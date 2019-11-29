@@ -9,7 +9,7 @@ public class TurnLogic {
     protected Board board;
     protected GUILogic guiLogic;
     protected TxtReader landedOnTxt;
-    protected Die die = new Die();
+    protected final Die die = new Die();
     
     public void init(Board board, GUILogic guiLogic, TxtReader landedOnTxt){
         this.board = board;

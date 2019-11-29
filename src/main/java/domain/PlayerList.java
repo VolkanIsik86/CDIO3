@@ -7,9 +7,9 @@ import domain.squares.Square;
 
 public class PlayerList {
     
-    Player[] players = new Player[0];
-    Square startSquare;
-    GUILogic guiLogic;
+    private Player[] players = new Player[0];
+    private final Square startSquare;
+    private final GUILogic guiLogic;
     
     public PlayerList(Square startSquare, GUILogic guiLogic){
         this.startSquare = startSquare;

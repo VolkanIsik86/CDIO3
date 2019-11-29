@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class DieTest {
     
-    private Die die = new Die();
+    private final Die die = new Die();
     
     @Test
     public void roll() {

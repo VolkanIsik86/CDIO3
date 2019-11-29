@@ -8,12 +8,11 @@ public class Board {
 
     private int SIZE;
     private Square[] squares;
-    private ChanceDeck chanceDeck;
-    
+
     public void makeBoard(TxtReader squareTxt, TxtReader landedOnTxt, TxtReader cardsTxt, GUILogic guiLogic){
         
         //Chancefelterne skal bruge chancedækket i deres landOn, samtidig skal chancedækket bruge boardet, til at rykke spillerne
-        chanceDeck = new ChanceDeck(guiLogic, cardsTxt, this);
+        ChanceDeck chanceDeck = new ChanceDeck(guiLogic, cardsTxt, this);
     
         SIZE = squareTxt.getN_LINES();
         squares = new Square[SIZE];

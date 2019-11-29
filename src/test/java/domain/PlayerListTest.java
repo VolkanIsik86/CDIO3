@@ -10,7 +10,7 @@ public class PlayerListTest {
     
     private Square testSquare;
     private GUILogic guiLogic;
-    private PlayerList testlist = new PlayerList(testSquare,guiLogic);
+    private final PlayerList testlist = new PlayerList(testSquare,guiLogic);
     private final int STARTBALANCE = 20;
     
     @Test
@@ -47,9 +47,9 @@ public class PlayerListTest {
         }
 
         for (int i = 0; i < (ages.length - 1); i++){
-            assertEquals(true, ages[i] < ages[i + 1]);
+            assertTrue(ages[i] < ages[i + 1]);
         }
-        assertEquals(true,ages[ages.length-2]<ages[ages.length-1]);
+        assertTrue(ages[ages.length - 2] < ages[ages.length - 1]);
 
     }
 
@@ -71,9 +71,9 @@ public class PlayerListTest {
         }
 
         for (int i = 0; i < (points.length - 1); i++){
-            assertEquals(true, points[i] < points[i + 1]);
+            assertTrue(points[i] < points[i + 1]);
         }
-        assertEquals(true,points[points.length-2] < points[points.length-1]);
+        assertTrue(points[points.length - 2] < points[points.length - 1]);
     }
 
     @Test

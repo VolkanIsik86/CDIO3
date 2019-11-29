@@ -9,29 +9,27 @@ import static org.junit.Assert.*;
 //Testes kun positivt, da brugeren ikke skal interegere direkte med objektet
 
 public class BoardTest {
-    
-    private String languagePath = "src/main/java/services/languagefiles/";
-    
-    private TxtReader squareTxt = new TxtReader();
-    private TxtReader landedOnTxt = new TxtReader();
-    private TxtReader cardsTxt = new TxtReader();
-    private TxtReader guiTxt = new TxtReader();
 
     private GUILogic guiLogic;
-    private Board board = new Board();
+    private final Board board = new Board();
     
-    private Player player;
+    private final Player player;
     
     public BoardTest(){
+        TxtReader squareTxt = new TxtReader();
+        String languagePath = "src/main/java/services/languagefiles/";
         squareTxt.openFile(languagePath,"squares_da");
         squareTxt.readLines();
-        
+
+        TxtReader landedOnTxt = new TxtReader();
         landedOnTxt.openFile(languagePath,"landedOn_da");
         landedOnTxt.readLines();
-        
+
+        TxtReader cardsTxt = new TxtReader();
         cardsTxt.openFile(languagePath,"chanceCards_da");
         cardsTxt.readLines();
-        
+
+        TxtReader guiTxt = new TxtReader();
         guiTxt.openFile(languagePath, "guitext_da");
         guiTxt.readLines();
         

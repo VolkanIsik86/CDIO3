@@ -8,7 +8,7 @@ import services.TxtReader;
 //This square moves player to jail
 public class GoToJailSquare extends Square {
     
-    private Board board;
+    private final Board board;
     
     public GoToJailSquare(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt,  Board board) {
         super(name, index, guiLogic, landedOnTxt);

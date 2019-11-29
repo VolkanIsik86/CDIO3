@@ -11,16 +11,16 @@ import static org.junit.Assert.*;
 
 public class PieceTest {
     
-    private RegularSquare square = new RegularSquare("TestSquare", 1, new GUILogic(), new TxtReader());
+    private final RegularSquare square = new RegularSquare("TestSquare", 1, new GUILogic(), new TxtReader());
     
-    private Piece testPiece1 = new Piece(square);
-    private Piece testPiece2 = new Piece(square);
-    private Piece testPiece3 = new Piece(square);
-    private int nrOfTypes = testPiece1.getType();
+    private final Piece testPiece1 = new Piece(square);
+    private final Piece testPiece2 = new Piece(square);
+    private final Piece testPiece3 = new Piece(square);
+    private final int nrOfTypes = testPiece1.getType();
 
     @Test
     public void getType() {
-        assertEquals(nrOfTypes+0,testPiece1.getType());
+        assertEquals(nrOfTypes,testPiece1.getType());
         assertEquals(nrOfTypes+1,testPiece2.getType());
         assertEquals(nrOfTypes+2,testPiece3.getType());
 

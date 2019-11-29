@@ -1,13 +1,6 @@
-import controllers.GUILogic;
 import controllers.Game;
-import controllers.LanguageLogic;
-import gui_fields.*;
-import gui_main.GUI;
-import services.TxtReader;
 
-import java.awt.*;
-
-public class main {
+class Main {
 
     
     public static void main(String[] args) {

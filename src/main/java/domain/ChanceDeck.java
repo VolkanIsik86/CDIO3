@@ -12,9 +12,9 @@ import java.util.Random;
 
 public class ChanceDeck {
     
-    protected final int N_CARDS = 14;
-    protected ChanceCard[] chanceCards;
-    private Random rnd = new Random();
+    private final int N_CARDS = 14;
+    protected final ChanceCard[] chanceCards;
+    private final Random rnd = new Random();
     
     //Creates all the Chance cards and adds them to an array
     public ChanceDeck(GUILogic guiLogic, TxtReader cardsTxt, Board board) {

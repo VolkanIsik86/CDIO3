@@ -6,8 +6,8 @@ public class TxtReader {
     
     private String[][] lines;
     private int N_LINES = 0;
-    File file;
-    BufferedReader br;
+    private File file;
+    private BufferedReader br;
     
     public void openFile(String path, String fileName){
         

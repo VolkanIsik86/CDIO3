@@ -8,12 +8,12 @@ import domain.Player;
 
 public abstract class ChanceCard {
     
-    private String type;
-    private String description;
-    protected GUILogic guiLogic;
-    protected ChanceDeck chanceDeck;
+    private final String type;
+    private final String description;
+    protected final GUILogic guiLogic;
+    private final ChanceDeck chanceDeck;
 
-    public ChanceCard(String type, String description, GUILogic guiLogic, ChanceDeck chanceDeck) {
+    ChanceCard(String type, String description, GUILogic guiLogic, ChanceDeck chanceDeck) {
         this.type = type;
         this.description = description;
         this.guiLogic = guiLogic;

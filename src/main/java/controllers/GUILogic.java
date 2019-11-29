@@ -11,17 +11,16 @@ import java.awt.*;
 
 public class GUILogic {
     
-    private Color BROWN = new Color(153, 102, 0);
-    private Color GOLD = new Color(255, 204, 51);
+    private final Color BROWN = new Color(153, 102, 0);
+    private final Color GOLD = new Color(255, 204, 51);
     private final int N_FIELDS = 24;
-    private final int DELAY = 20;
     protected int STARTBALANCE = 0;
     protected GUI_Street[] fields;
     protected GUI gui;
     protected String[] names = new String[0];
     protected GUI_Player[] guiPlayers = new GUI_Player[0];
     protected int[] ages = new int [0];
-    protected Color[] carcolor = {Color.RED,Color.BLUE,Color.WHITE,Color.GREEN};
+    protected final Color[] carcolor = {Color.RED,Color.BLUE,Color.WHITE,Color.GREEN};
     protected TxtReader guiTxt;
     
     public void init(TxtReader squaresTxt, TxtReader guiTxt){
@@ -33,9 +32,8 @@ public class GUILogic {
     /**
      * Creates an array of fields for the game and initialize it.
      * @param squaresTxt Defines square names and costs with language depended Txtreader.
-     * @return Array with fields that game board consist of.
      */
-    private GUI_Street[] makeBoard(TxtReader squaresTxt) {
+    private void makeBoard(TxtReader squaresTxt) {
         fields = new GUI_Street[N_FIELDS];
        // Løbe igennem for hvert felt
         for (int i = 0; i < N_FIELDS; i++) {
@@ -92,7 +90,6 @@ public class GUILogic {
             fields[i] = street;
         }
         gui = new GUI(fields);
-        return fields;
     }
 
     /**
@@ -140,12 +137,7 @@ public class GUILogic {
             do {
                 try {
                     age = Integer.parseInt(gui.getUserString(guiTxt.getLine("Age") + " " + name ));
-                    if (age >= 5 && age <= 150) {
-                        ageIsInt = true;
-                    }
-                    else{
-                        ageIsInt = false;
-                    }
+                    ageIsInt = age >= 5 && age <= 150;
                 } catch (NumberFormatException e) {
                     ageIsInt = false;
                 }
@@ -189,17 +181,15 @@ public class GUILogic {
     /**
      * Define and creates players for the game and uses addPlayer method number of players.
      *
-     * @return Names array og every player that initialized for the game.
      */
-    public String[] makeUsers() {
+    protected void makeUsers() {
         //todo skal ændres til at fungere på alle sprog1
         String nrPlayers = gui.getUserSelection(guiTxt.getLine("player numbers"), "2","3","4");
         int NumberOfPlayers = Integer.parseInt(nrPlayers);
         
         String names[] = new String[NumberOfPlayers];
         addPlayers(NumberOfPlayers);
-        
-        return names;
+
     }
 
 
@@ -218,6 +208,7 @@ public class GUILogic {
         if (moves != 0) {
             
             //Controls figure position + move and board length.
+            int DELAY = 20;
             if (currentField + moves >= N_FIELDS) {
                 
                 //Runs fields until the start point.
@@ -327,7 +318,7 @@ public class GUILogic {
      * @param player Backend player that need to be initialized.
      * @return NULL
      */
-    public GUI_Player getGUIPlayer(Player player) {
+    private GUI_Player getGUIPlayer(Player player) {
         
         String playerName = player.getName();
         

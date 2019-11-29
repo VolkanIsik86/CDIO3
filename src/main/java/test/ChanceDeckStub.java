@@ -9,7 +9,7 @@ import services.TxtReader;
 public class ChanceDeckStub extends ChanceDeck {
     
     private int counter = 0;
-    private int[] pullSequence = {0, 4, 11};
+    private final int[] pullSequence = {0, 4, 11};
     
     public ChanceDeckStub(GUILogic guiLogic, TxtReader cardsTxt, Board board){
         super(guiLogic, cardsTxt, board);

@@ -3,10 +3,9 @@ package domain;
 import java.util.Random;
 
 public class Die {
-    
-    private final int N_SIDES = 6;
+
     private int dieValue = 0;
-    private Random rnd = new Random();
+    private final Random rnd = new Random();
     
     // Sætter antal øjne
     public void setFaceValue(int value) {
@@ -19,7 +18,8 @@ public class Die {
     
     // finder et tilfældigt tal mellem 1 og antal sider som vælges i main
     public void roll(){
-        this.dieValue = (rnd.nextInt(N_SIDES)+1);
+        int n_SIDES = 6;
+        this.dieValue = (rnd.nextInt(n_SIDES)+1);
     }
     
     // skriver ud

@@ -5,13 +5,12 @@ import domain.squares.PropertySquare;
 import domain.squares.Square;
 
 public class Player {
+
+    private final Account account;
+    private final Piece piece;
     
-    private GUILogic guiLogic;
-    private Account account;
-    private Piece piece;
-    
-    private String name;
-    private int age;
+    private final String name;
+    private final int age;
    
     private boolean lost = false;
     private boolean jail = false;
@@ -22,7 +21,6 @@ public class Player {
         this.age = age;
         account = new Account(balance);
         this.piece = piece;
-        this.guiLogic = guiLogic;
     }
     
     public void setLastRoll(int lastRoll) {
@@ -38,26 +36,16 @@ public class Player {
     }
     
     public boolean attemptToPurchase(PropertySquare property){
-        if (property.getPrice() > this.getBalance())
-            return false;
-        else
-            return true;
+        return property.getPrice() <= this.getBalance();
     }
     
     public boolean attemptToPay(int amount){
-        if (amount > this.getBalance())
-            return false;
-        else
-            return true;
+        return amount <= this.getBalance();
     }
     
     public boolean equals(Player player){
-        
-        if (this.getName().equals(player.getName())){
-            return true;
-        } else {
-            return false;
-        }
+
+        return this.getName().equals(player.getName());
         
     }
     

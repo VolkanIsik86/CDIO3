@@ -5,23 +5,22 @@ import gui_fields.GUI_Car;
 import gui_fields.GUI_Player;
 
 public class GUILogicStub extends GUILogic {
-    
-    private int NumberOfPlayers = 2;
-    private String[] nameArr = {"Mikkel", "Volkan"};
-    private int[] ageArr = new int[]{6, 7};
+
+    private final String[] nameArr = {"Mikkel", "Volkan"};
+    private final int[] ageArr = new int[]{6, 7};
     
     public GUILogicStub(){
         STARTBALANCE = 5;
     }
     
     @Override
-    public String[] makeUsers() {
+    public void makeUsers() {
         //todo skal ændres til at fungere på alle sprog1
-        
-        String names[] = new String[NumberOfPlayers];
-        addPlayers(NumberOfPlayers);
-        
-        return names;
+
+        int numberOfPlayers = 2;
+        String names[] = new String[numberOfPlayers];
+        addPlayers(numberOfPlayers);
+
     }
     
     @Override
@@ -67,12 +66,7 @@ public class GUILogicStub extends GUILogic {
             do {
                 try {
                     age = ageArr[i];
-                    if (age >= 5 && age <= 150) {
-                        ageIsInt = true;
-                    }
-                    else{
-                        ageIsInt = false;
-                    }
+                    ageIsInt = age >= 5 && age <= 150;
                 } catch (NumberFormatException e) {
                     ageIsInt = false;
                 }

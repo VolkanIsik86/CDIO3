@@ -2,7 +2,7 @@ package domain;
 
 //Formålet med account-klassen er at holde styr på spillernes point
 
-public class Account {
+class Account {
     private int balance;
     
     public Account(int balance){

@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class TxtReaderTest {
     
-    private TxtReader txt = new TxtReader();
+    private final TxtReader txt = new TxtReader();
     
     public TxtReaderTest(){
         txt.openFile("src/test/java/services/","testText");

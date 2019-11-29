@@ -9,7 +9,7 @@ import services.TxtReader;
 public class PropertySquare extends Square {
     
     private String color;
-    protected int price;
+    private int price;
     protected Player owner;
     
     public PropertySquare(String name, int index, GUILogic guiLogic, TxtReader landedOnTxt, int price, String color) {

@@ -3,7 +3,6 @@ package domain.squares;
 import controllers.GUILogic;
 import domain.Piece;
 import domain.Player;
-import gui_main.GUI;
 import org.junit.Test;
 import services.TxtReader;
 
@@ -11,12 +10,12 @@ import static org.junit.Assert.*;
 
 public class PropertySquareTest {
 
-    PropertySquare[] testSquare = new PropertySquare[2];
-    GUILogic guiLogic;
+    private final PropertySquare[] testSquare = new PropertySquare[2];
+    private GUILogic guiLogic;
     private String languagePath = "src/main/java/services/languagefiles/";
-    TxtReader landedOnTxt;
-    Piece testPiece = new Piece(testSquare[0]);
-    Player test = new Player("Test",99,20,testPiece,guiLogic);
+    private TxtReader landedOnTxt;
+    private final Piece testPiece = new Piece(testSquare[0]);
+    private final Player test = new Player("Test",99,20,testPiece,guiLogic);
 
    public PropertySquareTest(){
        testSquare[0] = new PropertySquare("Test1",0,guiLogic,landedOnTxt,2,"yellow");

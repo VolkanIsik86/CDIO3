@@ -8,13 +8,11 @@ import services.TxtReader;
 public class Game {
 
     private GUILogic guiLogic = new GUILogic();
-    private Board board = new Board();
-    private TurnLogic turnLogic = new TurnLogic();
+    private final Board board = new Board();
+    private final TurnLogic turnLogic = new TurnLogic();
     private PlayerList playerList;
 
     private String looser = "null";
-    private String languagePath = "src/main/java/services/languagefiles/";
-    private String language;
     private TxtReader landedOnTxt;
     private TxtReader squaresTxt;
     private TxtReader cardsTxt;
@@ -106,7 +104,7 @@ public class Game {
 
             turnLogic.takeTurn(currentPlayer);
 
-            if (currentPlayer.getLost() == true) {
+            if (currentPlayer.getLost()) {
                 looser = currentPlayer.getName();
                 break;
             }
@@ -129,10 +127,11 @@ public class Game {
         LanguageLogic languageLogic = new LanguageLogic();
 
         //Promts user to select language
-        language = languageLogic.selectLanguage();
+        String language = languageLogic.selectLanguage();
 
         //Load txt files
         landedOnTxt = new TxtReader();
+        String languagePath = "src/main/java/services/languagefiles/";
         landedOnTxt.openFile(languagePath, "landedOn_" + language);
         landedOnTxt.readLines();
 
