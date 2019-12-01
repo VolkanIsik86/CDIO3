@@ -6,18 +6,18 @@ import gui_fields.GUI_Player;
 
 public class GUILogicStub extends GUILogic {
 
+    private final int numberOfPlayers = 2;
     private final String[] nameArr = {"Mikkel", "Volkan"};
     private final int[] ageArr = new int[]{6, 7};
     
     public GUILogicStub(){
-        STARTBALANCE = 5;
+        STARTBALANCE = 20;
     }
     
     @Override
     public void makeUsers() {
         //todo skal ændres til at fungere på alle sprog1
-
-        int numberOfPlayers = 2;
+        
         String names[] = new String[numberOfPlayers];
         addPlayers(numberOfPlayers);
 

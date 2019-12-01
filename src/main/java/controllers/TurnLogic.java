@@ -3,13 +3,14 @@ package controllers;
 import domain.*;
 import domain.squares.*;
 import services.TxtReader;
+import test.DieStub;
 
 public class TurnLogic {
     
     protected Board board;
     protected GUILogic guiLogic;
     protected TxtReader landedOnTxt;
-    protected final Die die = new Die();
+    protected final DieStub die = new DieStub();
     
     public void init(Board board, GUILogic guiLogic, TxtReader landedOnTxt){
         this.board = board;

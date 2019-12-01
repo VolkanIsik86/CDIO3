@@ -1,6 +1,6 @@
 package test;
 
-class DieStub {
+public class DieStub {
     
     private int dieValue = 0;
     
@@ -17,7 +17,7 @@ class DieStub {
        
     */
     
-    private final int[] rolls = {1, 1, 23, 16, 1, 7, 13, 13, 2, 1};
+    private final int[] rolls = {1, 1, 2, 4, 1, 4, 4, 3, 9, 11, 18, 1, 1, 1};
 
     private int counter = 0;
     

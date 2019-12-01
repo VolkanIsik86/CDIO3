@@ -4,12 +4,14 @@ import domain.Board;
 import domain.Player;
 import domain.PlayerList;
 import services.TxtReader;
+import test.GUILogicStub;
+import test.TurnLogicStub;
 
 public class Game {
 
-    private GUILogic guiLogic = new GUILogic();
+    private GUILogicStub guiLogic = new GUILogicStub();
     private final Board board = new Board();
-    private final TurnLogic turnLogic = new TurnLogic();
+    private final TurnLogicStub turnLogic = new TurnLogicStub();
     private PlayerList playerList;
 
     private String looser = "null";
@@ -156,7 +158,6 @@ public class Game {
     private void initGUILogic() {
 
         //Includes the initialization of the GUI itself
-        guiLogic = new GUILogic();
         guiLogic.init(squaresTxt, guiTxt);
     }
 
